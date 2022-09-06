@@ -1,0 +1,32 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+.nav{
+    padding:20px;
+    @include wrapper;
+    display: flex;
+    background-color: $bgcolor-dark;
+    flex-wrap: wrap;
+    justify-content: center;
+    & a{
+        color:$primary-light;
+        text-decoration: none;
+    }
+    &__logo-link{
+        width: 100%;
+        margin-bottom:20px;
+    }
+    &__logo-img{
+        @include img-resp;
+        margin: auto;
+    }
+    &__link-item{
+        text-align: center;
+        padding:10px 20px; 
+        border-radius: 20px;
+        flex:1;
+    }
+
+    &__link-item--active{
+        background-color: $primary-dark;
+    }
+}
