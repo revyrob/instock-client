@@ -1,0 +1,23 @@
+.inputBar {
+    
+    &__icon {
+        color:white;
+    }
+    &__input {
+        outline: none; 
+        width:100%;
+        font-family: 'Times New Roman', Times, serif;
+        background-color: grey;
+    }
+    
+}
+input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    color: black;
+    &:focus {
+        outline: none; 
+    }
+}
