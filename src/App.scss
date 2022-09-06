@@ -1,0 +1,9 @@
+@use './styles/partials/variables' as *;
+@use './styles/partials/mixins' as *;
+@use './styles/partials/resets';
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap');
+
+body{
+    font-family: 'Titillium Web', sans-serif;
+}

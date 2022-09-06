@@ -1,0 +1,44 @@
+@use "./variables" as *;
+
+@mixin tablet {
+    @media (min-width: $tablet-width) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $desktop-width) {
+        @content;
+    }
+}
+
+@mixin customViewport($query, $size) {
+    @if $query == min {
+        @media (min-width: $size) {
+            @content;
+        }
+    } @else {
+        @media (max-width: $size) {
+            @content;
+        }
+    }
+}
+
+@mixin wrapper{
+    padding: 0px 20px;
+    @include tablet {
+        width: 90%;
+        margin-right: auto;
+        margin-left:auto;
+    }
+    @include desktop {
+        width: 1040px;
+    }
+}
+
+@mixin img-resp {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
