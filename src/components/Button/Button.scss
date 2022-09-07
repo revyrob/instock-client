@@ -1,6 +1,8 @@
 @use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
 
-button {
+
+.btn {
     display: flex;  
     align-items: center;
     justify-content: center;
@@ -10,6 +12,15 @@ button {
     padding: 0.5rem;
     border: none;
     font-weight: 600;
+    height: 2.375rem;
+    width: 100%;
+    margin: 1rem 0;
+    @include tablet {
+        width:49%;
+    }
+    @include desktop {
+        width: 40%;
+    }
     
     
 }

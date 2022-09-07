@@ -1,7 +1,7 @@
-import "./App.scss";
-import Header from "./components/Header/Header";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Warehouses from "./pages/Warehouses/Warehouses";
+import './App.scss';
+import Header from './components/Header/Header';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Warehouses from './pages/Warehouses/Warehouses';
 import EditWarehouse from "./pages/EditWarehouse/EditWarehouse";
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
         <Route path="/Inventory/:id" element={<Inventory />} />
         <Route path="/Inventory/add" element={<Inventory />} />
         <Route path="/Inventory/:id/edit" element={<Inventory />} /> */}
+        {/* <Route path="/details" element={<Details />} /> */}
       </Routes>
     </BrowserRouter>
   );
