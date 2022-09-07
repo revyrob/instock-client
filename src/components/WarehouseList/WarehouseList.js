@@ -4,13 +4,13 @@ import Button from "../Button/Button";
 import Warehouse from "../Warehouse/Warehouse";
 import WarehouseTablet from "../WarehouseTablet/WarehouseTablet";
 
-function WarehouseList() {
+function WarehouseList({ warehouseList }) {
   return (
     <section className="warehouseList">
       <div className="warehouseList__header">
         <h1 className="warehouseList__title">Warehouses</h1>
         <div className="warehouseList__btns">
-          <SearchBar className="warehouseList__search" name="search" />
+          <SearchBar className="warehouseList__search" />
           <Button
             className="warehouseList__btn"
             alt="add"
@@ -22,7 +22,20 @@ function WarehouseList() {
 
       <div className="warehouseList__warehouses">
         <div className="warehouseList__mobile">
-          <Warehouse />
+          {warehouseList &&
+            warehouseList.map((warehouse) => (
+              <Warehouse
+                id={warehouse.id}
+                key={warehouse.id}
+                warehouse={warehouse.name}
+                address={warehouse.address}
+                city={warehouse.city}
+                country={warehouse.country}
+                contact={warehouse.contact.name}
+                contactEmail={warehouse.contact.email}
+                contactPhone={warehouse.contact.phone}
+              />
+            ))}
         </div>
 
         <div className="warehouseList__tablet">
