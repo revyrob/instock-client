@@ -9,8 +9,7 @@
         width: 90vw;
         border-bottom: 1px solid $secondary-light;
         align-items: center;
-        @include wrapper
-
+        @include wrapper;
     }
     &__location {
         display: flex;

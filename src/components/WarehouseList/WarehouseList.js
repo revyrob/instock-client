@@ -1,7 +1,7 @@
 import "./WarehouseList.scss";
 import SearchBar from "../SearchBar/SearchBar";
 import Button from "../Button/Button";
-import Warehouse from "../Warehouse/Warehouse";
+import WarehouseMobile from "../WarehouseMobile/WarehouseMobile";
 import WarehouseTablet from "../WarehouseTablet/WarehouseTablet";
 import arrowSort from "../../assets/icons/sort-24px.svg";
 
@@ -25,7 +25,7 @@ function WarehouseList({ warehouseList }) {
         <div className="warehouseList__mobile">
           {warehouseList &&
             warehouseList.map((warehouse) => (
-              <Warehouse
+              <WarehouseMobile
                 id={warehouse.id}
                 key={warehouse.id}
                 warehouse={warehouse.name}
