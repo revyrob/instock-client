@@ -36,11 +36,6 @@ function Warehouse() {
           <div className="warehouse__icon">
             <img src={editPen} alt="pen" />
           </div>
-
-          <div className="warehouse__icon--tablet">
-            <img src={delteCan} alt="garbage can" />
-            <img src={editPen} alt="pen" />
-          </div>
         </div>
       </div>
     </section>
