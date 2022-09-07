@@ -2,38 +2,37 @@
 @use '../../styles/partials/mixins' as *;
 
 .warehouseTablet {
-    font-size: 0.6875rem;
-    &__wrapper{
-        display: flex;
-        justify-content: space-between;
-        width: 90vw;
-        border-bottom: 1px solid $secondary-light;
-        align-items: center;
-        @include wrapper;
-    }
-    &__location {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        color: $primary-accent;
-        font-weight: bold;
-        margin-bottom: 1rem;
-    }
-    &__title{
-        text-transform: uppercase;
-        color:$secondary-dark;
-        font-weight: bold;
-    }
-    &__name{
-        margin-bottom: 1rem;
-    }
-    &__info{
-        margin-bottom: 1rem;
-        width: 7.5rem;
-        text-align: left;
-    }
-    &__icon--tablet {
-        text-align: right;
-    }
-
+  font-size: 0.6875rem;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+    border-bottom: 1px solid $secondary-light;
+    align-items: center;
+    @include wrapper-mr;
+  }
+  &__location {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: $primary-accent;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  &__title {
+    text-transform: uppercase;
+    color: $secondary-dark;
+    font-weight: bold;
+  }
+  &__name {
+    margin-bottom: 1rem;
+  }
+  &__info {
+    margin-bottom: 1rem;
+    width: 7.5rem;
+    text-align: left;
+  }
+  &__icon--tablet {
+    text-align: right;
+  }
 }
