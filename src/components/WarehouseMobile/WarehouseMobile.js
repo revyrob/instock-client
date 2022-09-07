@@ -1,10 +1,10 @@
-import "./Warehouse.scss";
+import "./WarehouseMobile.scss";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import delteCan from "../../assets/icons/delete_outline-24px.svg";
 import editPen from "../../assets/icons/edit-24px.svg";
 
 //use the onclick function in the article component and not ArticleList because the articles are the onclick events
-function Warehouse({
+function WarehouseMobile({
   warehouse,
   address,
   contact,
@@ -51,4 +51,4 @@ function Warehouse({
     </section>
   );
 }
-export default Warehouse;
+export default WarehouseMobile;
