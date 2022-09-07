@@ -1,15 +1,15 @@
 {
-   "workbench.colorCustomizations": {
-      "bookmarks.lineBorder": "#157ef2",
-      "tab.activeBackground": "#1363DF",
-      "tab.inactiveBackground": "#393939",
-      "tab.activeForeground": "#eaeaea",
-      "tab.inactiveForeground": "#eaeaea",
-      "tab.border": "#393939",
-      "tab.activeBorder": "#393939",
-      "tab.hoverBackground": "#1363DF",
-      "activityBar.background": "#590544",
-      "titleBar.activeBackground": "#7D065F",
-      "titleBar.activeForeground": "#FFFAFE"
-   }
+  "workbench.colorCustomizations": {
+    "bookmarks.lineBorder": "#157ef2",
+    "tab.activeBackground": "#1363DF",
+    "tab.inactiveBackground": "#393939",
+    "tab.activeForeground": "#eaeaea",
+    "tab.inactiveForeground": "#eaeaea",
+    "tab.border": "#393939",
+    "tab.activeBorder": "#393939",
+    "tab.hoverBackground": "#1363DF",
+    "activityBar.background": "#590544",
+    "titleBar.activeBackground": "#7D065F",
+    "titleBar.activeForeground": "#FFFAFE"
+  }
 }

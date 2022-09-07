@@ -6,7 +6,8 @@
         height: 200px;
         margin-bottom: -50px;
         @include tablet{
-            height: 150px;
+            height: 186px;
+            margin-bottom: -100px;
         }
         @include desktop{
             height: 250px;
