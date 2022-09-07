@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/warehouses" element={<Warehouses />} />
         <Route path="/warehouse/:id/edit" element={<EditWarehouse></EditWarehouse>} />
+        <Route path="/warehouse/new" element={<EditWarehouse></EditWarehouse>} />
         {/* <Route path="/Warehouse/:id" element={<WareHouses />} />
         <Route path="/Warehouse/add" element={<WareHouses />} />
         

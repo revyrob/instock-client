@@ -25,8 +25,8 @@
 }
 
 @mixin wrapper{
-    padding-left:20px;
-    padding-right:20px;
+    padding-left:24px;
+    padding-right:24px;
     
     @include tablet {
         width: 90%;
@@ -35,6 +35,22 @@
     }
     @include desktop {
         width: 1040px;
+    }
+}
+
+
+@mixin wrapper-mr{
+    margin-left:16px;
+    margin-right:16px;
+    
+    @include tablet {
+        margin-right: 32px;
+        margin-left:32px;
+    }
+    @include desktop {
+        width: 1020px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
