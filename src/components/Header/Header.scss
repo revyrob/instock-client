@@ -1,12 +1,28 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 .nav{
+    &__header{
+        background-color: $bgcolor-dark;
+        height: 200px;
+        margin-bottom: -50px;
+        @include tablet{
+            height: 150px;
+        }
+        @include desktop{
+            height: 250px;
+            margin-bottom: -120px;
+        }
+    }
     padding:20px;
     @include wrapper;
     display: flex;
-    background-color: $bgcolor-dark;
     flex-wrap: wrap;
     justify-content: center;
+    @include tablet{
+        padding:20px 0px;
+        justify-content: start;
+        align-items: center;
+    }
     & a{
         color:$primary-light;
         text-decoration: none;
@@ -14,16 +30,28 @@
     &__logo-link{
         width: 100%;
         margin-bottom:20px;
+        @include tablet{
+            width: unset;
+            margin-bottom:unset;
+            margin-right: auto;
+        }
     }
     &__logo-img{
         @include img-resp;
         margin: auto;
     }
-    &__link-item{
+    &__link-warehouse,&__link-inventory{
         text-align: center;
         padding:10px 20px; 
         border-radius: 20px;
+        font-weight: $bold;
         flex:1;
+        @include tablet{
+            flex:0;
+        }
+    }
+    &__link-warehouse{
+        margin-right: 20px;
     }
 
     &__link-item--active{
