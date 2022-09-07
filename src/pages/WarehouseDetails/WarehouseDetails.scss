@@ -1,0 +1,27 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.warehouseDetails {
+  background-color: $primary-light;
+  @include wrapper-mr;
+}
+.pageHeader {
+  @include wrapper-mr;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: $space-between-items-lg;
+  &__title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: antiquewhite;
+  }
+  &__editBtn {
+    background-color: blanchedalmond;
+  }
+  &__warehouse-name {
+    font-size: $page-header;
+  }
+}
