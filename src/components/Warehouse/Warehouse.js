@@ -4,7 +4,15 @@ import delteCan from "../../assets/icons/delete_outline-24px.svg";
 import editPen from "../../assets/icons/edit-24px.svg";
 
 //use the onclick function in the article component and not ArticleList because the articles are the onclick events
-function Warehouse() {
+function Warehouse({
+  warehouse,
+  address,
+  contact,
+  contactPhone,
+  contactEmail,
+  city,
+  country,
+}) {
   //two columns
 
   return (
@@ -14,11 +22,13 @@ function Warehouse() {
           <h2 className="warehouse__title">Warehouse</h2>
 
           <h2 className="warehouse__location">
-            Manhattan <img src={chevron} alt="chevron right" />
+            {warehouse} <img src={chevron} alt="chevron right" />
           </h2>
 
           <h2 className="warehouse__title">Address</h2>
-          <h2 className="warehouse__info">503 Broadwary, New York, USA</h2>
+          <h2 className="warehouse__info">
+            {address}, {city}, {country}
+          </h2>
 
           <div className="warehouse__icon">
             <img src={delteCan} alt="garbage can" />
@@ -26,19 +36,14 @@ function Warehouse() {
         </div>
         <div className="warehouse__div">
           <h2 className="warehouse__title">Contact Name</h2>
-          <h2 className="warehouse__name">Parmin Aujla</h2>
+          <h2 className="warehouse__name">{contact}</h2>
 
           <h2 className="warehouse__title">Contact Information</h2>
           <h2 className="warehouse__info">
-            +1(629)555-0129 paujla@instock.com
+            {contactPhone} {contactEmail}
           </h2>
 
           <div className="warehouse__icon">
-            <img src={editPen} alt="pen" />
-          </div>
-
-          <div className="warehouse__icon--tablet">
-            <img src={delteCan} alt="garbage can" />
             <img src={editPen} alt="pen" />
           </div>
         </div>
