@@ -57,8 +57,18 @@
         text-transform: uppercase;
         color:$secondary-dark;
         font-weight: bold;
-        width: 7.5rem;
+        width: 10rem;
         align-items: left;
+        display: flex;
+            align-items: center;
+            justify-content: left;
+        &--icon {
+            @include tablet {
+                height: 0.75rem;
+                padding-left: .2rem;
+            }
+        }
+   
     }
     &__wrapper {
         display: flex;
@@ -72,5 +82,5 @@
     
 }
 .align-right {
-    text-align: right;
+    justify-content: right;
 }

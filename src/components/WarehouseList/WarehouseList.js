@@ -3,6 +3,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import Button from "../Button/Button";
 import Warehouse from "../Warehouse/Warehouse";
 import WarehouseTablet from "../WarehouseTablet/WarehouseTablet";
+import arrowSort from "../../assets/icons/sort-24px.svg";
 
 function WarehouseList({ warehouseList }) {
   return (
@@ -40,13 +41,41 @@ function WarehouseList({ warehouseList }) {
 
         <div className="warehouseList__tablet">
           <div className="warehouseList__wrapper">
-            <h2 className="warehouseList__subtitle">WarehouseList</h2>
+            <h2 className="warehouseList__subtitle">
+              WarehouseList
+              <img
+                className="warehouseList__subtitle--icon"
+                src={arrowSort}
+                alt="arrrow sorts"
+              />
+            </h2>
 
-            <h2 className="warehouseList__subtitle">Address</h2>
+            <h2 className="warehouseList__subtitle">
+              Address
+              <img
+                className="warehouseList__subtitle--icon"
+                src={arrowSort}
+                alt="arrrow sorts"
+              />
+            </h2>
 
-            <h2 className="warehouseList__subtitle">Contact Name</h2>
+            <h2 className="warehouseList__subtitle">
+              Contact Name
+              <img
+                className="warehouseList__subtitle--icon"
+                src={arrowSort}
+                alt="arrrow sorts"
+              />
+            </h2>
 
-            <h2 className="warehouseList__subtitle">Contact Information</h2>
+            <h2 className="warehouseList__subtitle">
+              Contact Information
+              <img
+                className="warehouseList__subtitle--icon"
+                src={arrowSort}
+                alt="arrrow sorts"
+              />
+            </h2>
 
             <h2 className="warehouseList__subtitle align-right">Action</h2>
           </div>
