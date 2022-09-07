@@ -1,9 +1,9 @@
 import "./Button.scss";
 
 //general button function that has an icon on the left and text in the center
-function Button({ text, className, type, makeHappen }) {
+function Button({ text, type, makeHappen }) {
   return (
-    <button className={className} type={type} onClick={makeHappen || null}>
+    <button className="btn" type={type} onClick={makeHappen || null}>
       <span className="button-text">{text}</span>
     </button>
   );
