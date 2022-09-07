@@ -1,34 +1,76 @@
 @use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
 
-.warehouse {
-    margin: 0 2rem;
+.warehouseList {
+    margin: 0 1rem;
+    background-color: $primary-light;
+    padding-top: 3rem;
+    @include tablet {
+        padding-top: 2rem;
+    }
+    &__header {
+        @include wrapper;
+        @include tablet{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    &__btns {
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+        }
+        @include desktop {
+            width: 50%;
+        }
+    }
     &__title{
         font-weight: $bold;
-        font-size: 2rem;
-        margin-top: 3rem;
+        font-size: 2rem;  
     }
-    &__search{
-        display: flex;
-        height: 2rem;
-        width: 80vw;
-        margin: 1rem 0;
-        border: 1px solid $secondary-light;
-        border-radius: 25px;
-        align-items: center;
-        justify-content: left;
-        padding-left: 1rem;
-        background-color: $bgcolor-light;
-    }
+   
     &__btn {
-        height: 2rem;
-        width: 80vw;
+        height: 2.375rem;
+        width: 100%;
         margin: 1rem 0;
+        @include tablet {
+            width:49%;
+        }
+        @include desktop {
+            width: 40%;
+        }
+    }
+    &__tablet {
+        display: none;
+        @include tablet{
+            display:contents;
+        }
+    }
+    &__mobile {
+        @include tablet {
+            display: none;
+        }
+    }
+    &__subtitle {
+        font-size: 0.6875rem;
+        text-transform: uppercase;
+        color:$secondary-dark;
+        font-weight: bold;
+        width: 7.5rem;
+        align-items: left;
+    }
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 90vw;
+        margin:1rem 0;
+        
+        @include wrapper
+        
     }
     
 }
-.seperation{
-    border-bottom: 1px solid black;
-    margin:0;
-    width: 100%;
-
+.align-right {
+    text-align: right;
 }

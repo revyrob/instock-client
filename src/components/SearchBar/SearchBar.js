@@ -1,16 +1,16 @@
 import "./SearchBar.scss";
 import searchIcon from "../../assets/icons/search-24px.svg";
 
-function SearchBar({ placeholder, name, className }) {
+function SearchBar() {
   return (
-    <div className={className}>
-      <img className="inputBar__icon" src={searchIcon} alt="search icon" />
+    <div className="searchBar">
       <input
         type="text"
-        className="inputBar__input"
-        placeholder={placeholder}
-        name={name}
+        className="searchBar__input"
+        placeholder="Search..."
+        name="search"
       />
+      <img className="searchBar__icon" src={searchIcon} alt="search icon" />
     </div>
   );
 }
