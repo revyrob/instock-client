@@ -1,21 +1,16 @@
+@use '../../styles/partials/variables' as *;
+
 button {
     display: flex;  
     align-items: center;
     justify-content: center;
-    background-color: blue;
+    background-color: $primary-accent;
     color: white;
-    border-radius: 5px;
+    border-radius: 25px;
     padding: 0.5rem;
     border: none;
-    padding-right: 24px;
     font-weight: 600;
-    &:hover{
-        background-color: darkblue;
-    }
+    
+    
 }
-.button-icon {
-    margin-right: auto;
-}
-.button-text {
-  margin-right: auto;
-}
+

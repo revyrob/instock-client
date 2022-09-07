@@ -1,7 +1,7 @@
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
 
 function Warehouses() {
-  return <WarehouseList></WarehouseList>;
+  return <WarehouseList />;
 }
 
 export default Warehouses;

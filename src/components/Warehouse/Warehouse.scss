@@ -1,0 +1,36 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.warehouse {
+    font-size: 0.6875rem;
+    &__wrapper{
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid $secondary-light;
+        @include wrapper;
+    }
+    &__location {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        color: $primary-accent;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    &__title{
+        text-transform: uppercase;
+        color:$secondary-dark;
+        font-weight: bold;
+    }
+    &__div{
+        max-width: 7.25rem;
+        margin-top: 1rem;
+    }
+    &__name{
+        margin-bottom: 1rem;
+    }
+    &__info{
+        margin-bottom: 1rem;
+    }
+
+}
