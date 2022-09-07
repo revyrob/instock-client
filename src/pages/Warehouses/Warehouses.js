@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
 
 function Warehouses() {

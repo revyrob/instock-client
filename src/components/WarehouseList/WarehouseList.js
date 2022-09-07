@@ -50,7 +50,21 @@ function WarehouseList({ warehouseList }) {
 
             <h2 className="warehouseList__subtitle align-right">Action</h2>
           </div>
-          <WarehouseTablet />
+
+          {warehouseList &&
+            warehouseList.map((warehouse) => (
+              <WarehouseTablet
+                id={warehouse.id}
+                key={warehouse.id}
+                warehouse={warehouse.name}
+                address={warehouse.address}
+                city={warehouse.city}
+                country={warehouse.country}
+                contact={warehouse.contact.name}
+                contactEmail={warehouse.contact.email}
+                contactPhone={warehouse.contact.phone}
+              />
+            ))}
         </div>
       </div>
     </section>
