@@ -1,7 +1,7 @@
 import "./WarehouseList.scss";
 import SearchBar from "../SearchBar/SearchBar";
 import Button from "../Button/Button";
-import Warehouse from "../Warehouse/Warehouse";
+// import Warehouse from "../Warehouse/Warehouse";
 
 function WarehouseList() {
   return (
@@ -22,9 +22,7 @@ function WarehouseList() {
       </div>
       {/* add each warehouse from the warehouse comment and loop through
       the json of warehouses */}
-      <div className="warehouse__list">
-        <Warehouse />
-      </div>
+      <div className="warehouse__list">{/* <Warehouse /> */}</div>
     </section>
   );
 }

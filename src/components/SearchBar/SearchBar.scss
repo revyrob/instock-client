@@ -1,14 +1,12 @@
 @use '../../styles/partials/variables' as *;
 
 .inputBar {
-    
-    &__icon {
-        color:$primary-dark;
-    }
+    // &__icon {
+    //     color:$primary-dark;
+    // }
     &__input {
         outline: none; 
         width:100%;
-        font-family: 'Times New Roman', Times, serif;
         background-color: $bgcolor-light;
     }
     
