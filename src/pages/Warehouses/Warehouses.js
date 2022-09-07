@@ -1,3 +1,4 @@
+import "./Warehouses.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
