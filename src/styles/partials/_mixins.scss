@@ -26,11 +26,11 @@
 
 @mixin wrapper-mr {
   margin-left: 16px;
-  marging-right: 16px;
+  margin-right: 16px;
 
   @include tablet {
     margin-left: 32px;
-    marging-right: 32px;
+    margin-right: 32px;
   }
   @include desktop {
     width: 1020px;

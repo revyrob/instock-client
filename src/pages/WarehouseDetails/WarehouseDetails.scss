@@ -1,0 +1,64 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+div {
+  box-sizing: border-box;
+}
+
+.warehouseDetails {
+  background-color: $primary-light;
+  @include wrapper-mr;
+}
+.pageHeader {
+  display: flex;
+  flex-direction: row;
+  @include wrapper-mr;
+  background-color: aliceblue;
+  justify-content: space-between;
+  padding: $space-between-items-lg;
+  padding-top: $space-outside-items-md + 10px;
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: antiquewhite;
+  }
+  &__editBtn {
+    background-color: blanchedalmond;
+  }
+  &__warehouse-name {
+    font-size: $page-header;
+  }
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: flex-start;
+
+  background-color: $primary-light;
+  border-top: 1px solid $bgcolor-dark;
+  @include wrapper-mr;
+
+  &__addressBox {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+    padding: $space-between-items-lg;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 50%;
+    border-left: 1px solid $bgcolor-dark;
+    padding: $space-between-items-lg;
+    padding-left: $space-outside-items-lg;
+  }
+
+  &__contactnameBox {
+    flex-basis: 60%;
+  }
+}
