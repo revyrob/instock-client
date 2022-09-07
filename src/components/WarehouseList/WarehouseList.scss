@@ -1,1 +1,34 @@
+@use '../../styles/partials/variables' as *;
 
+.warehouse {
+    margin: 0 2rem;
+    &__title{
+        font-weight: $bold;
+        font-size: 2rem;
+        margin-top: 3rem;
+    }
+    &__search{
+        display: flex;
+        height: 2rem;
+        width: 80vw;
+        margin: 1rem 0;
+        border: 1px solid $secondary-light;
+        border-radius: 25px;
+        align-items: center;
+        justify-content: left;
+        padding-left: 1rem;
+        background-color: $bgcolor-light;
+    }
+    &__btn {
+        height: 2rem;
+        width: 80vw;
+        margin: 1rem 0;
+    }
+    
+}
+.seperation{
+    border-bottom: 1px solid black;
+    margin:0;
+    width: 100%;
+
+}
