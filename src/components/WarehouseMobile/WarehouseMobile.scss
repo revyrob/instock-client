@@ -3,11 +3,12 @@
 
 .warehouse {
     font-size: 0.6875rem;
+    @include wrapper;
     &__wrapper{
         display: flex;
         justify-content: space-between;
         border-top: 1px solid $secondary-light;
-        @include wrapper;
+        @include wrapperInterior;
     }
     &__location {
         display: flex;

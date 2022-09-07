@@ -3,13 +3,21 @@
 
 .warehouseTablet {
     font-size: 0.6875rem;
+    
     &__wrapper{
         display: flex;
         justify-content: space-between;
-        width: 90vw;
+        width: 100%;
         border-bottom: 1px solid $secondary-light;
         align-items: center;
-        @include wrapper;
+        //margins from variables
+        padding: 0 1.5rem;
+        @include tablet {
+            padding: 0 2rem;
+        }
+        @include tablet {
+            padding: 0 2.5rem;
+        }
     }
     &__location {
         display: flex;
