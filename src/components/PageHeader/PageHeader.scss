@@ -1,0 +1,19 @@
+.pheader{
+    @include wrapper;
+    
+    &__header{
+        display: flex;
+        align-items: center;
+        padding:20px 20px;
+        background-color:$primary-light;
+    }
+
+    &__arrow{
+        display: block;
+        margin-right:10px;
+    }
+
+    &__txt{
+        font-size: 1.25rem;
+    }
+}
