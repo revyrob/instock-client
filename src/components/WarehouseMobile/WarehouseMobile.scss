@@ -3,12 +3,15 @@
 
 .warehouse {
     font-size: 0.6875rem;
-    @include wrapper;
     &__wrapper{
         display: flex;
         justify-content: space-between;
         border-top: 1px solid $secondary-light;
-        @include wrapperInterior;
+        padding: 0 1.5rem 1rem;
+        &:hover {
+        background-color:rgba(46, 102, 229, 0.07);
+        }
+
     }
     &__location {
         display: flex;
