@@ -20,36 +20,37 @@ body {
 }
 .pageHeader {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   @include wrapper-mr;
   justify-content: space-between;
   padding: $space-between-items-lg;
   padding-top: $space-outside-items-md + 10px;
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+  }
 
   &__title {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
-  &__editBtn {
-    border-radius: 50%;
+  &__addItemBtn {
     background-color: $primary-accent;
     padding: 12px;
     color: $primary-light;
     display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: $bold;
-    @include tablet {
-      border-radius: 20px;
-      padding-left: 16px;
-      padding-right: 16px;
-      padding-top: 8px;
-      padding-bottom: 8px;
-    }
+    height: 40px;
+    width: 100%;
+    border-radius: 20px;
   }
   &__iconBtnTxt {
     display: none;
     @include tablet {
-      display: inline;
+      display: block;
     }
   }
 
@@ -65,6 +66,16 @@ body {
     }
     font-weight: $bold;
     padding-left: 6px;
+  }
+  &__flexbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet {
+      gap: 20px;
+      flex-direction: row;
+    }
   }
 }
 
@@ -132,7 +143,7 @@ body {
     padding-left: $space-between-items-lg;
     padding-right: $space-between-items-lg;
     display: grid;
-    grid-template-columns: [box1] 1.2fr [box3] 1fr [box2] 1.2fr [box4] 1fr[box5] 0.3fr [box6]0.4fr;
+    grid-template-columns: [box1] 1.4fr [box3] 1fr [box2] 1fr [box4] 0.8fr[box5] 1fr [box6]0.4fr;
   }
   &__box1 {
     display: flex;
@@ -152,6 +163,8 @@ body {
     gap: 0.25rem;
   }
   &__box5 {
+    display: flex;
+    gap: 0.25rem;
   }
   &__box6 {
     margin-left: auto;
@@ -179,7 +192,7 @@ body {
     padding-left: $space-between-items-lg;
     padding-right: $space-between-items-lg;
     font-size: $body-large;
-    grid-template-columns: [box1] 1.2fr [box3] 1fr [box2] 1.2fr [box4] 1fr[box5] 0.3fr [box6]0.4fr;
+    grid-template-columns: [box1] 1.4fr [box3] 1fr [box2] 1fr [box4] 0.8fr[box5] 1fr [box6]0.4fr;
   }
 
   &__labelMobile {
@@ -231,21 +244,29 @@ body {
   }
   &__box5 {
     padding-top: $space-outside-items-sm;
-
-    margin-right: auto;
+    display: flex;
+    flex-direction: column;
     @include tablet {
-      margin-left: auto;
+      margin-right: auto;
       padding-top: 0;
     }
   }
   &__box6 {
     margin-top: auto;
     margin-left: auto;
+    display: flex;
+    gap: 5px;
     padding-right: $space-between-items-sm;
   }
+
   &__labelItem {
     width: 110px;
   }
+  &__warehouseNameValue {
+    text-align: left;
+    margin-right: auto;
+  }
+
   &__chevron {
     position: relative;
     left: -20px;
