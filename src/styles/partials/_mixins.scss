@@ -1,18 +1,19 @@
-@use "./variables" as *;
+@use './variables' as *;
 
 @mixin tablet {
-    @media (min-width: $tablet-width) {
-        @content;
-    }
+  @media (min-width: $tablet-width) {
+    @content;
+  }
 }
 
 @mixin desktop {
-    @media (min-width: $desktop-width) {
-        @content;
-    }
+  @media (min-width: $desktop-width) {
+    @content;
+  }
 }
 
 @mixin customViewport($query, $size) {
+
     @if $query == min {
         @media (min-width: $size) {
             @content;
@@ -24,40 +25,35 @@
     }
 }
 
-//exterior wrapper for component
-@mixin wrapper{
-    padding-left:20px;
-    padding-right:20px;
-   
-    
-    @include tablet {
-        margin-right: auto;
-        margin-left:auto;
-        
+  @if $query == min {
+    @media (min-width: $size) {
+      @content;
+
     }
-    @include desktop {
-        width: 1040px;
-       
+  } @else {
+    @media (max-width: $size) {
+      @content;
     }
+  }
 }
 
-@mixin wrapper-mr{
-    margin-left:16px;
-    margin-right:16px;
-    @include tablet {
-        margin-right: 32px;
-        margin-left:32px;
-    }
-    @include desktop {
-        width: 1020px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+@mixin wrapper-mr {
+  margin-left: 16px;
+  margin-right: 16px;
+
+  @include tablet {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+  @include desktop {
+    width: 1020px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @mixin img-resp {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
-
