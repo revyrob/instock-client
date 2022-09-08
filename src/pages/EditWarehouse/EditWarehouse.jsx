@@ -27,6 +27,7 @@ export default function EditWarehouse(){
     
     return(
         <>  
+        {/* <PageHeader title={warehouseId? "Edit Warehouse":"Add New Warehouse"} backLink={'warehouses'}></PageHeader> */}
             <div className="edit-wrhse">
                 <PageHeader title={warehouseId? "Edit Warehouse":"Add New Warehouse"} backLink={'warehouses'}></PageHeader>
                 <WarehouseForm warehouse={warehouse} warehouseId={warehouseId}></WarehouseForm>
