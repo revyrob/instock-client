@@ -36,5 +36,53 @@
     &__info{
         margin-bottom: 1rem;
     }
+    &__modal {
+        height: 100vh;
+        background-color:$bgcolor-light;
+        padding: 3.75rem 1rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &--title {
+            font-size: $page-header-mobile;
+            line-height: 2.25rem;
+            margin-bottom: 1rem;
+        }
+        &--text{
+            font-size: $body-large-mobile;
+            line-height: 1.625rem;
+        }
+        &--div{
+            padding-bottom: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        &--btn {
+            display: flex;  
+            align-items: center;
+            justify-content: center;
+            border-radius: 25px;
+            padding: 0.5rem;
+            border: none;
+            font-weight: 600;
+            height: 2.375rem;
+            width: 49%;
+            margin: 1rem 0;
+            
+            &--cancel {
+                width: 47%;
+                border: 1px solid $secondary-light;
+                background-color: $primary-light;
+                color: $primary-dark;
+            }
+            &--delete {
+                width: 47%;
+                background-color: $sup-red;
+                color: $primary-light;
+            }
+        }
+        
+    }
 
 }
+

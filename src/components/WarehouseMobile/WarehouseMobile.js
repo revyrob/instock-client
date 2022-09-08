@@ -4,7 +4,6 @@ import delteCan from "../../assets/icons/delete_outline-24px.svg";
 import editPen from "../../assets/icons/edit-24px.svg";
 import Modal from "react-modal";
 import { useState } from "react";
-import Button from "../Button/Button";
 
 //use the onclick function in the article component and not ArticleList because the articles are the onclick events
 function WarehouseMobile({
@@ -51,29 +50,38 @@ function WarehouseMobile({
 
           <Modal
             isOpen={deleteModal}
-            className="warehouse__modal"
+            className="warehouse__modal--modal"
             onRequestClose={closeModal}
             contentLabel="Delete Warehouse"
           >
-            <h2 className="warehouse__modal--title">
-              Delete {warehouse} warehouse?
-            </h2>
-            <p className="warehouse__modal--text">
-              Please confirm that you'd like to delete the {warehouse} from the
-              list of warehouses. You won't be able to undo this action.
-            </p>
-            <Button
-              className="warehouse__modalbBtn--cancel"
-              text="Cancel"
-              type="close"
-              onClick={closeModal}
-            ></Button>
-            <Button
-              className="warehouse__modalbBtn--delete"
-              text="Delete"
-              type="delete"
-              onClick=""
-            ></Button>
+            <div className="warehouse__modal">
+              <div className="warehouse__modal--textarea">
+                <h2 className="warehouse__modal--title">
+                  Delete {warehouse} warehouse?
+                </h2>
+                <p className="warehouse__modal--text">
+                  Please confirm that you'd like to delete the {warehouse} from
+                  the list of warehouses. You won't be able to undo this action.
+                </p>
+              </div>
+              <div className="warehouse__modal--div">
+                <button
+                  className="warehouse__modal--btn warehouse__modal--btn--cancel"
+                  type="cancel"
+                  onClick={closeModal}
+                >
+                  <span className="btn-text">Cancel</span>
+                </button>
+
+                <button
+                  className="warehouse__modal--btn warehouse__modal--btn--delete"
+                  type="delete"
+                  onClick=""
+                >
+                  <span className="btn-text">Delete</span>
+                </button>
+              </div>
+            </div>
           </Modal>
         </div>
         <div className="warehouse__div">

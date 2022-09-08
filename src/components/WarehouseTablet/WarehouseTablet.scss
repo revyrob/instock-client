@@ -42,5 +42,65 @@
     &__icon--tablet {
         text-align: right;
     }
+    &__element {
+      
+      background-color:#13182C;
+    }
+    &__modal {
+      width: 42rem;
+      height:16.375rem;
+      background-color:$primary-light;
+      margin:5.3125rem auto 0;
+      padding: 3.75rem 1rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+      border-radius: 3px;
+      &--title {
+          font-size: $page-header-mobile;
+          line-height: 2.25rem;
+          margin-bottom: 1rem;
+      }
+      &--text{
+          font-size: $body-large-mobile;
+          line-height: 1.625rem;
+      }
+      &--div{
+          padding-bottom: auto;
+          display: flex;
+          justify-content: space-between;
+          @include tablet {
+            width: 30%;
+            margin-left: auto;
+          }
+      }
+      &--btn {
+          display: flex;  
+          align-items: center;
+          justify-content: center;
+          border-radius: 25px;
+          padding: 0.5rem;
+          border: none;
+          font-weight: 600;
+          height: 2.375rem;
+          // width: 49%;
+          margin: 1rem 0;
+          
+          &--cancel {
+              width: 47%;
+              border: 1px solid $secondary-light;
+              background-color: $primary-light;
+              color: $primary-dark;
+          }
+          &--delete {
+              width: 47%;
+              background-color: $sup-red;
+              color: $primary-light;
+          }
+      }
+      
+  }
+
 
 }

@@ -30,7 +30,9 @@
         padding-right:2.5rem;
         }
     }
+    
     &__btns {
+ 
         @include tablet {
             display: flex;
             justify-content: space-between;
