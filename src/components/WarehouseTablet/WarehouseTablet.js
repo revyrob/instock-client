@@ -4,6 +4,7 @@ import delteCan from "../../assets/icons/delete_outline-24px.svg";
 import editPen from "../../assets/icons/edit-24px.svg";
 import Modal from "react-modal";
 import { useState } from "react";
+import closeIcon from "../../assets/icons/close-24px.svg";
 
 //use the onclick function in the article component and not ArticleList because the articles are the onclick events
 function WarehouseTablet({
@@ -37,18 +38,11 @@ function WarehouseTablet({
       width: "42rem",
       height: "16.375rem",
       margin: "5.3125rem auto 0",
-      // padding: "3.75rem 1rem 0",
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
       boxShadow: "0px 2px 5px rgba(19, 24, 44, 0.1)",
       borderRadius: "3px",
-      // top: "50%",
-      // left: "50%",
-      // right: "auto",
-      // bottom: "auto",
-      // marginRight: "-50%",
-      // transform: "translate(-50%, -50%)",
     },
   };
 
@@ -82,11 +76,13 @@ function WarehouseTablet({
             <img src={delteCan} alt="garbage can" onClick={openModal} />
             <Modal
               isOpen={deleteModal}
-              // className="warehouseTablet__element"
               onRequestClose={closeModal}
               contentLabel="Delete Warehouse"
               style={bg}
             >
+              <div className="warehouseTablet__close" onClick={closeModal}>
+                <img src={closeIcon} alt="close icon" />
+              </div>
               <div className="warehouseTablet__modal">
                 <div className="warehouseTablet__modal--textarea">
                   <h2 className="warehouseTablet__modal--title">

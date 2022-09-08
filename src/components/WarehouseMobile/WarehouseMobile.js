@@ -4,6 +4,7 @@ import delteCan from "../../assets/icons/delete_outline-24px.svg";
 import editPen from "../../assets/icons/edit-24px.svg";
 import Modal from "react-modal";
 import { useState } from "react";
+import closeIcon from "../../assets/icons/close-24px.svg";
 
 //use the onclick function in the article component and not ArticleList because the articles are the onclick events
 function WarehouseMobile({
@@ -54,6 +55,9 @@ function WarehouseMobile({
             onRequestClose={closeModal}
             contentLabel="Delete Warehouse"
           >
+            <div className="warehouse__close" onClick={closeModal}>
+              <img src={closeIcon} alt="close icon" />
+            </div>
             <div className="warehouse__modal">
               <div className="warehouse__modal--textarea">
                 <h2 className="warehouse__modal--title">
