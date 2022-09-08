@@ -34,5 +34,15 @@
   &__info {
     margin-bottom: 1rem;
   }
+  &__modal{
+    background-color: $bgcolor-light;
+    margin: 3.75rem 1rem;
+    &--title {
+      font-size: $page-header-mobile;
+    }
+    &--text {
+      font-size: $body-large-mobile;
+    }
+  }
 }
 }
