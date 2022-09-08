@@ -44,10 +44,12 @@ div {
       display: inline;
     }
   }
+
   &__iconColor {
-    fill-opacity: 1;
-    fill: white;
+    filter: brightness(100);
+    padding-right: 4px;
   }
+
   &__warehouse-name {
     font-size: $page-header;
     font-weight: $bold;
