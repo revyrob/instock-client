@@ -36,6 +36,11 @@
     &__info{
         margin-bottom: 1rem;
     }
+    &__close {
+        position: absolute;
+        top: 2.5%;
+        right: 5%;
+    }
     &__modal {
         height: 100vh;
         background-color:$bgcolor-light;
