@@ -4,6 +4,7 @@ import Button from "../Button/Button";
 import WarehouseMobile from "../WarehouseMobile/WarehouseMobile";
 import WarehouseTablet from "../WarehouseTablet/WarehouseTablet";
 import arrowSort from "../../assets/icons/sort-24px.svg";
+import { Link } from "react-router-dom";
 
 function WarehouseList({ warehouseList }) {
   return (
@@ -12,12 +13,14 @@ function WarehouseList({ warehouseList }) {
         <h1 className="warehouseList__title">Warehouses</h1>
         <div className="warehouseList__btns">
           <SearchBar className="warehouseList__search" />
-          <Button
-            className="warehouseList__btn"
-            alt="add"
-            text="+Add New Warehouse"
-            type="submit"
-          ></Button>
+          <Link to={`/warehouse/new`}>
+            <Button
+              className="warehouseList__btn"
+              alt="add"
+              text="+Add New Warehouse"
+              type="submit"
+            ></Button>
+          </Link>
         </div>
       </div>
 

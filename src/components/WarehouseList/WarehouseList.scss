@@ -30,7 +30,11 @@
         padding-right:2.5rem;
         }
     }
-    
+    &__btn {
+        @include tablet {
+            width: 80%;
+        }
+    }
     &__btns {
         @include tablet {
             display: flex;
@@ -85,6 +89,21 @@
             padding: 0 2rem;
         }
 }
+a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: none;
+  }
+  
+  a:active {
+    text-decoration: none;
+  }
         
     
     
