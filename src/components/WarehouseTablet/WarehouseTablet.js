@@ -2,6 +2,8 @@ import "./WarehouseTablet.scss";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import delteCan from "../../assets/icons/delete_outline-24px.svg";
 import editPen from "../../assets/icons/edit-24px.svg";
+import Modal from "react-modal";
+import { useState } from "react";
 
 //use the onclick function in the article component and not ArticleList because the articles are the onclick events
 function WarehouseTablet({
@@ -14,6 +16,41 @@ function WarehouseTablet({
   country,
 }) {
   //two columns
+
+  //modal functions
+  //state for modal
+  const [deleteModal, setDeleteModal] = useState(false);
+
+  function openModal() {
+    setDeleteModal(true);
+  }
+
+  function closeModal() {
+    setDeleteModal(false);
+  }
+
+  const bg = {
+    overlay: {
+      background: "rgba(19, 24, 44, .6)",
+    },
+    content: {
+      width: "42rem",
+      height: "16.375rem",
+      margin: "5.3125rem auto 0",
+      // padding: "3.75rem 1rem 0",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      boxShadow: "0px 2px 5px rgba(19, 24, 44, 0.1)",
+      borderRadius: "3px",
+      // top: "50%",
+      // left: "50%",
+      // right: "auto",
+      // bottom: "auto",
+      // marginRight: "-50%",
+      // transform: "translate(-50%, -50%)",
+    },
+  };
 
   return (
     <section className="warehouseTablet">
@@ -42,7 +79,45 @@ function WarehouseTablet({
 
         <div className="warehouseTablet__info">
           <div className="warehouseTablet__icon--tablet">
-            <img src={delteCan} alt="garbage can" />
+            <img src={delteCan} alt="garbage can" onClick={openModal} />
+            <Modal
+              isOpen={deleteModal}
+              // className="warehouseTablet__element"
+              onRequestClose={closeModal}
+              contentLabel="Delete Warehouse"
+              style={bg}
+            >
+              <div className="warehouseTablet__modal">
+                <div className="warehouseTablet__modal--textarea">
+                  <h2 className="warehouseTablet__modal--title">
+                    Delete {warehouse} warehouse?
+                  </h2>
+                  <p className="warehouseTablet__modal--text">
+                    Please confirm that you'd like to delete the {warehouse}{" "}
+                    from the list of warehouses. You won't be able to undo this
+                    action.
+                  </p>
+                </div>
+                <div className="warehouseTablet__modal--div">
+                  <button
+                    className="warehouseTablet__modal--btn warehouseTablet__modal--btn--cancel"
+                    type="cancel"
+                    onClick={closeModal}
+                  >
+                    <span className="btn-text">Cancel</span>
+                  </button>
+
+                  <button
+                    className="warehouseTablet__modal--btn warehouseTablet__modal--btn--delete"
+                    type="delete"
+                    onClick=""
+                  >
+                    <span className="btn-text">Delete</span>
+                  </button>
+                </div>
+              </div>
+            </Modal>
+
             <img src={editPen} alt="pen" />
           </div>
         </div>

@@ -4,13 +4,13 @@ export default function Header(){
     return(
         <div>
             <header className='nav__header'>
-                <navbar className="nav">
+                <nav className="nav">
                     <a href="" className="nav__logo-link">
                         <img src={logo} alt="logo" className="nav__logo-img" />
                     </a>
                     <a href="" className="nav__link-warehouse nav__link-item--active">Warehouses</a>
                     <a href="" className="nav__link-inventory">Inventory</a>
-                </navbar>
+                </nav>
             </header>
         </div>  
     )

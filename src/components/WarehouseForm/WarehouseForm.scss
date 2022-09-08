@@ -1,0 +1,126 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.frmgrid{
+    // margin:0px 20px;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+
+    &__body{
+        padding:0px 24px;
+        @include tablet{
+            display: flex;
+        }
+        @include tablet{
+            // padding:$space-between-items-lg;
+            // padding-bottom:32px;
+            // padding:0px 24px;
+            padding:24px 32px;
+        }
+        @include desktop{
+            padding:24px 40px;
+        }
+    }
+    &__title{
+        font-weight: $bold;
+        padding:16px 0px;
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom:16px;
+        @include tablet{
+            padding-top:0;
+            line-height: 32px;
+        }
+    }
+    &__left{
+        margin-bottom:24px;
+        @include tablet{
+            flex:1;
+            padding-right:40px;
+            border-right:1px solid $secondary-light;
+            margin-bottom:0px;
+        }
+    }
+    &__right{
+        @include tablet{
+            flex:1;
+            padding-left:40px;
+        }
+    }
+    &__lbl{
+        width: 100%;
+        font-weight: bold;
+        display: block;
+        margin-bottom:$space-between-items-sm;
+        @include tablet{
+            margin-bottom: $space-between-items-lg;
+        }
+        &--btm{
+            margin-bottom:8px;
+        }
+    }
+    &__inpt{
+        width:100%;
+        border-radius: 20px;
+        border:1px solid $secondary-light;
+        height:36px;
+        padding:8px 16px;
+        &--err{
+            border:1px solid $sup-red;
+        }
+    }
+    &__errspn{
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        color:$sup-red;
+       &::before{
+        content:url('../../assets/icons/error-24px.svg');
+        width: 24px;
+        display: inline-block;
+        height: 24px;
+        vertical-align: middle;
+        margin-right: 5px;
+       }
+    }
+    &__seprator{
+        border:0;
+        height: 1px;
+        margin:0 -24px;
+        background-color: $secondary-light;
+        @include tablet{
+            display:none;
+        }
+    }
+    &__footer{
+        background-color: $bgcolor-light;
+        padding:16px 24px;
+        display: flex;
+        @include tablet{
+
+        }
+    }
+    &__cancel,&__save{
+        border-radius: 20px;
+        text-align: center;
+        line-height: 20px;
+        padding:8px 0;
+        flex:1;
+        border: 0;
+        background-color: $primary-accent;
+        color:$primary-light;
+        border:1px solid $primary-accent;
+        @include tablet{
+            flex:0 1 auto;
+            padding:8px 16px;
+        }
+    }
+    &__cancel{
+        margin-right:17px;
+        background-color: $primary-light;
+        color:$primary-dark;
+        border:1px solid $secondary-light;
+        @include tablet{
+            margin-left: auto;
+        }
+    }
+}
