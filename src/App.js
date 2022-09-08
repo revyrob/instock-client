@@ -1,8 +1,8 @@
-import './App.scss';
-import Header from './components/Header/Header';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Warehouses from './pages/Warehouses/Warehouses';
-import WarehouseDetails from './pages/WarehouseDetails/WarehouseDetails';
+import "./App.scss";
+import Header from "./components/Header/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Warehouses from "./pages/Warehouses/Warehouses";
+import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails";
 import EditWarehouse from "./pages/EditWarehouse/EditWarehouse";
 function App() {
   return (
@@ -10,8 +10,14 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/warehouses" element={<Warehouses />} />
-        <Route path="/warehouse/:id/edit" element={<EditWarehouse></EditWarehouse>} />
-        <Route path="/warehouse/new" element={<EditWarehouse></EditWarehouse>} />
+        <Route
+          path="/warehouse/:id/edit"
+          element={<EditWarehouse></EditWarehouse>}
+        />
+        <Route
+          path="/warehouse/new"
+          element={<EditWarehouse></EditWarehouse>}
+        />
         {/* <Route path="/Warehouse/:id" element={<WareHouses />} />
         <Route path="/Warehouse/add" element={<WareHouses />} />
         

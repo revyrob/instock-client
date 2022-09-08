@@ -23,7 +23,7 @@
             @content;
         }
     }
-}
+
 
   @if $query == min {
     @media (min-width: $size) {
