@@ -1,8 +1,8 @@
 import './WarehouseForm.scss';
-// import {  useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
 // import {  useState } from 'react'
-// import { useEffect } from 'react';
-// import axios from 'axios';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 import PageHeader from '../PageHeader/PageHeader'
 import { useState } from 'react';
@@ -31,9 +31,26 @@ export default function WarehouseForm({warehouse,warehouseId}){
         console.log(resBody)
     }
 
+    async function postData(formObj){
+        const {wrhsName,wrhsAdd,wrhsCity,wrhsCountry,cntcName,cntcPos,cntcPhn,cntcEmail} = formObj
+        const resBody ={
+            name: wrhsName.value,
+            address: wrhsAdd.value,
+            city: wrhsCity.value,
+            country: wrhsCountry.value,
+            contact: {
+              name: cntcName.value,
+              position: cntcPos.value,
+              phone:cntcPhn.value,
+              email:cntcEmail.value
+            }
+        }
+        console.log(resBody)
+        const {data} = axios.post('http://localhost:8080/warehouse/',resBody)
+    }
+
     function formValidation(formObj){
         const {wrhsName,wrhsAdd,wrhsCity,wrhsCountry,cntcName,cntcPos,cntcPhn,cntcEmail} = formObj
-        console.log(wrhsCity)
         const obj = {
             validate:false,
         }
@@ -71,6 +88,8 @@ export default function WarehouseForm({warehouse,warehouseId}){
         }else if(!cntcEmail.value.includes('@')){
             obj[cntcEmail.name] = "not valid email"
             obj.validate = true;
+        }else{
+
         }
         if(obj.validate){
             setValidObj(obj)
@@ -92,8 +111,10 @@ export default function WarehouseForm({warehouse,warehouseId}){
     function handleNewSumbit(e){
         const formObj = e.target;
         e.preventDefault()
-        formValidation(formObj)
-        console.log("new")
+        if(formValidation(formObj)){
+            postData(formObj)
+            e.target.reset();
+        }
     }
 
     return(
@@ -105,30 +126,22 @@ export default function WarehouseForm({warehouse,warehouseId}){
                     <label className="frmgrid__lbl">
                         Warehouse Name
                         <input type="text" name="wrhsName" className={Object.hasOwn(validObj,'wrhsName') ? 'frmgrid__inpt frmgrid__inpt-err' : 'frmgrid__inpt'} defaultValue={warehouse ? warehouse.name : ""}/>
-                        {Object.hasOwn(validObj,'wrhsName') && 
-                            <span className='frmgrid__errspn'>{validObj.wrhsName}</span> 
-                        }
+                        <span className='frmgrid__errspn' style={Object.hasOwn(validObj,'wrhsName') ? {"display":"block"}:{"display":"none"}}>{validObj.wrhsName}</span> 
                     </label>
                     <label className="frmgrid__lbl">
                         Street Address
                         <input type="text" name="wrhsAdd" className={Object.hasOwn(validObj,'wrhsAdd') ? 'frmgrid__inpt frmgrid__inpt-err' : 'frmgrid__inpt'} defaultValue={warehouse ? warehouse.address : ""}/>
-                        {Object.hasOwn(validObj,'wrhsAdd') && 
-                            <span className='frmgrid__errspn'>{validObj.wrhsName}</span> 
-                        }
+                        <span className='frmgrid__errspn' style={Object.hasOwn(validObj,'wrhsAdd') ? {"display":"block"}:{"display":"none"}}>{validObj.wrhsAdd}</span> 
                     </label>
                     <label className="frmgrid__lbl">
                         City
                         <input type="text" name="wrhsCity" className="frmgrid__inpt" defaultValue={warehouse ? warehouse.city : ""}/>
-                        {Object.hasOwn(validObj,'wrhsCity') && 
-                            <span className='frmgrid__errspn'>{validObj.wrhsCity}</span> 
-                        }
+                        <span className='frmgrid__errspn' style={Object.hasOwn(validObj,'wrhsCity') ? {"display":"block"}:{"display":"none"}}>{validObj.wrhsCity}</span> 
                     </label>
                     <label className="frmgrid__lbl frmgrid__lbl--btm">
                         Country
                         <input type="text" name="wrhsCountry" className="frmgrid__inpt" defaultValue={warehouse ? warehouse.country : ""}/>
-                        {Object.hasOwn(validObj,'wrhsCountry') && 
-                            <span className='frmgrid__errspn'>{validObj.wrhsCountry}</span> 
-                        }
+                        <span className='frmgrid__errspn' style={Object.hasOwn(validObj,'wrhsCountry') ? {"display":"block"}:{"display":"none"}}>{validObj.wrhsCountry}</span> 
                     </label>
                 </div>
                 <hr className='frmgrid__seprator' />
@@ -137,30 +150,23 @@ export default function WarehouseForm({warehouse,warehouseId}){
                     <label className="frmgrid__lbl">
                         Contact Name
                         <input type="text" name="cntcName" className="frmgrid__inpt" defaultValue={warehouse ? warehouse.contact.name : ""}/>
-                        {Object.hasOwn(validObj,'cntcName') && 
-                            <span className='frmgrid__errspn'>{validObj.cntcName}</span> 
-                        }
+                        <span className='frmgrid__errspn' style={Object.hasOwn(validObj,'cntcName') ? {"display":"block"}:{"display":"none"}}>{validObj.cntcName}</span> 
+                    
                     </label>
                     <label className="frmgrid__lbl">
                     Position
                         <input type="text" name="cntcPos" className="frmgrid__inpt" defaultValue={warehouse ? warehouse.contact.position : ""}/>
-                        {Object.hasOwn(validObj,'cntcPos') && 
-                            <span className='frmgrid__errspn'>{validObj.cntcPos}</span> 
-                        }
+                        <span className='frmgrid__errspn' style={Object.hasOwn(validObj,'cntcPos') ? {"display":"block"}:{"display":"none"}}>{validObj.cntcPos}</span> 
                     </label>
                     <label className="frmgrid__lbl">
                     Phone Number
                         <input type="phone" name="cntcPhn" className="frmgrid__inpt" defaultValue={warehouse ? warehouse.contact.phone : ""}/>
-                        {Object.hasOwn(validObj,'cntcPhn') && 
-                            <span className='frmgrid__errspn'>{validObj.cntcPhn}</span> 
-                        }
+                        <span className='frmgrid__errspn' style={Object.hasOwn(validObj,'cntcPhn') ? {"display":"block"}:{"display":"none"}}>{validObj.cntcPhn}</span> 
                     </label>
                     <label className="frmgrid__lbl frmgrid__lbl--btm">
                     Email
                         <input type="text" name="cntcEmail" className="frmgrid__inpt" defaultValue={warehouse ? warehouse.contact.email : ""}/>
-                        {Object.hasOwn(validObj,'cntcEmail') && 
-                            <span className='frmgrid__errspn'><span>{validObj.cntcEmail}</span></span> 
-                        }
+                        <span className='frmgrid__errspn' style={Object.hasOwn(validObj,'cntcEmail') ? {"display":"block"}:{"display":"none"}}>{validObj.cntcEmail}</span> 
                     </label>
                 </div>
             </div>
