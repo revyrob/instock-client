@@ -1,7 +1,7 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 .pheader{
-    @include wrapper-mr;
+    // @include wrapper-mr;
     position: relative;
     padding:0px 0;
     &__bg-curtain{
@@ -10,17 +10,22 @@
 
     &__wrapper{
         background-color: $primary-light;
-        padding: 20px 24px;
         display: flex;
+        padding:32px 0px 24px 0px;
         border-bottom:1px solid $secondary-light;
         align-items: center;
         justify-content: center;
     }
-
+    &__txt{
+        
+    }
+    &__bcklink{
+        margin-right: 12px;
+    }
 
     &__arrow{
         display: block;
-        margin-right:10px;
+        
     }
 
     &__txt{
