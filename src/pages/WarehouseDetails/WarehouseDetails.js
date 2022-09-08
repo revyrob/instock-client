@@ -1,10 +1,14 @@
 import './WarehouseDetails.scss';
+
 import arrowSort from '../../assets/icons/sort-24px.svg';
 import chevron from '../../assets/icons/chevron_right-24px.svg';
 import delteCan from '../../assets/icons/delete_outline-24px.svg';
 import editPen from '../../assets/icons/edit-24px.svg';
 import arrowBack from '../../assets/icons/arrow_back-24px.svg';
+
 import axios from 'axios';
+import { v4 as uuid } from 'uuid';
+
 import { useEffect, useState } from 'react';
 
 export default function WarehouseDetails() {
@@ -80,35 +84,6 @@ export default function WarehouseDetails() {
         </div>
       </div>
 
-      {/* <div className="warehouseTablet__wrapper">
-        <div className="warehouseTablet__info">
-          <h2 className="warehouseTablet__location">
-            warehouse <img src={chevron} alt="chevron right" />
-          </h2>
-        </div>
-
-        <div className="warehouseTablet__info">
-          <h2 className="warehouseTablet__info--info">adress</h2>
-          <h2 className="warehouseTablet__info--info">city</h2>
-        </div>
-
-        <div className="warehouseTablet__info">
-          <h2 className="warehouseTablet__name">contact</h2>
-        </div>
-
-        <div className="warehouseTablet__info">
-          <h2 className="warehouseTablet__info--info">phone</h2>
-          <h2 className="warehouseTablet__info--info">email</h2>
-        </div>
-
-        <div className="warehouseTablet__info">
-          <div className="warehouseTablet__icon--tablet">
-            <img src={delteCan} alt="garbage can" />
-            <img src={editPen} alt="pen" />
-          </div>
-        </div>
-      </div> */}
-
       <div className="stillBox">
         <div className="stillBox__box1">
           <p className="stillBox__labelTable">INVENTORY ITEM</p>
@@ -150,8 +125,8 @@ export default function WarehouseDetails() {
       </div>
 
       {inventoriesArr &&
-        inventoriesArr.map((inventory) => (
-          <div className="magicBox">
+        inventoriesArr.map((inventory, i) => (
+          <div className="magicBox" key={uuid()}>
             <div className="magicBox__box1">
               {' '}
               <label className="magicBox__labelMobile">Warehouse</label>
@@ -172,7 +147,16 @@ export default function WarehouseDetails() {
             </div>
             <div className="magicBox__box3">
               <label className="magicBox__labelMobile">Category</label>
-              <span className="magicBox__instock">{inventory.status}</span>
+
+              <span
+                className={`${
+                  inventory.status === 'In Stock'
+                    ? 'magicBox__inStock'
+                    : 'magicBox__outOfStock'
+                }`}
+              >
+                {inventory.status}
+              </span>
             </div>
             <div className="magicBox__box4">
               <label className="magicBox__labelMobile">QTY</label>{' '}
