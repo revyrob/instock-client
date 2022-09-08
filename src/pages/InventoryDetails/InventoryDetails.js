@@ -1,10 +1,10 @@
-import './WarehouseDetails.scss';
+import './InventoryDetails.scss';
 
 import arrowSort from '../../assets/icons/sort-24px.svg';
 import chevron from '../../assets/icons/chevron_right-24px.svg';
 import delteCan from '../../assets/icons/delete_outline-24px.svg';
 import editPen from '../../assets/icons/edit-24px.svg';
-import arrowBack from '../../assets/icons/arrow_back-24px.svg';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 import axios from 'axios';
 import { v4 as uuid } from 'uuid';
@@ -12,74 +12,22 @@ import { v4 as uuid } from 'uuid';
 import { useEffect, useState } from 'react';
 
 export default function WarehouseDetails() {
-  const [warehouseObj, setWarehouseObj] = useState({});
   const [inventoriesArr, setInventoriesArr] = useState([]);
   useEffect(() => {
-    axios
-      .get(
-        'http://localhost:8080/warehouse/2922c286-16cd-4d43-ab98-c79f698aeab0/withinventory'
-      )
-      .then((payload) => {
-        const { warehouse, inventories } = payload.data;
-        setWarehouseObj(warehouse);
-        setInventoriesArr(inventories);
-        console.log(warehouse, inventories);
-      });
+    axios.get('http://localhost:8080/inventory').then((payload) => {
+      setInventoriesArr(payload.data);
+    });
   }, []);
   return (
     <section className="warehouseDetails">
       <div className="pageHeader">
         <div className="pageHeader__title">
-          <img src={arrowBack} alt="back icon" />
-          <p className="pageHeader__warehouse-name">
-            {warehouseObj && warehouseObj?.city}
-          </p>
+          <p className="pageHeader__warehouse-name">Inventory</p>
         </div>
-        <div className="pageHeader__editBtn">
-          <img
-            className="pageHeader__iconColor"
-            src={editPen}
-            alt="edit icon"
-          />
-          <span className="pageHeader__iconBtnTxt">Edit</span>
-        </div>
-      </div>
-
-      <div className="warehouseAddress">
-        <div className="warehouseAddress__addressBox">
-          <label className="warehouseAddress__labelAddress">
-            WAREHOUSE ADDRESS:
-          </label>
-          <p className="warehouseAddress__street">
-            {warehouseObj && warehouseObj?.address}
-          </p>
-          <p className="warehouseAddress__city">
-            {warehouseObj && warehouseObj?.city}{' '}
-            {warehouseObj && warehouseObj?.country}
-          </p>
-        </div>
-        <div className="warehouseAddress__wrapper">
-          <div className="warehouseAddress__contactnameBox">
-            <label className="warehouseAddress__labelName">CONTACT NAME:</label>
-            <p className="warehouseAddress__name">
-              {warehouseObj && warehouseObj?.contact?.name}
-            </p>
-            <p className="warehouseAddress__title">
-              {' '}
-              {warehouseObj?.contact?.position}
-            </p>
-          </div>
-          <div className="warehouseAddress__warehouseAddressBox">
-            <label className="warehouseAddress__labelContact">
-              CONTACT INFO:
-            </label>
-            <p className="warehouseAddress__phone">
-              {warehouseObj && warehouseObj?.contact?.phone}
-            </p>
-            <p className="warehouseAddress__email">
-              {' '}
-              {warehouseObj && warehouseObj?.contact?.email}
-            </p>
+        <div className="pageHeader__flexbox">
+          <SearchBar />
+          <div className="pageHeader__addItemBtn">
+            <span className="pageHeader__addItemBtnText"> + Add New Item</span>
           </div>
         </div>
       </div>
@@ -113,23 +61,31 @@ export default function WarehouseDetails() {
         </div>
         <div className="stillBox__box4">
           {' '}
-          <p className="stillBox__labelTable">QUANTITY</p>
+          <p className="stillBox__labelTable">QTY</p>
           <img
             className="stillBox__arrowSort"
             src={arrowSort}
             alt="icon chevron"
           />
         </div>
-        <div className="stillBox__box5"></div>
-        <div className="stillBox__box6">ACTIONS</div>
+        <div className="stillBox__box5">
+          <p>WAREHOUSE</p>
+          <img
+            className="stillBox__arrowSort"
+            src={arrowSort}
+            alt="icon chevron"
+          />
+        </div>
+
+        <div className="stillBox__box7">ACTIONS</div>
       </div>
 
       {inventoriesArr &&
-        inventoriesArr.map((inventory, i) => (
+        inventoriesArr.map((inventory) => (
           <div className="magicBox" key={uuid()}>
             <div className="magicBox__box1">
               {' '}
-              <label className="magicBox__labelMobile">Warehouse</label>
+              <label className="magicBox__labelMobile">INVENTORY ITEM</label>
               <div className="flexbox">
                 <p className="magicBox__labelItem">{inventory.itemName}</p>
                 <img
@@ -146,7 +102,7 @@ export default function WarehouseDetails() {
               </span>
             </div>
             <div className="magicBox__box3">
-              <label className="magicBox__labelMobile">Category</label>
+              <label className="magicBox__labelMobile">STATUS</label>
 
               <span
                 className={`${
@@ -163,9 +119,13 @@ export default function WarehouseDetails() {
               <span className="magicBox__qtyValue">{inventory.quantity}</span>
             </div>
             <div className="magicBox__box5">
-              <img src={delteCan} alt="delete icon" />
+              <label className="magicBox__labelMobile">WAREHOUSE</label>{' '}
+              <span class="magicBox__warehouseNameValue">
+                {inventory.warehouseName}
+              </span>
             </div>
             <div className="magicBox__box6">
+              <img src={delteCan} alt="delete icon" />
               <img src={editPen} alt="edit icon" />
             </div>
           </div>
