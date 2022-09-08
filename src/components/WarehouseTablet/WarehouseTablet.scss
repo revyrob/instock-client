@@ -2,37 +2,106 @@
 @use '../../styles/partials/mixins' as *;
 
 .warehouseTablet {
-  font-size: 0.6875rem;
-  &__wrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 90vw;
-    border-bottom: 1px solid $secondary-light;
-    align-items: center;
-    @include wrapper-mr;
+    font-size: 0.6875rem;
+    &__wrapper{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border-bottom: 1px solid $secondary-light;
+        align-items: center;
+        padding: 0 1.5rem;
+        &:hover {
+            background-color:rgba(46, 102, 229, 0.07);
+        }
+        @include tablet {
+            padding: 0 2rem;
+        }
+        
+    }
+    &__location {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        color: $primary-accent;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    &__title{
+        text-transform: uppercase;
+        color:$secondary-dark;
+        font-weight: bold;
+    }
+    &__name{
+        margin-bottom: 1rem;
+    }
+    &__info{
+        margin-bottom: 1rem;
+        width: 7.5rem;
+        text-align: left;
+    }
+    &__icon--tablet {
+        text-align: right;
+    }
+    &__element {
+      overlay: {
+        background:rgba(0, 0, 0,);
+      }
+    }
+    &__modal {
+    //   width: 42rem;
+    //   height:16.375rem;
+      background-color:$primary-light;
+    //   margin:5.3125rem auto 0;
+    //   padding: 3.75rem 1rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    //   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+      border-radius: 3px;
+      &--title {
+          font-size: $page-header-mobile;
+          line-height: 2.25rem;
+          margin-bottom: 1rem;
+      }
+      &--text{
+          font-size: $body-large-mobile;
+          line-height: 1.625rem;
+      }
+      &--div{
+          padding-bottom: auto;
+          display: flex;
+          justify-content: space-between;
+          @include tablet {
+            width: 30%;
+            margin-left: auto;
+          }
+      }
+      &--btn {
+          display: flex;  
+          align-items: center;
+          justify-content: center;
+          border-radius: 25px;
+          padding: 0.5rem;
+          border: none;
+          font-weight: 600;
+          height: 2.375rem;
+          // width: 49%;
+          margin: 1rem 0;
+          
+          &--cancel {
+              width: 47%;
+              border: 1px solid $secondary-light;
+              background-color: $primary-light;
+              color: $primary-dark;
+          }
+          &--delete {
+              width: 47%;
+              background-color: $sup-red;
+              color: $primary-light;
+          }
+      }
+      
   }
-  &__location {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    color: $primary-accent;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  &__title {
-    text-transform: uppercase;
-    color: $secondary-dark;
-    font-weight: bold;
-  }
-  &__name {
-    margin-bottom: 1rem;
-  }
-  &__info {
-    margin-bottom: 1rem;
-    width: 7.5rem;
-    text-align: left;
-  }
-  &__icon--tablet {
-    text-align: right;
-  }
+
+
 }

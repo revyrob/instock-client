@@ -1,0 +1,45 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+.pheader{
+    // @include wrapper-mr;
+    position: relative;
+    padding:0px 0;
+    &__bg-curtain{
+        position: absolute;
+    }
+
+    &__wrapper{
+        background-color: $primary-light;
+        display: flex;
+        padding:32px 0px 24px 0px;
+        border-bottom:1px solid $secondary-light;
+        align-items: center;
+        justify-content: center;
+        @include tablet{ 
+            justify-content: left;
+        }
+    }
+    &__txt{
+        
+    }
+    &__bcklink{
+        margin-right: 12px;
+        @include tablet{
+            margin-left:36px;
+        }
+        @include desktop{
+            margin-left:48px;
+        }
+    }
+
+    &__arrow{
+        display: block;
+        
+    }
+
+    &__txt{
+        font-size: 28px;
+        line-height: 36px;
+    }
+    
+}

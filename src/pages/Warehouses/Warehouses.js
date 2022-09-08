@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
 
 function Warehouses() {
-  //stat for setting warehouse list
+  //state for setting warehouse list
   const { REACT_APP_API_SERVER_URL } = process.env;
   const [warehouseList, setWarehouseList] = useState(null);
   //get warehouse list
