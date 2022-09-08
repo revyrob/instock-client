@@ -229,6 +229,9 @@ div {
     margin-left: auto;
     padding-right: $space-between-items-sm;
   }
+  &__labelItem {
+    width: 110px;
+  }
 
   &__instock {
     padding: 2px 14px;

@@ -5,9 +5,11 @@ import delteCan from '../../assets/icons/delete_outline-24px.svg';
 import editPen from '../../assets/icons/edit-24px.svg';
 import arrowBack from '../../assets/icons/arrow_back-24px.svg';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function WarehouseDetails() {
+  const [warehouseObj, setWarehouseObj] = useState({});
+  const [inventoriesArr, setInventoriesArr] = useState([]);
   useEffect(() => {
     axios
       .get(
@@ -15,6 +17,8 @@ export default function WarehouseDetails() {
       )
       .then((payload) => {
         const { warehouse, inventories } = payload.data;
+        setWarehouseObj(warehouse);
+        setInventoriesArr(inventories);
         console.log(warehouse, inventories);
       });
   }, []);
@@ -23,7 +27,9 @@ export default function WarehouseDetails() {
       <div className="pageHeader">
         <div className="pageHeader__title">
           <img src={arrowBack} alt="back icon" />
-          <p className="pageHeader__warehouse-name">Vancouver</p>
+          <p className="pageHeader__warehouse-name">
+            {warehouseObj && warehouseObj?.city}
+          </p>
         </div>
         <div className="pageHeader__editBtn">
           <img
@@ -40,21 +46,36 @@ export default function WarehouseDetails() {
           <label className="warehouseAddress__labelAddress">
             WAREHOUSE ADDRESS:
           </label>
-          <p className="warehouseAddress__street">33 Pearl Street SW</p>
-          <p className="warehouseAddress__city">Washington, USA</p>
+          <p className="warehouseAddress__street">
+            {warehouseObj && warehouseObj?.address}
+          </p>
+          <p className="warehouseAddress__city">
+            {warehouseObj && warehouseObj?.city}{' '}
+            {warehouseObj && warehouseObj?.country}
+          </p>
         </div>
         <div className="warehouseAddress__wrapper">
           <div className="warehouseAddress__contactnameBox">
             <label className="warehouseAddress__labelName">CONTACT NAME:</label>
-            <p className="warehouseAddress__name">33 Pearl Street SW</p>
-            <p className="warehouseAddress__title">Washington, USA</p>
+            <p className="warehouseAddress__name">
+              {warehouseObj && warehouseObj?.contact?.name}
+            </p>
+            <p className="warehouseAddress__title">
+              {' '}
+              {warehouseObj?.contact?.position}
+            </p>
           </div>
           <div className="warehouseAddress__warehouseAddressBox">
             <label className="warehouseAddress__labelContact">
               CONTACT INFO:
             </label>
-            <p className="warehouseAddress__phone">+1 (647) 504-0911</p>
-            <p className="warehouseAddress__email">glyon@instock.com</p>
+            <p className="warehouseAddress__phone">
+              {warehouseObj && warehouseObj?.contact?.phone}
+            </p>
+            <p className="warehouseAddress__email">
+              {' '}
+              {warehouseObj && warehouseObj?.contact?.email}
+            </p>
           </div>
         </div>
       </div>
@@ -128,38 +149,43 @@ export default function WarehouseDetails() {
         <div className="stillBox__box6">ACTIONS</div>
       </div>
 
-      <div className="magicBox">
-        <div className="magicBox__box1">
-          {' '}
-          <label className="magicBox__labelMobile">Warehouse</label>
-          <div className="flexbox">
-            <p className="magicBox__labelItem">telivision</p>
-            <img
-              className="magicBox__chevron"
-              src={chevron}
-              alt="icon chevron"
-            />
+      {inventoriesArr &&
+        inventoriesArr.map((inventory) => (
+          <div className="magicBox">
+            <div className="magicBox__box1">
+              {' '}
+              <label className="magicBox__labelMobile">Warehouse</label>
+              <div className="flexbox">
+                <p className="magicBox__labelItem">{inventory.itemName}</p>
+                <img
+                  className="magicBox__chevron"
+                  src={chevron}
+                  alt="icon chevron"
+                />
+              </div>
+            </div>
+            <div className="magicBox__box2">
+              <label className="magicBox__labelMobile">Category</label>
+              <span className="magicBox__categoryValue">
+                {inventory.category}
+              </span>
+            </div>
+            <div className="magicBox__box3">
+              <label className="magicBox__labelMobile">Category</label>
+              <span className="magicBox__instock">{inventory.status}</span>
+            </div>
+            <div className="magicBox__box4">
+              <label className="magicBox__labelMobile">QTY</label>{' '}
+              <span className="magicBox__qtyValue">{inventory.quantity}</span>
+            </div>
+            <div className="magicBox__box5">
+              <img src={delteCan} alt="delete icon" />
+            </div>
+            <div className="magicBox__box6">
+              <img src={editPen} alt="edit icon" />
+            </div>
           </div>
-        </div>
-        <div className="magicBox__box2">
-          <label className="magicBox__labelMobile">Category</label>
-          <span className="magicBox__categoryValue">Electronics</span>
-        </div>
-        <div className="magicBox__box3">
-          <label className="magicBox__labelMobile">Category</label>
-          <span className="magicBox__instock">IN STOCK</span>
-        </div>
-        <div className="magicBox__box4">
-          <label className="magicBox__labelMobile">QTY</label>{' '}
-          <span className="magicBox__qtyValue">500</span>
-        </div>
-        <div className="magicBox__box5">
-          <img src={delteCan} alt="delete icon" />
-        </div>
-        <div className="magicBox__box6">
-          <img src={editPen} alt="edit icon" />
-        </div>
-      </div>
+        ))}
     </section>
   );
 }
