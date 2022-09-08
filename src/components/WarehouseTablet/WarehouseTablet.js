@@ -79,6 +79,7 @@ function WarehouseTablet({
               onRequestClose={closeModal}
               contentLabel="Delete Warehouse"
               style={bg}
+              ariaHideApp={false}
             >
               <div className="warehouseTablet__close" onClick={closeModal}>
                 <img src={closeIcon} alt="close icon" />
