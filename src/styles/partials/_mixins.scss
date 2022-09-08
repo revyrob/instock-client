@@ -13,9 +13,22 @@
 }
 
 @mixin customViewport($query, $size) {
+
+    @if $query == min {
+        @media (min-width: $size) {
+            @content;
+        }
+    } @else {
+        @media (max-width: $size) {
+            @content;
+        }
+    }
+
+
   @if $query == min {
     @media (min-width: $size) {
       @content;
+
     }
   } @else {
     @media (max-width: $size) {

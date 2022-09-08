@@ -3,8 +3,8 @@
 .nav {
   &__header {
     background-color: $bgcolor-dark;
-    height: 200px;
-    margin-bottom: -50px;
+    height: 220px;
+    margin-bottom: -80px;
     @include tablet {
       height: 186px;
       margin-bottom: -100px;
