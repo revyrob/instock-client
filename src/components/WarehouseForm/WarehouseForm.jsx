@@ -8,32 +8,28 @@ import PageHeader from '../PageHeader/PageHeader'
 import { useState } from 'react';
 
 export default function WarehouseForm({warehouse,warehouseId}){
-    // const [warehouse, setwarehouse] = useState(null)
-    // const {id:warehouseId} =  useParams();
-    // useEffect(function(){
-    //     if(warehouseId){
-    //        getWareHouseById()
-    //     }
-    // },[warehouseId])
-
-    // async function getWareHouseById(){
-    //     const {data} = await axios.get(`http://localhost:8080/warehouse/${warehouseId}`)
-    //     console.log(data)
-    //     setwarehouse(data)
-    // }
-    // function handleEditSumbit(e){
-    //     e.preventDefault()
-    //     console.log("edit")
-    // }
-
-    // function handleNewSumbit(e){
-    //     e.preventDefault()
-    //     console.log("new")
-    // }
-
+    
     const [validObj, setValidObj]=useState({
         validate:true,
     })
+
+    async function putEditedData(formObj){
+        const {wrhsName,wrhsAdd,wrhsCity,wrhsCountry,cntcName,cntcPos,cntcPhn,cntcEmail} = formObj
+        const resBody ={
+            id: warehouseId,
+            name: wrhsName.value,
+            address: wrhsAdd.value,
+            city: wrhsCity.value,
+            country: wrhsCountry.value,
+            contact: {
+              name: cntcName.value,
+              position: cntcPos.value,
+              phone:cntcPhn.value,
+              email:cntcEmail.value
+            }
+        }
+        console.log(resBody)
+    }
 
     function formValidation(formObj){
         const {wrhsName,wrhsAdd,wrhsCity,wrhsCountry,cntcName,cntcPos,cntcPhn,cntcEmail} = formObj
@@ -76,16 +72,21 @@ export default function WarehouseForm({warehouse,warehouseId}){
             obj[cntcEmail.name] = "not valid email"
             obj.validate = true;
         }
-
-        console.log(obj)
-        setValidObj(obj)
+        if(obj.validate){
+            setValidObj(obj)
+        }else{
+            return true;
+        }
+        return false;    
     }
 
     function handleEditSumbit(e){
         e.preventDefault()
         const formObj = e.target;
         console.log("edit")
-        formValidation(formObj)
+        if(formValidation(formObj)){
+            putEditedData(formObj)
+        }  
     }
 
     function handleNewSumbit(e){
@@ -122,7 +123,7 @@ export default function WarehouseForm({warehouse,warehouseId}){
                             <span className='frmgrid__errspn'>{validObj.wrhsCity}</span> 
                         }
                     </label>
-                    <label className="frmgrid__lbl">
+                    <label className="frmgrid__lbl frmgrid__lbl--btm">
                         Country
                         <input type="text" name="wrhsCountry" className="frmgrid__inpt" defaultValue={warehouse ? warehouse.country : ""}/>
                         {Object.hasOwn(validObj,'wrhsCountry') && 
@@ -154,18 +155,18 @@ export default function WarehouseForm({warehouse,warehouseId}){
                             <span className='frmgrid__errspn'>{validObj.cntcPhn}</span> 
                         }
                     </label>
-                    <label className="frmgrid__lbl">
+                    <label className="frmgrid__lbl frmgrid__lbl--btm">
                     Email
                         <input type="text" name="cntcEmail" className="frmgrid__inpt" defaultValue={warehouse ? warehouse.contact.email : ""}/>
                         {Object.hasOwn(validObj,'cntcEmail') && 
-                            <span className='frmgrid__errspn'>{validObj.cntcEmail}</span> 
+                            <span className='frmgrid__errspn'><span>{validObj.cntcEmail}</span></span> 
                         }
                     </label>
                 </div>
             </div>
             <div className="frmgrid__footer">
                 <button type="button" className='frmgrid__cancel'>Cancel</button>
-                <button type="submit" className='frmgrid__save'>{warehouseId ? `Save` : `add`}</button>
+                <button type="submit" className='frmgrid__save'>{warehouseId ? `Save` : `+ Add Warehouse`}</button>
             </div>
         </form>
         </>

@@ -16,11 +16,18 @@ export default function EditWarehouse(){
     },[warehouseId])
 
     async function getWareHouseById(){
-        const {data} = await axios.get(`http://localhost:8080/warehouse/${warehouseId}`)
-        console.log(data)
-        setwarehouse(data)
+        try{
+            const {data} = await axios.get(`http://localhost:8080/warehouse/${warehouseId}`)
+            console.log(data)
+            setwarehouse(data)
+        }catch(err){
+            console.log(err)
+        } 
     }
     
+    
+
+
     return(
         <>  
             <div className="edit-wrhse">

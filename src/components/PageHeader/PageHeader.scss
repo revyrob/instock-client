@@ -15,12 +15,21 @@
         border-bottom:1px solid $secondary-light;
         align-items: center;
         justify-content: center;
+        @include tablet{ 
+            justify-content: left;
+        }
     }
     &__txt{
         
     }
     &__bcklink{
         margin-right: 12px;
+        @include tablet{
+            margin-left:36px;
+        }
+        @include desktop{
+            margin-left:48px;
+        }
     }
 
     &__arrow{
