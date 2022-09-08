@@ -8,12 +8,12 @@ div {
 .warehouseDetails {
   background-color: $primary-light;
   @include wrapper-mr;
+  font-size: $body-large;
 }
 .pageHeader {
   display: flex;
   flex-direction: row;
   @include wrapper-mr;
-  background-color: aliceblue;
   justify-content: space-between;
   padding: $space-between-items-lg;
   padding-top: $space-outside-items-md + 10px;
@@ -22,44 +22,84 @@ div {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: antiquewhite;
   }
   &__editBtn {
-    background-color: blanchedalmond;
+    border-radius: 50%;
+    background-color: $primary-accent;
+    padding: 12px;
+    color: $primary-light;
+    display: flex;
+    font-weight: $bold;
+    @include tablet {
+      border-radius: 20px;
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+  }
+  &__iconBtnTxt {
+    display: none;
+    @include tablet {
+      display: inline;
+    }
+  }
+  &__iconColor {
+    fill-opacity: 1;
+    fill: white;
   }
   &__warehouse-name {
     font-size: $page-header;
+    font-weight: $bold;
+    padding-left: 6px;
   }
 }
 
 .warehouseAddress {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: column;
+  @include tablet {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 
   background-color: $primary-light;
-  border-top: 1px solid $bgcolor-dark;
+  border-top: 1px solid $secondary-light;
   @include wrapper-mr;
 
   &__addressBox {
     display: flex;
     flex-direction: column;
-    flex-basis: 40%;
-    padding: $space-between-items-lg;
+    flex-basis: 35%;
+    padding: $space-between-items-sm;
+    @include tablet {
+      padding: $space-between-items-lg;
+    }
   }
 
   &__wrapper {
     display: flex;
     flex-direction: row;
-    flex-basis: 50%;
-    border-left: 1px solid $bgcolor-dark;
-    padding: $space-between-items-lg;
-    padding-left: $space-outside-items-lg;
+    flex-basis: 65%;
+    padding: $space-between-items-sm;
+
+    @include tablet {
+      border-left: 1px solid $secondary-light;
+      padding: $space-between-items-lg;
+      padding-left: $space-outside-items-lg;
+    }
   }
 
   &__contactnameBox {
-    flex-basis: 60%;
+    flex-basis: 50%;
+  }
+  &__labelAddress,
+  &__labelContact,
+  &__labelName {
+    font-size: $labels;
+    font-weight: $bold;
+    color: $secondary-dark;
   }
 }
 
@@ -87,6 +127,7 @@ div {
   }
   &__box2 {
     display: flex;
+
     gap: 0.25rem;
   }
   &__box3 {
@@ -107,36 +148,111 @@ div {
 
 .magicBox {
   @include wrapper-mr;
+  border-top: 1px solid $secondary-light;
+  padding: $space-between-items-sm;
+  padding-top: $space-between-items-sm + 2px;
+  padding-bottom: $space-between-items-sm + 2px;
+
   display: grid;
   grid-template-columns: [box1] 1.2fr [box2] 1.2fr;
+  font-size: $body-large;
+  border-bottom: 1px solid $secondary-light;
+
+  &:hover {
+    background-color: rgba(46, 102, 229, 0.07);
+  }
+
   @include tablet {
     padding-left: $space-between-items-lg;
     padding-right: $space-between-items-lg;
     grid-template-columns: [box1] 1.2fr [box3] 1fr [box2] 1.2fr [box4] 1fr[box5] 0.3fr [box6]0.4fr;
   }
+
+  &__labelMobile {
+    color: $secondary-dark;
+    font-weight: $bold;
+    @include tablet {
+      display: none;
+    }
+  }
   &__box1 {
-    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: $space-between-items-lg;
+    @include tablet {
+      flex-direction: row;
+      padding-bottom: 0;
+    }
+    font-weight: $bold;
+    color: $primary-accent;
+    text-transform: capitalize;
   }
   &__box2 {
-    background-color: aliceblue;
     grid-row-start: box3;
     @include tablet {
       grid-row-start: -1;
       grid-column-end: box2;
     }
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      display: block;
+    }
   }
   &__box3 {
-    background-color: darkgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @include tablet {
+      display: block;
+    }
   }
   &__box4 {
-    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @include tablet {
+      display: block;
+    }
   }
   &__box5 {
-    background-color: aquamarine;
-    margin-left: auto;
+    padding-top: $space-outside-items-sm;
+
+    margin-right: auto;
+    @include tablet {
+      margin-left: auto;
+      padding-top: 0;
+    }
   }
   &__box6 {
-    background-color: mistyrose;
+    margin-top: auto;
     margin-left: auto;
+    padding-right: $space-between-items-sm;
   }
+
+  &__instock {
+    padding: 2px 14px;
+    margin-top: 4px;
+    background-color: rgba(20, 133, 99, 0.07);
+    border-radius: 20px;
+    font-size: $labels;
+    color: $sup-green;
+    font-weight: $bold;
+    @include tablet {
+      padding: 8px 12px;
+      margin-top: 0px;
+    }
+  }
+  &__outOfStock {
+    background-color: rgba(201, 69, 21, 0.07);
+    border-radius: 20px;
+    padding: 8px 12px;
+    font-size: $labels;
+    color: $sup-red;
+    font-weight: $bold;
+  }
+}
+
+.flexbox {
+  display: flex;
 }

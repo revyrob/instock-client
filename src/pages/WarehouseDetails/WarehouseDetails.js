@@ -3,6 +3,7 @@ import arrowSort from '../../assets/icons/sort-24px.svg';
 import chevron from '../../assets/icons/chevron_right-24px.svg';
 import delteCan from '../../assets/icons/delete_outline-24px.svg';
 import editPen from '../../assets/icons/edit-24px.svg';
+import arrowBack from '../../assets/icons/arrow_back-24px.svg';
 // import axios from 'axios';
 // import { useEffect, useState } from 'react';
 
@@ -11,10 +12,17 @@ export default function WarehouseDetails() {
     <section className="warehouseDetails">
       <div className="pageHeader">
         <div className="pageHeader__title">
-          image
+          <img src={arrowBack} alt="back icon" />
           <p className="pageHeader__warehouse-name">Vancouver</p>
         </div>
-        <div className="pageHeader__editBtn"> edit button</div>
+        <div className="pageHeader__editBtn">
+          <img
+            className="pageHeader__iconColor"
+            src={editPen}
+            alt="edit icon"
+          />
+          <span className="pageHeader__iconBtnTxt">Edit</span>
+        </div>
       </div>
 
       <div className="warehouseAddress">
@@ -151,12 +159,36 @@ export default function WarehouseDetails() {
       </div>
 
       <div className="magicBox">
-        <div className="magicBox__box1">One</div>
-        <div className="magicBox__box2">Two</div>
-        <div className="magicBox__box3">Three</div>
-        <div className="magicBox__box4">Four</div>
-        <div className="magicBox__box5">Five</div>
-        <div className="magicBox__box6">Six</div>
+        <div className="magicBox__box1">
+          {' '}
+          <label className="magicBox__labelMobile">Warehouse</label>
+          <div className="flexbox">
+            <p className="magicBox__labelItem">telivision</p>
+            <img
+              className="magicBox__chevron"
+              src={chevron}
+              alt="icon chevron"
+            />
+          </div>
+        </div>
+        <div className="magicBox__box2">
+          <label className="magicBox__labelMobile">Category</label>
+          <span className="magicBox__categoryValue">Electronics</span>
+        </div>
+        <div className="magicBox__box3">
+          <label className="magicBox__labelMobile">Category</label>
+          <span className="magicBox__instock">IN STOCK</span>
+        </div>
+        <div className="magicBox__box4">
+          <label className="magicBox__labelMobile">QTY</label>{' '}
+          <span className="magicBox__qtyValue">500</span>
+        </div>
+        <div className="magicBox__box5">
+          <img src={delteCan} alt="delete icon" />
+        </div>
+        <div className="magicBox__box6">
+          <img src={editPen} alt="edit icon" />
+        </div>
       </div>
     </section>
   );
