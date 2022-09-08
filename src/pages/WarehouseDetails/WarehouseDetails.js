@@ -111,12 +111,43 @@ export default function WarehouseDetails() {
       </div> */}
 
       <div className="stillBox">
-        <div className="stillBox__box1">One</div>
-        <div className="stillBox__box2">Two</div>
-        <div className="stillBox__box3">Three</div>
-        <div className="stillBox__box4">Four</div>
-        <div className="stillBox__box5">Five</div>
-        <div className="stillBox__box6">Six</div>
+        <div className="stillBox__box1">
+          <p className="stillBox__labelTable">INVENTORY ITEM</p>
+          <img
+            className="stillBox__arrowSort"
+            src={arrowSort}
+            alt="icon chevron"
+          />
+        </div>
+        <div className="stillBox__box2">
+          {' '}
+          <p className="stillBox__labelTable">CATEGORY</p>
+          <img
+            className="stillBox__arrowSort"
+            src={arrowSort}
+            alt="icon chevron"
+          />
+        </div>
+        <div className="stillBox__box3">
+          {' '}
+          <p className="stillBox__labelTable">STATUS</p>
+          <img
+            className="stillBox__arrowSort"
+            src={arrowSort}
+            alt="icon chevron"
+          />
+        </div>
+        <div className="stillBox__box4">
+          {' '}
+          <p className="stillBox__labelTable">QUANTITY</p>
+          <img
+            className="stillBox__arrowSort"
+            src={arrowSort}
+            alt="icon chevron"
+          />
+        </div>
+        <div className="stillBox__box5"></div>
+        <div className="stillBox__box6">ACTIONS</div>
       </div>
 
       <div className="magicBox">

@@ -66,31 +66,53 @@ div {
 .stillBox {
   @include wrapper-mr;
   display: none;
+  grid-template-columns: [box1] 1.2fr [box2] 1.2fr;
+  align-items: center;
+  padding-top: $space-between-items-sm;
+  padding-bottom: $space-between-items-sm;
+  font-size: $labels;
+  font-weight: $bold;
+  background-color: $bgcolor-light;
+  color: $secondary-dark;
+
   @include tablet {
+    padding-left: $space-between-items-lg;
+    padding-right: $space-between-items-lg;
     display: grid;
-    grid-template-columns: [box1] 1fr [box3] 1fr [box2] 1fr [box4] 1fr[box5] 1fr [box6]1fr;
-    background-color: lightgray;
+    grid-template-columns: [box1] 1.2fr [box3] 1fr [box2] 1.2fr [box4] 1fr[box5] 0.3fr [box6]0.4fr;
   }
   &__box1 {
+    display: flex;
+    gap: 0.25rem;
   }
   &__box2 {
+    display: flex;
+    gap: 0.25rem;
   }
   &__box3 {
+    display: flex;
+    gap: 0.25rem;
   }
   &__box4 {
+    display: flex;
+    gap: 0.25rem;
   }
   &__box5 {
+    background-color: aqua;
   }
   &__box6 {
+    margin-left: auto;
   }
 }
 
 .magicBox {
   @include wrapper-mr;
   display: grid;
-  grid-template-columns: [box1] 1fr [box2] 1fr;
+  grid-template-columns: [box1] 1.2fr [box2] 1.2fr;
   @include tablet {
-    grid-template-columns: [box1] 1fr [box3] 1fr [box2] 1fr [box4] 1fr[box5] 1fr [box6]1fr;
+    padding-left: $space-between-items-lg;
+    padding-right: $space-between-items-lg;
+    grid-template-columns: [box1] 1.2fr [box3] 1fr [box2] 1.2fr [box4] 1fr[box5] 0.3fr [box6]0.4fr;
   }
   &__box1 {
     background-color: aqua;
@@ -111,8 +133,10 @@ div {
   }
   &__box5 {
     background-color: aquamarine;
+    margin-left: auto;
   }
   &__box6 {
     background-color: mistyrose;
+    margin-left: auto;
   }
 }
