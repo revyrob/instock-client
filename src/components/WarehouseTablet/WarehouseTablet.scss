@@ -42,20 +42,21 @@
     &__icon--tablet {
         text-align: right;
     }
-    // &__element {
-      
-    //   background-color:#13182C;
-    // }
+    &__element {
+      overlay: {
+        background:rgba(0, 0, 0,);
+      }
+    }
     &__modal {
-      width: 42rem;
-      height:16.375rem;
+    //   width: 42rem;
+    //   height:16.375rem;
       background-color:$primary-light;
-      margin:5.3125rem auto 0;
-      padding: 3.75rem 1rem 0;
+    //   margin:5.3125rem auto 0;
+    //   padding: 3.75rem 1rem 0;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    //   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
       border-radius: 3px;
       &--title {
           font-size: $page-header-mobile;
