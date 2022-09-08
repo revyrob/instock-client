@@ -2,82 +2,94 @@
 @use '../../styles/partials/mixins' as *;
 
 .warehouseList {
-  margin: 0 1rem;
-  background-color: $primary-light;
-  padding-top: 3rem;
-  @include tablet {
-    padding-top: 2rem;
-  }
-  &__header {
-    @include wrapper-mr;
+    margin: 0 1rem;
+    background-color: $primary-light;
+    padding-top: 3rem;
     @include tablet {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-  }
-  &__btns {
-    @include tablet {
-      display: flex;
-      justify-content: space-between;
+        padding: 2rem 0;
+        margin: 0 2rem;
     }
     @include desktop {
-      width: 50%;
-    }
-  }
-  &__title {
-    font-weight: $bold;
-    font-size: 2rem;
-  }
+        width: 1020px;
+        margin-left: auto;
+        margin-right: auto;
 
-  // &__btn {
-  //     height: 2.375rem;
-  //     width: 100%;
-  //     margin: 1rem 0;
-  //     @include tablet {
-  //         width:49%;
-  //     }
-  //     @include desktop {
-  //         width: 40%;
-  //     }
-  // }
-  &__tablet {
-    display: none;
-    @include tablet {
-      display: contents;
     }
-  }
-  &__mobile {
-    @include tablet {
-      display: none;
+    &__header {
+        padding: 0 1.5rem .5rem;
+       
+        @include tablet{
+            padding-left:2rem;
+            padding-right:2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        @include desktop {
+            padding-left:2.5rem;
+        padding-right:2.5rem;
+        }
     }
-  }
-  &__subtitle {
-    font-size: 0.6875rem;
-    text-transform: uppercase;
-    color: $secondary-dark;
-    font-weight: bold;
-    width: 10rem;
-    align-items: left;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    &--icon {
-      @include tablet {
-        height: 0.75rem;
-        padding-left: 0.2rem;
-      }
+    &__btns {
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+        }
+        @include desktop {
+            width: 50%;
+        }
     }
-  }
-  &__wrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 90vw;
-    margin: 1rem 0;
-
-    @include wrapper-mr;
-  }
+    &__title{
+        font-weight: $bold;
+        font-size: 2rem;  
+    }
+    &__tablet {
+        display: none;
+        @include tablet{
+            display:contents;
+        }
+    }
+    &__mobile {
+        @include tablet {
+            display: none;
+        }
+    }
+    &__subtitle {
+        font-size: 0.6875rem;
+        text-transform: uppercase;
+        color:$secondary-dark;
+        font-weight: bold;
+        width: 10rem;
+        align-items: left;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        @include tablet{
+            font-size: 0.75rem;
+        }
+        &--icon {
+            @include tablet {
+                height: 0.75rem;
+                padding-left: .2rem;
+            }
+        }
+   
+    }
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        padding: 0 1.5rem;
+        
+        @include tablet {
+            padding: 0 2rem;
+        }
+}
+        
+    
+    
 }
 .align-right {
-  justify-content: right;
+    justify-content: right;
 }
