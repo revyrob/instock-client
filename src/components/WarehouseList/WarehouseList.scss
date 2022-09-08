@@ -32,12 +32,9 @@
     }
     
     &__btns {
- 
         @include tablet {
             display: flex;
             justify-content: space-between;
-        }
-        @include desktop {
             width: 50%;
         }
     }

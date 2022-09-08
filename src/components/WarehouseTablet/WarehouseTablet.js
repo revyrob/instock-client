@@ -29,12 +29,6 @@ function WarehouseTablet({
     setDeleteModal(false);
   }
 
-  // const bg = {
-  //   overlay: {
-  //     background: "#13182C",
-  //   },
-  // };
-
   return (
     <section className="warehouseTablet">
       <div className="warehouseTablet__wrapper">
@@ -68,7 +62,6 @@ function WarehouseTablet({
               className="warehouseTablet__element"
               onRequestClose={closeModal}
               contentLabel="Delete Warehouse"
-              // styles={bg}
             >
               <div className="warehouseTablet__modal">
                 <div className="warehouseTablet__modal--textarea">
