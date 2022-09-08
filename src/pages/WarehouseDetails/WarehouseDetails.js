@@ -4,10 +4,20 @@ import chevron from '../../assets/icons/chevron_right-24px.svg';
 import delteCan from '../../assets/icons/delete_outline-24px.svg';
 import editPen from '../../assets/icons/edit-24px.svg';
 import arrowBack from '../../assets/icons/arrow_back-24px.svg';
-// import axios from 'axios';
-// import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 export default function WarehouseDetails() {
+  useEffect(() => {
+    axios
+      .get(
+        'http://localhost:8080/warehouse/2922c286-16cd-4d43-ab98-c79f698aeab0/withinventory'
+      )
+      .then((payload) => {
+        const { warehouse, inventories } = payload.data;
+        console.log(warehouse, inventories);
+      });
+  }, []);
   return (
     <section className="warehouseDetails">
       <div className="pageHeader">
@@ -49,47 +59,7 @@ export default function WarehouseDetails() {
         </div>
       </div>
 
-      {/* <div className="warehouseList__wrapper">
-        <h2 className="warehouseList__subtitle">
-          WarehouseList
-          <img
-            className="warehouseList__subtitle--icon"
-            src={arrowSort}
-            alt="arrrow sorts"
-          />
-        </h2>
-
-        <h2 className="warehouseList__subtitle">
-          Address
-          <img
-            className="warehouseList__subtitle--icon"
-            src={arrowSort}
-            alt="arrrow sorts"
-          />
-        </h2>
-
-        <h2 className="warehouseList__subtitle">
-          Contact Name
-          <img
-            className="warehouseList__subtitle--icon"
-            src={arrowSort}
-            alt="arrrow sorts"
-          />
-        </h2>
-
-        <h2 className="warehouseList__subtitle">
-          Contact Information
-          <img
-            className="warehouseList__subtitle--icon"
-            src={arrowSort}
-            alt="arrrow sorts"
-          />
-        </h2>
-
-        <h2 className="warehouseList__subtitle align-right">Action</h2>
-      </div>
-
-      <div className="warehouseTablet__wrapper">
+      {/* <div className="warehouseTablet__wrapper">
         <div className="warehouseTablet__info">
           <h2 className="warehouseTablet__location">
             warehouse <img src={chevron} alt="chevron right" />
