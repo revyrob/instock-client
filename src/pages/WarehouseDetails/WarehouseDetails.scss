@@ -4,11 +4,19 @@
 div {
   box-sizing: border-box;
 }
+body {
+  font-size: $body-large-mobile;
+  @include tablet {
+    font-size: $body-large;
+  }
+}
 
 .warehouseDetails {
   background-color: $primary-light;
   @include wrapper-mr;
-  font-size: $body-large;
+  @include desktop {
+    margin-top: -165px;
+  }
 }
 .pageHeader {
   display: flex;
@@ -51,7 +59,10 @@ div {
   }
 
   &__warehouse-name {
-    font-size: $page-header;
+    font-size: $page-header-mobile;
+    @include tablet {
+      font-size: $page-header;
+    }
     font-weight: $bold;
     padding-left: 6px;
   }
@@ -157,7 +168,8 @@ div {
 
   display: grid;
   grid-template-columns: [box1] 1.2fr [box2] 1.2fr;
-  font-size: $body-large;
+  font-size: $body-large-mobile;
+
   border-bottom: 1px solid $secondary-light;
 
   &:hover {
@@ -167,6 +179,7 @@ div {
   @include tablet {
     padding-left: $space-between-items-lg;
     padding-right: $space-between-items-lg;
+    font-size: $body-large;
     grid-template-columns: [box1] 1.2fr [box3] 1fr [box2] 1.2fr [box4] 1fr[box5] 0.3fr [box6]0.4fr;
   }
 
@@ -234,15 +247,24 @@ div {
   &__labelItem {
     width: 110px;
   }
+  &__chevron {
+    position: relative;
+    left: -20px;
+    @include tablet {
+      left: 10px;
+    }
+  }
 
-  &__instock {
-    padding: 2px 14px;
-    margin-top: 4px;
+  &__inStock {
     background-color: rgba(20, 133, 99, 0.07);
     border-radius: 20px;
+    padding: 2px 14px;
+    margin-top: 4px;
     font-size: $labels;
     color: $sup-green;
     font-weight: $bold;
+    position: relative;
+    left: -8px;
     @include tablet {
       padding: 8px 12px;
       margin-top: 0px;
@@ -251,10 +273,17 @@ div {
   &__outOfStock {
     background-color: rgba(201, 69, 21, 0.07);
     border-radius: 20px;
-    padding: 8px 12px;
+    padding: 2px 14px;
+    margin-top: 4px;
     font-size: $labels;
     color: $sup-red;
     font-weight: $bold;
+    position: relative;
+    left: -8px;
+    @include tablet {
+      padding: 8px 12px;
+      margin-top: 0px;
+    }
   }
 }
 
