@@ -32,10 +32,10 @@ div {
   }
 }
 
-.contactInfo {
+.warehouseAddress {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: flex-start;
 
   background-color: $primary-light;
@@ -60,5 +60,59 @@ div {
 
   &__contactnameBox {
     flex-basis: 60%;
+  }
+}
+
+.stillBox {
+  @include wrapper-mr;
+  display: none;
+  @include tablet {
+    display: grid;
+    grid-template-columns: [box1] 1fr [box3] 1fr [box2] 1fr [box4] 1fr[box5] 1fr [box6]1fr;
+    background-color: lightgray;
+  }
+  &__box1 {
+  }
+  &__box2 {
+  }
+  &__box3 {
+  }
+  &__box4 {
+  }
+  &__box5 {
+  }
+  &__box6 {
+  }
+}
+
+.magicBox {
+  @include wrapper-mr;
+  display: grid;
+  grid-template-columns: [box1] 1fr [box2] 1fr;
+  @include tablet {
+    grid-template-columns: [box1] 1fr [box3] 1fr [box2] 1fr [box4] 1fr[box5] 1fr [box6]1fr;
+  }
+  &__box1 {
+    background-color: aqua;
+  }
+  &__box2 {
+    background-color: aliceblue;
+    grid-row-start: box3;
+    @include tablet {
+      grid-row-start: -1;
+      grid-column-end: box2;
+    }
+  }
+  &__box3 {
+    background-color: darkgrey;
+  }
+  &__box4 {
+    background-color: aqua;
+  }
+  &__box5 {
+    background-color: aquamarine;
+  }
+  &__box6 {
+    background-color: mistyrose;
   }
 }
