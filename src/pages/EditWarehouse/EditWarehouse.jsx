@@ -1,11 +1,11 @@
 import PageHeader from "../../components/PageHeader/PageHeader";
 import WarehouseForm from "../../components/WarehouseForm/WarehouseForm";
 import './EditWarehouse.scss'
-
-import {  useParams } from 'react-router-dom'
-import {  useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { useState } from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
+
 export default function EditWarehouse(){
     const [warehouse, setwarehouse] = useState(null)
     const {id:warehouseId} =  useParams();
@@ -27,7 +27,6 @@ export default function EditWarehouse(){
     
     return(
         <>  
-        {/* <PageHeader title={warehouseId? "Edit Warehouse":"Add New Warehouse"} backLink={'warehouses'}></PageHeader> */}
             <div className="edit-wrhse">
                 <PageHeader title={warehouseId? "Edit Warehouse":"Add New Warehouse"} backLink={'warehouses'}></PageHeader>
                 <WarehouseForm warehouse={warehouse} warehouseId={warehouseId}></WarehouseForm>
