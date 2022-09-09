@@ -17,6 +17,8 @@ export default function WarehouseDetails() {
   const [warehouseObj, setWarehouseObj] = useState({});
   const [inventoriesArr, setInventoriesArr] = useState([]);
 
+  console.log(inventoriesArr);
+
   const { id } = useParams();
 
   useEffect(() => {
