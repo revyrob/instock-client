@@ -79,54 +79,6 @@ body {
   }
 }
 
-// .in-warehouseAddress {
-//   display: flex;
-//   flex-direction: column;
-//   @include tablet {
-//     flex-direction: row;
-//     justify-content: flex-start;
-//     align-items: flex-start;
-//   }
-
-//   background-color: $primary-light;
-//   border-top: 1px solid $secondary-light;
-//   @include wrapper-mr;
-
-//   &__addressBox {
-//     display: flex;
-//     flex-direction: column;
-//     flex-basis: 35%;
-//     padding: $space-between-items-sm;
-//     @include tablet {
-//       padding: $space-between-items-lg;
-//     }
-//   }
-
-//   &__wrapper {
-//     display: flex;
-//     flex-direction: row;
-//     flex-basis: 65%;
-//     padding: $space-between-items-sm;
-
-//     @include tablet {
-//       border-left: 1px solid $secondary-light;
-//       padding: $space-between-items-lg;
-//       padding-left: $space-outside-items-lg;
-//     }
-//   }
-
-//   &__contactnameBox {
-//     flex-basis: 50%;
-//   }
-//   &__labelAddress,
-//   &__labelContact,
-//   &__labelName {
-//     font-size: $labels;
-//     font-weight: $bold;
-//     color: $secondary-dark;
-//   }
-// }
-
 .in-stillBox {
   @include wrapper-mr;
   display: none;

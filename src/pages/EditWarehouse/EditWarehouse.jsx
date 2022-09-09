@@ -19,11 +19,11 @@ export default function EditWarehouse(){
            getWareHouseById()
         }
     },[warehouseId])
-
+    console.log(warehouseId)
     async function getWareHouseById(){
         try{
             const {data} = await axios.get(`http://localhost:8080/warehouse/${warehouseId}`)
-            console.log(data)
+            console.log("data from api",data)
             setwarehouse(data)
         }catch(err){
             console.log(err)
