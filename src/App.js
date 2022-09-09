@@ -9,7 +9,9 @@ function App() {
   return (
     <BrowserRouter>
       <Header></Header>
+
       <Routes>
+
         <Route path="/warehouses" element={<Warehouses />}/>
         <Route path="/warehouses/:id" element={<WarehouseDetails />}/>
         <Route path="/warehouses/new" element={<EditWarehouse />}/>
@@ -19,6 +21,7 @@ function App() {
         <Route path="/inventory/:id" element={<Inventory />} />
         <Route path="/inventory/new" element={<Inventory />} />
         <Route path="/inventory/:id/edit" element={<Inventory />} />  */}
+
       </Routes>
     </BrowserRouter>
   );

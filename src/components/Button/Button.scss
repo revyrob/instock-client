@@ -15,13 +15,10 @@
     height: 2.375rem;
     width: 100%;
     margin: 1rem 0;
-    // @include tablet {
-    //     width:49%;
-    // }
-    // @include desktop {
-    //     width: 40%;
-    // }
-    
-    
+    &:hover{
+        background-color: $bgcolor-dark;
+        transition: .5s;
+    }
+   
 }
 
