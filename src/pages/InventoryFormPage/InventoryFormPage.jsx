@@ -1,39 +1,40 @@
 import PageHeader from "../../components/PageHeader/PageHeader";
-import WarehouseForm from "../../components/WarehouseForm/WarehouseForm";
-import './EditWarehouse.scss'
+import InventoryForm from "../../components/WarehouseForm/InventoryForm";
+import './InventoryForm.scss'
 import { useParams , useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
 
-export default function EditWarehouse(){
-    const [warehouse, setwarehouse] = useState(null)
-    const {id:warehouseId} =  useParams();
+export default function InventoryFormPage(){
+    console.log("inventory")
+    const [inventory, setwarehouse] = useState(null)
+    const {id:inventoryId} =  useParams();
     let navigate = useNavigate();
     const [errObj, setErrobj]=useState({
         valid:true,
     })
-
+    console.log("inventoryid",inventoryId)
     useEffect(function(){
-        if(warehouseId){
+        if(inventoryId){
            getWareHouseById()
         }
-    },[warehouseId])
-    console.log(warehouseId)
+    },[inventoryId])
+    console.log(inventoryId)
     async function getWareHouseById(){
         try{
-            const {data} = await axios.get(`http://localhost:8080/warehouse/${warehouseId}`)
+            const {data} = await axios.get(`http://localhost:8080/inventory/${inventoryId}`)
             console.log("data from api",data)
             setwarehouse(data)
         }catch(err){
-            alert("invalid")
+            alert("invalid id")
         } 
     }
     
     async function putEditedData(formObj){
         const {wrhsName,wrhsAdd,wrhsCity,wrhsCountry,cntcName,cntcPos,cntcPhn,cntcEmail} = formObj
         const resBody ={
-            id: warehouseId,
+            id: inventoryId,
             name: wrhsName.value,
             address: wrhsAdd.value,
             city: wrhsCity.value,
@@ -45,7 +46,7 @@ export default function EditWarehouse(){
               email:cntcEmail.value
             }
         }
-        const {data} = await axios.put(`http://localhost:8080/warehouse/${warehouseId}`,resBody)
+        const {data} = await axios.put(`http://localhost:8080/inventory/${inventoryId}`,resBody)
         navigate("/warehouses");
     }
 
@@ -63,7 +64,7 @@ export default function EditWarehouse(){
               email:cntcEmail.value
             }
         }
-        const {data} = await axios.post('http://localhost:8080/warehouse/',resBody)
+        const {data} = await axios.post('http://localhost:8080/inventory/',resBody)
         navigate("/warehouses");
     }
 
@@ -165,13 +166,9 @@ export default function EditWarehouse(){
 
     return(
         <>  
-            {/* <div className="edit-wrhse">
-                <PageHeader title={warehouseId? "Edit Warehouse":"Add New Warehouse"} backLink={'warehouses'}></PageHeader>
-                <WarehouseForm warehouse={warehouse} warehouseId={warehouseId} handleNewSumbit={handleNewSumbit} handleEditSumbit={handleEditSumbit} errObj={errObj} cancelLink={'/warehouses'}></WarehouseForm>
-            </div>   */}
-             <div className="edit-wrhse">
-                <PageHeader title={warehouseId? "Edit Warehouse":"Add New Warehouse"} backLink={'warehouses'}></PageHeader>
-                <WarehouseForm warehouse={warehouse} warehouseId={warehouseId} handleNewSumbit={handleNewSumbit} handleEditSumbit={handleEditSumbit} errObj={errObj} cancelLink={'/warehouses'}></WarehouseForm>
+            <div className="edit-wrhse">
+                <PageHeader title={inventoryId? "Edit inventory":"Add New inventory"} backLink={'warehouses'}></PageHeader>
+                <InventoryForm inventory={inventory} inventoryId={inventoryId} handleNewSumbit={handleNewSumbit} handleEditSumbit={handleEditSumbit} errObj={errObj} ></InventoryForm>
             </div>  
         </>  
     )
