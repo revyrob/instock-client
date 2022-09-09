@@ -52,6 +52,9 @@ body {
       display: inline;
     }
   }
+  &__linkEdit {
+    text-decoration: none;
+  }
 
   &__iconColor {
     filter: brightness(100);

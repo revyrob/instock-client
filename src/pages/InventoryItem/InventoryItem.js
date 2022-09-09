@@ -46,25 +46,29 @@ export default function WarehouseDetails() {
         <div class="desktopItem">
           <div class="desktopItem__boxLeft">
             <label className="desktopItem__label">ITEM DESCRIPTION:</label>{' '}
-            <span class="desktopItem__value">
-              {inventoryItem.warehouseName}
+            <span class="desktopItem__valueDesc">
+              {inventoryItem.description}
             </span>
             <label className="desktopItem__label">CATEGORY:</label>{' '}
-            <span class="desktopItem__value">
-              {inventoryItem.warehouseName}
-            </span>
+            <span class="desktopItem__value">{inventoryItem.category}</span>
           </div>
           <div class="desktopItem__boxRight">
             <div class="desktopItem__boxRight-row1">
               <div class="flex-column">
                 <label className="desktopItem__labelStatus">STATUS:</label>{' '}
-                <span class="desktopItem__inStock">out of stock</span>
+                <span
+                  class={`${
+                    inventoryItem.status === 'In Stock'
+                      ? 'desktopItem__inStock'
+                      : 'desktopItem__outOfStock'
+                  }`}
+                >
+                  {inventoryItem.status}
+                </span>
               </div>
               <div class="flex-column">
                 <label className="desktopItem__label">QUANTITY</label>{' '}
-                <span class="desktopItem__value">
-                  {inventoryItem.warehouseName}
-                </span>
+                <span class="desktopItem__value">{inventoryItem.quantity}</span>
               </div>
             </div>
             <div class="desktopItem__boxRight-row2">
