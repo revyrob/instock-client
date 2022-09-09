@@ -234,12 +234,75 @@ body {
   }
   &__box5 {
     padding-top: $space-outside-items-sm;
-
     margin-right: auto;
     @include tablet {
       margin-left: auto;
       padding-top: 0;
     }
+    &__modal {
+      background-color:$primary-light;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 3px;
+      &__close {
+        position: absolute;
+        top: 10%;
+        right: 5%;
+    }
+      &--title {
+          font-size: $page-header-mobile;
+          line-height: 2.25rem;
+          margin-bottom: 1rem;
+          margin-top: 2.5rem;
+      }
+      &--text{
+          font-size: $body-large-mobile;
+          line-height: 1.625rem;
+      }
+      &--div{
+          padding-bottom: auto;
+          display: flex;
+          justify-content: space-between;
+          @include tablet {
+            width: 30%;
+            margin-left: auto;
+          }
+      }
+      &--btn {
+          display: flex;  
+          align-items: center;
+          justify-content: center;
+          border-radius: 25px;
+          padding: 0.5rem;
+          border: none;
+          font-weight: 600;
+          height: 2.375rem;
+          margin: 1rem 0;
+          
+          &--cancel {
+              width: 47%;
+              border: 1px solid $secondary-light;
+              background-color: $primary-light;
+              color: $primary-dark;
+              &:hover {
+                color: $primary-accent;
+                background-color: $primary-light;
+                transition: .5s;
+            }
+          }
+          &--delete {
+              width: 47%;
+              background-color: $sup-red;
+              color: $primary-light;
+              &:hover {
+                background-color: $bgcolor-dark;
+                transition: .5s;
+            }
+          }
+      }
+      
+  }
   }
   &__box6 {
     margin-top: auto;
