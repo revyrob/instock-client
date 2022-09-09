@@ -11,6 +11,7 @@ import { v4 as uuid } from 'uuid';
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function WarehouseDetails() {
   const [warehouseObj, setWarehouseObj] = useState({});
@@ -32,19 +33,24 @@ export default function WarehouseDetails() {
     <section className="warehouseDetails">
       <div className="pageHeader">
         <div className="pageHeader__title">
-          <img src={arrowBack} alt="back icon" />
+          <Link to="/warehouses">
+            <img src={arrowBack} alt="back icon" />
+          </Link>
+
           <p className="pageHeader__warehouse-name">
             {warehouseObj && warehouseObj?.city}
           </p>
         </div>
-        <div className="pageHeader__editBtn">
-          <img
-            className="pageHeader__iconColor"
-            src={editPen}
-            alt="edit icon"
-          />
-          <span className="pageHeader__iconBtnTxt">Edit</span>
-        </div>
+        <Link to={`/warehouses/${id}/edit`} className="pageHeader__linkEdit">
+          <div className="pageHeader__editBtn">
+            <img
+              className="pageHeader__iconColor"
+              src={editPen}
+              alt="edit icon"
+            />
+            <span className="pageHeader__iconBtnTxt">Edit</span>
+          </div>
+        </Link>
       </div>
 
       <div className="warehouseAddress">
