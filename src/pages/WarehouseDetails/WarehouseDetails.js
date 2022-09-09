@@ -70,21 +70,24 @@ export default function WarehouseDetails() {
   };
 
   //need this to do the overlay for the modal
-  const bg = {
-    overlay: {
-      background: "rgba(19, 24, 44, .6)",
-    },
-    content: {
-      width: "42rem",
-      height: "16.375rem",
-      margin: "5.3125rem auto 0",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
-      boxShadow: "0px 2px 5px rgba(19, 24, 44, 0.1)",
-      borderRadius: "3px",
-    },
-  };
+  const bg =
+    window.innerWidth > 768
+      ? {
+          overlay: {
+            background: "rgba(19, 24, 44, .6)",
+          },
+          content: {
+            width: "42rem",
+            height: "16.375rem",
+            margin: "5.3125rem auto 0",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            boxShadow: "0px 2px 5px rgba(19, 24, 44, 0.1)",
+            borderRadius: "3px",
+          },
+        }
+      : { className: "magicBox__box5__modal" };
 
   return (
     <section className="warehouseDetails">
@@ -234,11 +237,12 @@ export default function WarehouseDetails() {
             {/* start of code */}
             <Modal
               isOpen={deleteModal}
-              // className="magicBox__box5__modal"
+              // className="magicBox__box5__mobile"
               onRequestClose={closeModal}
               contentLabel="Delete Warehouse"
               ariaHideApp={false}
               style={bg}
+              // style={{window.innerWidth > "768px" ? bg : null}}
             >
               <div
                 className="magicBox__box5__modal__close"
