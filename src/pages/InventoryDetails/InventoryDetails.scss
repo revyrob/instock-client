@@ -11,14 +11,14 @@ body {
   }
 }
 
-.warehouseDetails {
+.inventoryDetails {
   background-color: $primary-light;
   @include wrapper-mr;
   @include desktop {
     margin-top: -165px;
   }
 }
-.pageHeader {
+.in-pageHeader {
   display: flex;
   flex-direction: column;
   @include wrapper-mr;
@@ -79,55 +79,55 @@ body {
   }
 }
 
-.warehouseAddress {
-  display: flex;
-  flex-direction: column;
-  @include tablet {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
+// .in-warehouseAddress {
+//   display: flex;
+//   flex-direction: column;
+//   @include tablet {
+//     flex-direction: row;
+//     justify-content: flex-start;
+//     align-items: flex-start;
+//   }
 
-  background-color: $primary-light;
-  border-top: 1px solid $secondary-light;
-  @include wrapper-mr;
+//   background-color: $primary-light;
+//   border-top: 1px solid $secondary-light;
+//   @include wrapper-mr;
 
-  &__addressBox {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 35%;
-    padding: $space-between-items-sm;
-    @include tablet {
-      padding: $space-between-items-lg;
-    }
-  }
+//   &__addressBox {
+//     display: flex;
+//     flex-direction: column;
+//     flex-basis: 35%;
+//     padding: $space-between-items-sm;
+//     @include tablet {
+//       padding: $space-between-items-lg;
+//     }
+//   }
 
-  &__wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-basis: 65%;
-    padding: $space-between-items-sm;
+//   &__wrapper {
+//     display: flex;
+//     flex-direction: row;
+//     flex-basis: 65%;
+//     padding: $space-between-items-sm;
 
-    @include tablet {
-      border-left: 1px solid $secondary-light;
-      padding: $space-between-items-lg;
-      padding-left: $space-outside-items-lg;
-    }
-  }
+//     @include tablet {
+//       border-left: 1px solid $secondary-light;
+//       padding: $space-between-items-lg;
+//       padding-left: $space-outside-items-lg;
+//     }
+//   }
 
-  &__contactnameBox {
-    flex-basis: 50%;
-  }
-  &__labelAddress,
-  &__labelContact,
-  &__labelName {
-    font-size: $labels;
-    font-weight: $bold;
-    color: $secondary-dark;
-  }
-}
+//   &__contactnameBox {
+//     flex-basis: 50%;
+//   }
+//   &__labelAddress,
+//   &__labelContact,
+//   &__labelName {
+//     font-size: $labels;
+//     font-weight: $bold;
+//     color: $secondary-dark;
+//   }
+// }
 
-.stillBox {
+.in-stillBox {
   @include wrapper-mr;
   display: none;
   grid-template-columns: [box1] 1.2fr [box2] 1.2fr;
@@ -171,7 +171,7 @@ body {
   }
 }
 
-.magicBox {
+.in-magicBox {
   @include wrapper-mr;
   border-top: 1px solid $secondary-light;
   padding: $space-between-items-sm;
