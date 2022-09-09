@@ -2,9 +2,10 @@ import "./WarehouseTablet.scss";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import delteCan from "../../assets/icons/delete_outline-24px.svg";
 import editPen from "../../assets/icons/edit-24px.svg";
+import closeIcon from "../../assets/icons/close-24px.svg";
+
 import Modal from "react-modal";
 import { useState } from "react";
-import closeIcon from "../../assets/icons/close-24px.svg";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -21,8 +22,9 @@ function WarehouseTablet({
 }) {
   //two columns
 
-  //modal functions
-  //state for modal
+  /*
+   *Modal code
+   */
   const [deleteModal, setDeleteModal] = useState(false);
 
   function openModal() {
