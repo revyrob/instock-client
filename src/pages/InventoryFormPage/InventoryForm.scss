@@ -1,0 +1,7 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.edit-wrhse{
+   @include wrapper-mr;
+   background-color: $primary-light;
+}
