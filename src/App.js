@@ -11,18 +11,17 @@ function App() {
       <Header></Header>
 
       <Routes>
-        <Route path="/warehouses" element={<Warehouses />} />
-        <Route
-          path="/warehouse/:id/edit"
-          element={<EditWarehouse></EditWarehouse>}
-        />
-        <Route
-          path="/warehouse/new"
-          element={<EditWarehouse></EditWarehouse>}
-        />
 
-        <Route path="/warehousedetails" element={<WarehouseDetails />} />
-        <Route path="/inventorydetails" element={<InventoryDetails />} />
+        <Route path="/warehouses" element={<Warehouses />}/>
+        <Route path="/warehouses/:id" element={<WarehouseDetails />}/>
+        <Route path="/warehouses/new" element={<EditWarehouse />}/>
+        <Route path="/warehouses/:id/edit" element={<EditWarehouse />}/>
+        {/* change the compoment when using the path
+        <Route path="/inventory" element={<Inventory />} />
+        <Route path="/inventory/:id" element={<Inventory />} />
+        <Route path="/inventory/new" element={<Inventory />} />
+        <Route path="/inventory/:id/edit" element={<Inventory />} />  */}
+
       </Routes>
     </BrowserRouter>
   );

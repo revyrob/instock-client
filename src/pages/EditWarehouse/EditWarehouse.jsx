@@ -1,11 +1,11 @@
 import PageHeader from "../../components/PageHeader/PageHeader";
 import WarehouseForm from "../../components/WarehouseForm/WarehouseForm";
 import './EditWarehouse.scss'
-
-import {  useParams } from 'react-router-dom'
-import {  useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { useState } from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
+
 export default function EditWarehouse(){
     const [warehouse, setwarehouse] = useState(null)
     const {id:warehouseId} =  useParams();
