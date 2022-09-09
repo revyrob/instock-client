@@ -50,6 +50,7 @@ body {
     @include tablet {
       padding: 6px 12px;
       width: 80px;
+      height: 40px;
       border-radius: 20px;
     }
   }
@@ -88,16 +89,24 @@ body {
 .desktopItem {
   @include wrapper-mr;
   display: flex;
+  flex-direction: column;
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+  }
   &__boxLeft {
-    flex-basis: 40%;
+    flex-basis: 50%;
     display: flex;
     flex-direction: column;
     padding-top: $space-between-items-lg;
-    border-right: solid 1px $secondary-dark;
     padding-left: $space-outside-items-md;
+    padding-right: $space-outside-items-md;
+    @include tablet {
+      border-right: solid 1px $secondary-dark;
+    }
   }
   &__boxRight {
-    flex-basis: 60%;
+    flex-basis: 50%;
     display: flex;
     flex-direction: column;
     padding-left: $space-outside-items-md;
@@ -118,9 +127,11 @@ body {
   }
   &__inStock {
     background-color: rgba(20, 133, 99, 0.07);
-    width: 120px;
+    width: 90px;
     border-radius: 20px;
     padding: 5px;
+    color: $sup-green;
+    font-weight: $bold;
 
     display: flex;
     justify-content: center;
@@ -128,13 +139,18 @@ body {
   }
   &__OutOfStock {
     background-color: rgba(201, 69, 21, 0.07);
-    width: 120px;
+    width: 80px;
     border-radius: 20px;
     padding: 5px;
+    color: $sup-red;
+    font-weight: $bold;
 
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  &__valueDesc {
+    padding-bottom: $space-outside-items-md;
   }
 }
 
