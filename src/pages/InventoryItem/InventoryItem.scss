@@ -11,16 +11,16 @@ body {
   }
 }
 
-.inventoryDetails {
+.inventoryItem {
   background-color: $primary-light;
   @include wrapper-mr;
   @include desktop {
     margin-top: -165px;
   }
 }
-.in-pageHeader {
+.item-pageHeader {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   @include wrapper-mr;
   justify-content: space-between;
   padding: $space-between-items-lg;
@@ -35,17 +35,23 @@ body {
     flex-direction: row;
     align-items: center;
   }
-  &__addItemBtn {
+  &__editButton {
     background-color: $primary-accent;
-    padding: 12px;
+    padding: 6px;
     color: $primary-light;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: $bold;
-    height: 40px;
-    width: 100%;
-    border-radius: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    @include tablet {
+      padding: 6px 12px;
+      width: 80px;
+      border-radius: 20px;
+    }
   }
   &__iconBtnTxt {
     display: none;
@@ -59,7 +65,7 @@ body {
     padding-right: 4px;
   }
 
-  &__warehouse-name {
+  &__itemName {
     font-size: $page-header-mobile;
     @include tablet {
       font-size: $page-header;
@@ -79,234 +85,64 @@ body {
   }
 }
 
-// .in-warehouseAddress {
-//   display: flex;
-//   flex-direction: column;
-//   @include tablet {
-//     flex-direction: row;
-//     justify-content: flex-start;
-//     align-items: flex-start;
-//   }
-
-//   background-color: $primary-light;
-//   border-top: 1px solid $secondary-light;
-//   @include wrapper-mr;
-
-//   &__addressBox {
-//     display: flex;
-//     flex-direction: column;
-//     flex-basis: 35%;
-//     padding: $space-between-items-sm;
-//     @include tablet {
-//       padding: $space-between-items-lg;
-//     }
-//   }
-
-//   &__wrapper {
-//     display: flex;
-//     flex-direction: row;
-//     flex-basis: 65%;
-//     padding: $space-between-items-sm;
-
-//     @include tablet {
-//       border-left: 1px solid $secondary-light;
-//       padding: $space-between-items-lg;
-//       padding-left: $space-outside-items-lg;
-//     }
-//   }
-
-//   &__contactnameBox {
-//     flex-basis: 50%;
-//   }
-//   &__labelAddress,
-//   &__labelContact,
-//   &__labelName {
-//     font-size: $labels;
-//     font-weight: $bold;
-//     color: $secondary-dark;
-//   }
-// }
-
-.in-stillBox {
+.desktopItem {
   @include wrapper-mr;
-  display: none;
-  grid-template-columns: [box1] 1.2fr [box2] 1.2fr;
-  align-items: center;
-  padding-top: $space-between-items-sm;
-  padding-bottom: $space-between-items-sm;
-  font-size: $labels;
-  font-weight: $bold;
-  background-color: $bgcolor-light;
-  color: $secondary-dark;
-
-  @include tablet {
-    padding-left: $space-between-items-lg;
-    padding-right: $space-between-items-lg;
-    display: grid;
-    grid-template-columns: [box1] 1.4fr [box3] 1fr [box2] 1fr [box4] 0.8fr[box5] 1fr [box6]0.4fr;
-  }
-  &__box1 {
+  display: flex;
+  &__boxLeft {
+    flex-basis: 40%;
     display: flex;
-    gap: 0.25rem;
+    flex-direction: column;
+    padding-top: $space-between-items-lg;
+    border-right: solid 1px $secondary-dark;
+    padding-left: $space-outside-items-md;
   }
-  &__box2 {
+  &__boxRight {
+    flex-basis: 60%;
     display: flex;
+    flex-direction: column;
+    padding-left: $space-outside-items-md;
 
-    gap: 0.25rem;
+    &-row1 {
+      display: flex;
+      flex-direction: row;
+      padding-top: $space-between-items-lg;
+      padding-bottom: $space-outside-items-md;
+    }
+    &-row2 {
+      padding-bottom: $space-outside-items-md;
+    }
   }
-  &__box3 {
-    display: flex;
-    gap: 0.25rem;
-  }
-  &__box4 {
-    display: flex;
-    gap: 0.25rem;
-  }
-  &__box5 {
-    display: flex;
-    gap: 0.25rem;
-  }
-  &__box6 {
-    margin-left: auto;
-  }
-}
-
-.in-magicBox {
-  @include wrapper-mr;
-  border-top: 1px solid $secondary-light;
-  padding: $space-between-items-sm;
-  padding-top: $space-between-items-sm + 2px;
-  padding-bottom: $space-between-items-sm + 2px;
-
-  display: grid;
-  grid-template-columns: [box1] 1.2fr [box2] 1.2fr;
-  font-size: $body-large-mobile;
-
-  border-bottom: 1px solid $secondary-light;
-
-  &:hover {
-    background-color: rgba(46, 102, 229, 0.07);
-  }
-
-  @include tablet {
-    padding-left: $space-between-items-lg;
-    padding-right: $space-between-items-lg;
-    font-size: $body-large;
-    grid-template-columns: [box1] 1.4fr [box3] 1fr [box2] 1fr [box4] 0.8fr[box5] 1fr [box6]0.4fr;
-  }
-
-  &__labelMobile {
+  &__label {
     color: $secondary-dark;
     font-weight: $bold;
-    @include tablet {
-      display: none;
-    }
   }
-  &__box1 {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: $space-between-items-lg;
-    @include tablet {
-      flex-direction: row;
-      padding-bottom: 0;
-    }
-    font-weight: $bold;
-    color: $primary-accent;
-    text-transform: capitalize;
-  }
-  &__box2 {
-    grid-row-start: box3;
-    @include tablet {
-      grid-row-start: -1;
-      grid-column-end: box2;
-    }
-    display: flex;
-    flex-direction: column;
-    @include tablet {
-      display: block;
-    }
-  }
-  &__box3 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    @include tablet {
-      display: block;
-    }
-  }
-  &__box4 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    @include tablet {
-      display: block;
-    }
-  }
-  &__box5 {
-    padding-top: $space-outside-items-sm;
-    display: flex;
-    flex-direction: column;
-    @include tablet {
-      margin-right: auto;
-      padding-top: 0;
-    }
-  }
-  &__box6 {
-    margin-top: auto;
-    margin-left: auto;
-    display: flex;
-    gap: 5px;
-    padding-right: $space-between-items-sm;
-  }
-
-  &__labelItem {
-    width: 110px;
-  }
-  &__warehouseNameValue {
-    text-align: left;
-    margin-right: auto;
-  }
-
-  &__chevron {
-    position: relative;
-    left: -20px;
-    @include tablet {
-      left: 10px;
-    }
-  }
-
   &__inStock {
     background-color: rgba(20, 133, 99, 0.07);
+    width: 120px;
     border-radius: 20px;
-    padding: 2px 14px;
-    margin-top: 4px;
-    font-size: $labels;
-    color: $sup-green;
-    font-weight: $bold;
-    position: relative;
-    left: -8px;
-    @include tablet {
-      padding: 8px 12px;
-      margin-top: 0px;
-    }
+    padding: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  &__outOfStock {
+  &__OutOfStock {
     background-color: rgba(201, 69, 21, 0.07);
+    width: 120px;
     border-radius: 20px;
-    padding: 2px 14px;
-    margin-top: 4px;
-    font-size: $labels;
-    color: $sup-red;
-    font-weight: $bold;
-    position: relative;
-    left: -8px;
-    @include tablet {
-      padding: 8px 12px;
-      margin-top: 0px;
-    }
+    padding: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 .flexbox {
   display: flex;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
 }
