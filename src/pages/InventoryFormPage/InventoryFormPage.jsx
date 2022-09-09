@@ -17,11 +17,11 @@ export default function InventoryFormPage(){
     console.log("inventoryid",inventoryId)
     useEffect(function(){
         if(inventoryId){
-           getWareHouseById()
+            getInventoryId()
         }
     },[inventoryId])
     console.log(inventoryId)
-    async function getWareHouseById(){
+    async function getInventoryId(){
         try{
             const {data} = await axios.get(`http://localhost:8080/inventory/${inventoryId}`)
             console.log("data from api",data)
@@ -145,16 +145,16 @@ export default function InventoryFormPage(){
     }
 
     function handleEditSumbit(e){
-        console.log(e.target)
+        console.log("in invetory page")
         e.preventDefault()
         const formObj = e.target;
-        console.log(formValidation(formObj))
         if(formValidation(formObj)){
             putEditedData(formObj)
         }  
     }
 
     function handleNewSumbit(e){
+        console.log("in invetory page")
         const formObj = e.target;
         e.preventDefault()
         if(formValidation(formObj)){

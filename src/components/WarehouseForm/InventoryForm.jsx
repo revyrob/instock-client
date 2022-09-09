@@ -11,16 +11,17 @@ import {CancelButton} from './CancelButton'
 import {SumbitButton} from './SumbitButton'
 import { Label } from './Label';
 
-export default function InventoryForm({warehouse,warehouseId,handleNewSumbit,handleEditSumbit,errObj}){
-    
+export default function InventoryForm({inventory,inventoryId,handleNewSumbit,handleEditSumbit,errObj}){
+    console.log("inventory", inventory)
+    console.log("inventoryId", inventoryId)
     return(
         <>
-        <FormGrid warehouseId={warehouseId} handleEditSumbit={handleEditSumbit} handleNewSumbit={handleNewSumbit}>
+        <FormGrid warehouseId={inventoryId} handleEditSumbit={handleEditSumbit} handleNewSumbit={handleNewSumbit}>
             <FormBody>
             <FormGridLeft>
                 <Title title={"Item Details"}></Title>
-                <Label labelTxt={"Warehouse Name"}>
-                    <Input  name={"wrhsName"} errObj={errObj} defaultValue={warehouse ? warehouse.name : ""}></Input>
+                <Label labelTxt={"Item Name"}>
+                    <Input  name={"wrhsName"} errObj={errObj} defaultValue={inventory ? inventory.itemName : ""}></Input>
                 </Label>
             </FormGridLeft>
             <FormGridSeprator></FormGridSeprator>
@@ -30,7 +31,7 @@ export default function InventoryForm({warehouse,warehouseId,handleNewSumbit,han
             </FormBody>
             <FormFooter>
                 <CancelButton cancelLink={'/warehouses'}></CancelButton>
-                <SumbitButton warehouseId={warehouseId}></SumbitButton>
+                <SumbitButton warehouseId={inventoryId} buttonText={'Inventory'}></SumbitButton>
             </FormFooter>
         </FormGrid>
            

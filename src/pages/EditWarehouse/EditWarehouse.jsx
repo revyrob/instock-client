@@ -19,7 +19,7 @@ export default function EditWarehouse(){
            getWareHouseById()
         }
     },[warehouseId])
-    console.log(warehouseId)
+    
     async function getWareHouseById(){
         try{
             const {data} = await axios.get(`http://localhost:8080/warehouse/${warehouseId}`)
@@ -165,10 +165,6 @@ export default function EditWarehouse(){
 
     return(
         <>  
-            {/* <div className="edit-wrhse">
-                <PageHeader title={warehouseId? "Edit Warehouse":"Add New Warehouse"} backLink={'warehouses'}></PageHeader>
-                <WarehouseForm warehouse={warehouse} warehouseId={warehouseId} handleNewSumbit={handleNewSumbit} handleEditSumbit={handleEditSumbit} errObj={errObj} cancelLink={'/warehouses'}></WarehouseForm>
-            </div>   */}
              <div className="edit-wrhse">
                 <PageHeader title={warehouseId? "Edit Warehouse":"Add New Warehouse"} backLink={'warehouses'}></PageHeader>
                 <WarehouseForm warehouse={warehouse} warehouseId={warehouseId} handleNewSumbit={handleNewSumbit} handleEditSumbit={handleEditSumbit} errObj={errObj} cancelLink={'/warehouses'}></WarehouseForm>

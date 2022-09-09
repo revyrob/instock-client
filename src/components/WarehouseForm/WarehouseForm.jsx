@@ -53,7 +53,7 @@ export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,han
             </FormBody>
             <FormFooter>
                 <CancelButton cancelLink={cancelLink}></CancelButton>
-                <SumbitButton warehouseId={warehouseId}></SumbitButton>
+                <SumbitButton buttonText={'Warehouse'} warehouseId={warehouseId}></SumbitButton>
             </FormFooter>
         </FormGrid>
            
