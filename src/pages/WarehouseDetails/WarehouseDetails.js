@@ -10,15 +10,17 @@ import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function WarehouseDetails() {
   const [warehouseObj, setWarehouseObj] = useState({});
   const [inventoriesArr, setInventoriesArr] = useState([]);
+
+  const { id } = useParams();
+
   useEffect(() => {
     axios
-      .get(
-        'http://localhost:8080/warehouse/2922c286-16cd-4d43-ab98-c79f698aeab0/withinventory'
-      )
+      .get(`http://localhost:8080/warehouse/${id}/withinventory`)
       .then((payload) => {
         const { warehouse, inventories } = payload.data;
         setWarehouseObj(warehouse);
