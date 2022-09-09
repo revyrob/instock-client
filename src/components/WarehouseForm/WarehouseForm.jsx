@@ -18,19 +18,19 @@ export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,han
             <FormBody>
             <FormGridLeft>
                 <Title title={"Warehouse Details"}></Title>
-                <Input labelTxt={"Warehouse Name"} name={"wrhsName"} errObj={errObj} warehouse={warehouse} defaultValue={warehouse ? warehouse.name : ""}></Input>
-                <Input labelTxt={"Street Address"} name={"wrhsAdd"} errObj={errObj} warehouse={warehouse} defaultValue={warehouse ? warehouse.address : ""}></Input>
-                <Input labelTxt={"City"} name={"wrhsCity"} errObj={errObj} warehouse={warehouse}
+                <Input labelTxt={"Warehouse Name"} name={"wrhsName"} errObj={errObj} defaultValue={warehouse ? warehouse.name : ""}></Input>
+                <Input labelTxt={"Street Address"} name={"wrhsAdd"} errObj={errObj} defaultValue={warehouse ? warehouse.address : ""}></Input>
+                <Input labelTxt={"City"} name={"wrhsCity"} errObj={errObj}
                 defaultValue={warehouse ? warehouse.city : ""}></Input>
-                <Input labelTxt={"Country"} name={"wrhsCountry"} errObj={errObj} warehouse={warehouse} defaultValue={warehouse ? warehouse.country : ""}></Input>
+                <Input labelTxt={"Country"} name={"wrhsCountry"} errObj={errObj} defaultValue={warehouse ? warehouse.country : ""}></Input>
             </FormGridLeft>
             <FormGridSeprator></FormGridSeprator>
             <FormGridRight>
                 <Title title={"Contact Details"}></Title>
-                    <Input labelTxt={"Contact Name"} name={"cntcName"} errObj={errObj} warehouse={warehouse} defaultValue={warehouse ? warehouse.contact.name : ""}></Input>
-                    <Input labelTxt={"Position"} name={"cntcPos"} errObj={errObj} warehouse={warehouse} defaultValue={warehouse ? warehouse.contact.position : ""}></Input>
-                    <Input labelTxt={"Phone Number"} name={"cntcPhn"} errObj={errObj} warehouse={warehouse} defaultValue={warehouse ? warehouse.contact.phone : ""}></Input>
-                    <Input labelTxt={"Email"} name={"cntcEmail"} errObj={errObj} warehouse={warehouse} defaultValue={warehouse ? warehouse.contact.email : ""}></Input>
+                    <Input labelTxt={"Contact Name"} name={"cntcName"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact.name : ""}></Input>
+                    <Input labelTxt={"Position"} name={"cntcPos"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact.position : ""}></Input>
+                    <Input labelTxt={"Phone Number"} name={"cntcPhn"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact.phone : ""}></Input>
+                    <Input labelTxt={"Email"} name={"cntcEmail"} errObj={errObj} defaultValue={warehouse ? warehouse.contact.email : ""}></Input>
             </FormGridRight>
             </FormBody>
             <FormFooter>

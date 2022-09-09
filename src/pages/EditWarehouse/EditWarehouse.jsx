@@ -45,7 +45,7 @@ export default function EditWarehouse(){
               email:cntcEmail.value
             }
         }
-        const {data} = await axios.post('http://localhost:8080/warehouse/',resBody)
+        const {data} = await axios.put(`http://localhost:8080/warehouse/${warehouseId}`,resBody)
         navigate("/warehouses");
     }
 
