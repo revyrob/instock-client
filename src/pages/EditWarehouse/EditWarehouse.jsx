@@ -167,7 +167,7 @@ export default function EditWarehouse(){
         <>  
             <div className="edit-wrhse">
                 <PageHeader title={warehouseId? "Edit Warehouse":"Add New Warehouse"} backLink={'warehouses'}></PageHeader>
-                <WarehouseForm warehouse={warehouse} warehouseId={warehouseId} handleNewSumbit={handleNewSumbit} handleEditSumbit={handleEditSumbit} errObj={errObj}></WarehouseForm>
+                <WarehouseForm warehouse={warehouse} warehouseId={warehouseId} handleNewSumbit={handleNewSumbit} handleEditSumbit={handleEditSumbit} errObj={errObj} cancelLink={'/warehouses'}></WarehouseForm>
             </div>  
         </>  
     )

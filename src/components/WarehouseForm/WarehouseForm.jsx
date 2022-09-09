@@ -11,7 +11,7 @@ import {CancelButton} from './CancelButton'
 import {SumbitButton} from './SumbitButton'
 import { Label } from './Label';
 
-export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,handleEditSumbit,errObj}){
+export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,handleEditSumbit,errObj,cancelLink}){
     
     return(
         <>
@@ -25,21 +25,34 @@ export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,han
                 <Label labelTxt={"Street Address"}>
                 <Input  name={"wrhsAdd"} errObj={errObj} defaultValue={warehouse ? warehouse.address : ""}></Input>
                 </Label>
-                <Input labelTxt={"City"} name={"wrhsCity"} errObj={errObj}
+                <Label labelTxt={"City"}>
+                <Input  name={"wrhsCity"} errObj={errObj}
                 defaultValue={warehouse ? warehouse.city : ""}></Input>
-                <Input labelTxt={"Country"} name={"wrhsCountry"} errObj={errObj} defaultValue={warehouse ? warehouse.country : ""}></Input>
+                </Label>
+                <Label labelTxt={"Country"}>
+                <Input  name={"wrhsCountry"} errObj={errObj} defaultValue={warehouse ? warehouse.country : ""}></Input>
+                </Label>
+                
             </FormGridLeft>
             <FormGridSeprator></FormGridSeprator>
             <FormGridRight>
                 <Title title={"Contact Details"}></Title>
-                    <Input labelTxt={"Contact Name"} name={"cntcName"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact.name : ""}></Input>
-                    <Input labelTxt={"Position"} name={"cntcPos"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact.position : ""}></Input>
-                    <Input labelTxt={"Phone Number"} name={"cntcPhn"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact.phone : ""}></Input>
-                    <Input labelTxt={"Email"} name={"cntcEmail"} errObj={errObj} defaultValue={warehouse ? warehouse.contact.email : ""}></Input>
+                <Label labelTxt={"Contact Name"}>
+                <Input  name={"cntcName"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact.name : ""}></Input>
+                </Label>
+                <Label labelTxt={"Position"}>
+                <Input  name={"cntcPos"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact.position : ""}></Input>
+                </Label>
+                <Label labelTxt={"Phone Number"}>
+                <Input  name={"cntcPhn"} errObj={errObj}  defaultValue={warehouse ? warehouse.contact.phone : ""}></Input>
+                </Label>   
+                <Label labelTxt={"Email"}>
+                <Input name={"cntcEmail"} errObj={errObj} defaultValue={warehouse ? warehouse.contact.email : ""}></Input>
+                </Label>  
             </FormGridRight>
             </FormBody>
             <FormFooter>
-                <CancelButton></CancelButton>
+                <CancelButton cancelLink={cancelLink}></CancelButton>
                 <SumbitButton warehouseId={warehouseId}></SumbitButton>
             </FormFooter>
         </FormGrid>
