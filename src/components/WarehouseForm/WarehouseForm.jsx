@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 export default function WarehouseForm({warehouse,warehouseId}){
+    console.log(warehouse)
     let navigate = useNavigate();
     const [errObj, setErrobj]=useState({
         valid:true,
@@ -24,7 +25,7 @@ export default function WarehouseForm({warehouse,warehouseId}){
               email:cntcEmail.value
             }
         }
-        const {data} = await axios.post('http://localhost:8080/warehouse/',resBody)
+        await axios.put(`http://localhost:8080/warehouse/${warehouseId}`,resBody)
         navigate("/warehouses");
     }
 
