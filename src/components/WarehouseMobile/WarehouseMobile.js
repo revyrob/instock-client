@@ -6,7 +6,7 @@ import Modal from "react-modal";
 import { useState } from "react";
 import closeIcon from "../../assets/icons/close-24px.svg";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //use the onclick function in the article component and not ArticleList because the articles are the onclick events
 function WarehouseMobile({
@@ -33,16 +33,26 @@ function WarehouseMobile({
     setDeleteModal(false);
   }
 
-  //i need the axios call on this page for deleting with module
-  //then i need to make a function for the click event and
-  //delete the page
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
+  //getting correct path from .env
   const { REACT_APP_API_SERVER_URL } = process.env;
 
-  const deleteWarehouse = () => {
+  //use to navigate back to warehouse page after delete
+  let navigate = useNavigate();
+
+  //function to delete the warehouse which is pressed on
+  const deleteWarehouse = (e) => {
+    e.preventDefault();
     axios
       .delete(`${REACT_APP_API_SERVER_URL}/warehouse/${id}`)
       .then((response) => {
-        console.log(response);
+        //why is it no linking back with the refreshed info
+        navigate("/warehouses");
+        refreshPage();
+        closeModal();
       })
       .catch((err) => console.log(err));
   };
@@ -55,7 +65,8 @@ function WarehouseMobile({
 
           <Link to={`/warehouse/${id}`}>
             <h2 className="warehouse__location">
-              {warehouse} <img src={chevron} alt="chevron right" />
+              {warehouse}
+              <img src={chevron} alt="right chevron" />
             </h2>
           </Link>
 
@@ -125,4 +136,5 @@ function WarehouseMobile({
     </section>
   );
 }
+
 export default WarehouseMobile;

@@ -5,9 +5,12 @@ import editPen from "../../assets/icons/edit-24px.svg";
 import Modal from "react-modal";
 import { useState } from "react";
 import closeIcon from "../../assets/icons/close-24px.svg";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 //use the onclick function in the article component and not ArticleList because the articles are the onclick events
 function WarehouseTablet({
+  id,
   warehouse,
   address,
   contact,
@@ -30,6 +33,31 @@ function WarehouseTablet({
     setDeleteModal(false);
   }
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
+  //getting correct path from .env
+  const { REACT_APP_API_SERVER_URL } = process.env;
+
+  //use to navigate back to warehouse page after delete
+  let navigate = useNavigate();
+
+  //function to delete the warehouse which is pressed on
+  const deleteWarehouse = (e) => {
+    e.preventDefault();
+    axios
+      .delete(`${REACT_APP_API_SERVER_URL}/warehouse/${id}`)
+      .then((response) => {
+        //why is it no linking back with the refreshed info
+        navigate("/warehouses");
+        refreshPage();
+        closeModal();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //need this to do the overlay for the modal
   const bg = {
     overlay: {
       background: "rgba(19, 24, 44, .6)",
@@ -107,7 +135,7 @@ function WarehouseTablet({
                   <button
                     className="warehouseTablet__modal--btn warehouseTablet__modal--btn--delete"
                     type="delete"
-                    onClick=""
+                    onClick={deleteWarehouse}
                   >
                     <span className="btn-text">Delete</span>
                   </button>
