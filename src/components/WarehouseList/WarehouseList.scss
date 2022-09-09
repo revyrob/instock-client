@@ -31,6 +31,7 @@
         }
     }
     &__btn {
+       
         @include tablet {
             width: 80%;
         }

@@ -20,6 +20,11 @@
         color: $primary-accent;
         font-weight: bold;
         margin-bottom: 1rem;
+        fill:$primary-accent;
+        &:hover {
+            text-decoration: underline;
+            transition: .5s;
+        }
     }
     &__title{
         text-transform: uppercase;
@@ -41,6 +46,7 @@
         top: 2.5%;
         right: 5%;
     }
+    
     &__modal {
         height: 100vh;
         background-color:$bgcolor-light;
@@ -79,15 +85,29 @@
                 border: 1px solid $secondary-light;
                 background-color: $primary-light;
                 color: $primary-dark;
+                &:hover {
+                    color: $primary-accent;
+                    background-color: $primary-light;
+                    transition: .5s;
+                }
+                
             }
             &--delete {
                 width: 47%;
                 background-color: $sup-red;
                 color: $primary-light;
+                &:hover {
+                    background-color: $bgcolor-dark;
+                    transition: .5s;
+                }
             }
         }
         
     }
 
 }
-
+.hover {
+        &:hover {
+            background-color: $bgcolor-dark;
+        }
+    }
