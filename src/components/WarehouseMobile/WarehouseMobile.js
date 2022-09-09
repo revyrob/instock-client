@@ -63,7 +63,7 @@ function WarehouseMobile({
         <div className="warehouse__div">
           <h2 className="warehouse__title">Warehouse</h2>
 
-          <Link to={`/warehouse/${id}`}>
+          <Link to={`/warehouses/${id}`}>
             <h2 className="warehouse__location">
               {warehouse}
               <img src={chevron} alt="right chevron" />
