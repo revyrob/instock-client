@@ -1,17 +1,19 @@
-import './WarehouseDetails.scss';
+import "./WarehouseDetails.scss";
 
-import arrowSort from '../../assets/icons/sort-24px.svg';
-import chevron from '../../assets/icons/chevron_right-24px.svg';
-import delteCan from '../../assets/icons/delete_outline-24px.svg';
-import editPen from '../../assets/icons/edit-24px.svg';
-import arrowBack from '../../assets/icons/arrow_back-24px.svg';
+import arrowSort from "../../assets/icons/sort-24px.svg";
+import chevron from "../../assets/icons/chevron_right-24px.svg";
+import delteCan from "../../assets/icons/delete_outline-24px.svg";
+import editPen from "../../assets/icons/edit-24px.svg";
+import arrowBack from "../../assets/icons/arrow_back-24px.svg";
+import closeIcon from "../../assets/icons/close-24px.svg";
 
-import axios from 'axios';
-import { v4 as uuid } from 'uuid';
+import axios from "axios";
+import { v4 as uuid } from "uuid";
 
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Modal from "react-modal";
 
 export default function WarehouseDetails() {
   const [warehouseObj, setWarehouseObj] = useState({});
@@ -29,6 +31,64 @@ export default function WarehouseDetails() {
         console.log(warehouse, inventories);
       });
   }, []);
+
+  /*
+   *Modal code
+   */
+  const [deleteModal, setDeleteModal] = useState(false);
+
+  function openModal() {
+    setDeleteModal(true);
+  }
+
+  function closeModal() {
+    setDeleteModal(false);
+  }
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
+  //getting correct path from .env
+  const { REACT_APP_API_SERVER_URL } = process.env;
+
+  //use to navigate back to warehouse page after delete
+  let navigate = useNavigate();
+
+  //function to delete the warehouse which is pressed on
+  const deleteWarehouse = (e) => {
+    e.preventDefault();
+    axios
+      .delete(`${REACT_APP_API_SERVER_URL}/inventory/${id}`)
+      .then((response) => {
+        //why is it no linking back with the refreshed info
+        navigate("/warehouses");
+        refreshPage();
+        closeModal();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //need this to do the overlay for the modal
+  const bg =
+    window.innerWidth > 768
+      ? {
+          overlay: {
+            background: "rgba(19, 24, 44, .6)",
+          },
+          content: {
+            width: "42rem",
+            height: "16.375rem",
+            margin: "5.3125rem auto 0",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            boxShadow: "0px 2px 5px rgba(19, 24, 44, 0.1)",
+            borderRadius: "3px",
+          },
+        }
+      : { className: "magicBox__box5__modal" };
+
   return (
     <section className="warehouseDetails">
       <div className="pageHeader">
@@ -62,7 +122,7 @@ export default function WarehouseDetails() {
             {warehouseObj && warehouseObj?.address}
           </p>
           <p className="warehouseAddress__city">
-            {warehouseObj && warehouseObj?.city}{' '}
+            {warehouseObj && warehouseObj?.city}{" "}
             {warehouseObj && warehouseObj?.country}
           </p>
         </div>
@@ -73,7 +133,7 @@ export default function WarehouseDetails() {
               {warehouseObj && warehouseObj?.contact?.name}
             </p>
             <p className="warehouseAddress__title">
-              {' '}
+              {" "}
               {warehouseObj?.contact?.position}
             </p>
           </div>
@@ -85,7 +145,7 @@ export default function WarehouseDetails() {
               {warehouseObj && warehouseObj?.contact?.phone}
             </p>
             <p className="warehouseAddress__email">
-              {' '}
+              {" "}
               {warehouseObj && warehouseObj?.contact?.email}
             </p>
           </div>
@@ -102,7 +162,7 @@ export default function WarehouseDetails() {
           />
         </div>
         <div className="stillBox__box2">
-          {' '}
+          {" "}
           <p className="stillBox__labelTable">CATEGORY</p>
           <img
             className="stillBox__arrowSort"
@@ -111,7 +171,7 @@ export default function WarehouseDetails() {
           />
         </div>
         <div className="stillBox__box3">
-          {' '}
+          {" "}
           <p className="stillBox__labelTable">STATUS</p>
           <img
             className="stillBox__arrowSort"
@@ -120,7 +180,7 @@ export default function WarehouseDetails() {
           />
         </div>
         <div className="stillBox__box4">
-          {' '}
+          {" "}
           <p className="stillBox__labelTable">QUANTITY</p>
           <img
             className="stillBox__arrowSort"
@@ -136,7 +196,7 @@ export default function WarehouseDetails() {
         inventoriesArr.map((inventory, i) => (
           <div className="magicBox" key={uuid()}>
             <div className="magicBox__box1">
-              {' '}
+              {" "}
               <label className="magicBox__labelMobile">Warehouse</label>
               <div className="flexbox">
                 <p className="magicBox__labelItem">{inventory.itemName}</p>
@@ -158,21 +218,69 @@ export default function WarehouseDetails() {
 
               <span
                 className={`${
-                  inventory.status === 'In Stock'
-                    ? 'magicBox__inStock'
-                    : 'magicBox__outOfStock'
+                  inventory.status === "In Stock"
+                    ? "magicBox__inStock"
+                    : "magicBox__outOfStock"
                 }`}
               >
                 {inventory.status}
               </span>
             </div>
             <div className="magicBox__box4">
-              <label className="magicBox__labelMobile">QTY</label>{' '}
+              <label className="magicBox__labelMobile">QTY</label>{" "}
               <span className="magicBox__qtyValue">{inventory.quantity}</span>
             </div>
-            <div className="magicBox__box5">
+            <div className="magicBox__box5" onClick={openModal}>
               <img src={delteCan} alt="delete icon" />
             </div>
+
+            {/* start of code */}
+            <Modal
+              isOpen={deleteModal}
+              // className="magicBox__box5__mobile"
+              onRequestClose={closeModal}
+              contentLabel="Delete Warehouse"
+              ariaHideApp={false}
+              style={bg}
+              // style={{window.innerWidth > "768px" ? bg : null}}
+            >
+              <div
+                className="magicBox__box5__modal__close"
+                onClick={closeModal}
+              >
+                <img src={closeIcon} alt="close icon" />
+              </div>
+              <div className="magicBox__box5__modal">
+                <div className="magicBox__box5__modal--textarea">
+                  <h2 className="magicBox__box5__modal--title">
+                    Delete {} warehouse?
+                  </h2>
+                  <p className="magicBox__box5__modal--text">
+                    Please confirm that you'd like to delete the {} from the
+                    list of warehouses. You won't be able to undo this action.
+                  </p>
+                </div>
+                <div className="magicBox__box5__modal--div">
+                  <button
+                    className="magicBox__box5__modal--btn magicBox__box5__modal--btn--cancel"
+                    type="cancel"
+                    onClick={closeModal}
+                  >
+                    {/* end of code */}
+                    <span className="btn-text">Cancel</span>
+                  </button>
+
+                  <button
+                    className="magicBox__box5__modal--btn magicBox__box5__modal--btn--delete"
+                    type="delete"
+                    onClick={deleteWarehouse}
+                  >
+                    <span className="btn-text">Delete</span>
+                  </button>
+                </div>
+              </div>
+            </Modal>
+
             <div className="magicBox__box6">
               <img src={editPen} alt="edit icon" />
             </div>

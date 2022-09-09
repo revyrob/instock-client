@@ -25,7 +25,7 @@ body {
   justify-content: space-between;
   padding: $space-between-items-lg;
   padding-top: $space-outside-items-md + 10px;
-
+  
   &__title {
     display: flex;
     flex-direction: row;
@@ -55,12 +55,12 @@ body {
   &__linkEdit {
     text-decoration: none;
   }
-
+  
   &__iconColor {
     filter: brightness(100);
     padding-right: 4px;
   }
-
+  
   &__warehouse-name {
     font-size: $page-header-mobile;
     @include tablet {
@@ -79,11 +79,11 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
   }
-
+  
   background-color: $primary-light;
   border-top: 1px solid $secondary-light;
   @include wrapper-mr;
-
+  
   &__addressBox {
     display: flex;
     flex-direction: column;
@@ -93,20 +93,20 @@ body {
       padding: $space-between-items-lg;
     }
   }
-
+  
   &__wrapper {
     display: flex;
     flex-direction: row;
     flex-basis: 65%;
     padding: $space-between-items-sm;
-
+    
     @include tablet {
       border-left: 1px solid $secondary-light;
       padding: $space-between-items-lg;
       padding-left: $space-outside-items-lg;
     }
   }
-
+  
   &__contactnameBox {
     flex-basis: 50%;
   }
@@ -130,7 +130,7 @@ body {
   font-weight: $bold;
   background-color: $bgcolor-light;
   color: $secondary-dark;
-
+  
   @include tablet {
     padding-left: $space-between-items-lg;
     padding-right: $space-between-items-lg;
@@ -143,7 +143,7 @@ body {
   }
   &__box2 {
     display: flex;
-
+    
     gap: 0.25rem;
   }
   &__box3 {
@@ -167,24 +167,24 @@ body {
   padding: $space-between-items-sm;
   padding-top: $space-between-items-sm + 2px;
   padding-bottom: $space-between-items-sm + 2px;
-
+  
   display: grid;
   grid-template-columns: [box1] 1.2fr [box2] 1.2fr;
   font-size: $body-large-mobile;
-
+  
   border-bottom: 1px solid $secondary-light;
-
+  
   &:hover {
     background-color: rgba(46, 102, 229, 0.07);
   }
-
+  
   @include tablet {
     padding-left: $space-between-items-lg;
     padding-right: $space-between-items-lg;
     font-size: $body-large;
     grid-template-columns: [box1] 1.2fr [box3] 1fr [box2] 1.2fr [box4] 1fr[box5] 0.3fr [box6]0.4fr;
   }
-
+  
   &__labelMobile {
     color: $secondary-dark;
     font-weight: $bold;
@@ -234,11 +234,77 @@ body {
   }
   &__box5 {
     padding-top: $space-outside-items-sm;
-
     margin-right: auto;
     @include tablet {
       margin-left: auto;
       padding-top: 0;
+      
+    }
+    &__modal {
+      background-color:$primary-light;
+      border-radius: 3px;
+      height: 83vh;
+      padding: 3.75rem 1rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      &__close {
+        position: absolute;
+        top: 10%;
+        right: 5%;
+      }
+      &--title {
+        font-size: $page-header-mobile;
+        line-height: 2.25rem;
+        margin-bottom: 1rem;
+        margin-top: 2.5rem;
+      }
+      &--text{
+        font-size: $body-large-mobile;
+        line-height: 1.625rem;
+      }
+      &--div{
+        padding-bottom: auto;
+        display: flex;
+        justify-content: space-between;
+        @include tablet {
+          width: 30%;
+          margin-left: auto;
+        }
+      }
+      &--btn {
+        display: flex;  
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        padding: 0.5rem;
+        border: none;
+        font-weight: 600;
+        height: 2.375rem;
+        margin: 1rem 0;
+        
+        &--cancel {
+          width: 47%;
+          border: 1px solid $secondary-light;
+          background-color: $primary-light;
+          color: $primary-dark;
+          &:hover {
+            color: $primary-accent;
+            background-color: $primary-light;
+            transition: .5s;
+          }
+        }
+        &--delete {
+          width: 47%;
+          background-color: $sup-red;
+          color: $primary-light;
+          &:hover {
+            background-color: $bgcolor-dark;
+            transition: .5s;
+          }
+        }
+      }
+      
     }
   }
   &__box6 {
@@ -256,7 +322,7 @@ body {
       left: 10px;
     }
   }
-
+  
   &__inStock {
     background-color: rgba(20, 133, 99, 0.07);
     border-radius: 20px;
