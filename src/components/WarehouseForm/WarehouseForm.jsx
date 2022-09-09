@@ -9,6 +9,7 @@ import {FormFooter} from './FormFooter'
 import {FormBody} from './FormBody'
 import {CancelButton} from './CancelButton'
 import {SumbitButton} from './SumbitButton'
+import { Label } from './Label';
 
 export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,handleEditSumbit,errObj}){
     
@@ -18,8 +19,12 @@ export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,han
             <FormBody>
             <FormGridLeft>
                 <Title title={"Warehouse Details"}></Title>
-                <Input labelTxt={"Warehouse Name"} name={"wrhsName"} errObj={errObj} defaultValue={warehouse ? warehouse.name : ""}></Input>
-                <Input labelTxt={"Street Address"} name={"wrhsAdd"} errObj={errObj} defaultValue={warehouse ? warehouse.address : ""}></Input>
+                <Label labelTxt={"Warehouse Name"}>
+                    <Input  name={"wrhsName"} errObj={errObj} defaultValue={warehouse ? warehouse.name : ""}></Input>
+                </Label>
+                <Label labelTxt={"Street Address"}>
+                <Input  name={"wrhsAdd"} errObj={errObj} defaultValue={warehouse ? warehouse.address : ""}></Input>
+                </Label>
                 <Input labelTxt={"City"} name={"wrhsCity"} errObj={errObj}
                 defaultValue={warehouse ? warehouse.city : ""}></Input>
                 <Input labelTxt={"Country"} name={"wrhsCountry"} errObj={errObj} defaultValue={warehouse ? warehouse.country : ""}></Input>
