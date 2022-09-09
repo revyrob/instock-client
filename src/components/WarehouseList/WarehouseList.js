@@ -13,7 +13,7 @@ function WarehouseList({ warehouseList }) {
         <h1 className="warehouseList__title">Warehouses</h1>
         <div className="warehouseList__btns">
           <SearchBar className="warehouseList__search" />
-          <Link to={`/warehouse/new`}>
+          <Link to={`/warehouses/new`}>
             <Button
               className="warehouseList__btn"
               alt="add"
