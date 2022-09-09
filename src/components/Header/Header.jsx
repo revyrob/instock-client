@@ -3,13 +3,10 @@ import './Header.scss';
 
 // import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 export default function Header() {
-  const [page, setPage] = useState('warehouses');
   const { pathname } = useLocation();
-  console.log(pathname);
 
   return (
     <div>
@@ -25,7 +22,7 @@ export default function Header() {
           <Link
             to="/warehouses"
             className={`${
-              page === 'warehouses'
+              pathname === '/warehouses'
                 ? 'nav__link-warehouse nav__link-item--active'
                 : 'nav__link-warehouse'
             }`}
@@ -36,7 +33,7 @@ export default function Header() {
           <Link
             to="/inventory"
             className={`${
-              page === 'warehouses'
+              pathname === '/warehouses'
                 ? 'nav__link-inventory'
                 : 'nav__link-inventory nav__link-item--active'
             }`}
