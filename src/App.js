@@ -10,24 +10,15 @@ function App() {
     <BrowserRouter>
       <Header></Header>
       <Routes>
-        <Route path="/warehouses" element={<Warehouses />} />
-        <Route
-          path="/warehouse/:id/edit"
-          element={<EditWarehouse></EditWarehouse>}
-        />
-        <Route
-          path="/warehouse/new"
-          element={<EditWarehouse></EditWarehouse>}
-        />
-        {/* <Route path="/Warehouse/:id" element={<WareHouses />} />
-        <Route path="/Warehouse/add" element={<WareHouses />} />
-        
-        <Route path="/Inventory" element={<Inventory />} />
+        <Route path="/warehouses" element={<Warehouses />}/>
+        <Route path="/warehouses/:id" element={<WarehouseDetails />}/>
+        <Route path="/warehouses/new" element={<EditWarehouse />}/>
+        <Route path="/warehouses/:id/edit" element={<EditWarehouse />}/>
+        {/* change the compoment when using the path
+        <Route path="/inventory" element={<Inventory />} />
         <Route path="/Inventory/:id" element={<Inventory />} />
-        <Route path="/Inventory/add" element={<Inventory />} />
-        <Route path="/Inventory/:id/edit" element={<Inventory />} /> */}
-        <Route path="/warehousedetails" element={<WarehouseDetails />} />
-        <Route path="/inventorydetails" element={<InventoryDetails />} />
+        <Route path="/Inventory/new" element={<Inventory />} />
+        <Route path="/Inventory/:id/edit" element={<Inventory />} />  */}
       </Routes>
     </BrowserRouter>
   );
