@@ -6,7 +6,7 @@ import Modal from "react-modal";
 import { useState } from "react";
 import closeIcon from "../../assets/icons/close-24px.svg";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 //use the onclick function in the article component and not ArticleList because the articles are the onclick events
 function WarehouseTablet({
@@ -78,9 +78,11 @@ function WarehouseTablet({
     <section className="warehouseTablet">
       <div className="warehouseTablet__wrapper">
         <div className="warehouseTablet__info">
-          <h2 className="warehouseTablet__location">
-            {warehouse} <img src={chevron} alt="chevron right" />
-          </h2>
+          <Link to={`/warehouses/${id}`}>
+            <h2 className="warehouseTablet__location">
+              {warehouse} <img src={chevron} alt="chevron right" />
+            </h2>
+          </Link>
         </div>
 
         <div className="warehouseTablet__info">
