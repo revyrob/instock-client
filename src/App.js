@@ -16,9 +16,9 @@ function App() {
         <Route path="/warehouses/:id/edit" element={<EditWarehouse />}/>
         {/* change the compoment when using the path
         <Route path="/inventory" element={<Inventory />} />
-        <Route path="/Inventory/:id" element={<Inventory />} />
-        <Route path="/Inventory/new" element={<Inventory />} />
-        <Route path="/Inventory/:id/edit" element={<Inventory />} />  */}
+        <Route path="/inventory/:id" element={<Inventory />} />
+        <Route path="/inventory/new" element={<Inventory />} />
+        <Route path="/inventory/:id/edit" element={<Inventory />} />  */}
       </Routes>
     </BrowserRouter>
   );
