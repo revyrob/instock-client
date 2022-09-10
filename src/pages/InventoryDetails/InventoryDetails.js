@@ -11,10 +11,8 @@ import axios from "axios";
 import { v4 as uuid } from "uuid";
 import Modal from "react-modal";
 
-
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 
 export default function WarehouseDetails() {
   const [inventoriesArr, setInventoriesArr] = useState([]);
@@ -92,12 +90,14 @@ export default function WarehouseDetails() {
         </div>
         <div className="in-pageHeader__flexbox">
           <SearchBar className="in-pageHeader__searchBar" />
-          <div className="in-pageHeader__addItemBtn">
-            <span className="in-pageHeader__addItemBtnText">
-              {" "}
-              + Add New Item
-            </span>
-          </div>
+          <Link to={"/inventory/new"}>
+            <div className="in-pageHeader__addItemBtn">
+              <span className="in-pageHeader__addItemBtnText">
+                {" "}
+                + Add New Item
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
 

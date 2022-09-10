@@ -46,7 +46,7 @@ export default function WarehouseDetails() {
     axios
       .delete(`${REACT_APP_API_SERVER_URL}/inventory/${selectedInventoryItem}`)
       .then((response) => {
-        navigate(`/warehouse/${id}/withinventory`);
+        navigate(`/warehouse/${id}`);
         refreshPage();
         closeModal();
       })

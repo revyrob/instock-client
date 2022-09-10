@@ -79,6 +79,10 @@ body {
       gap: 20px;
       flex-direction: row;
     }
+    @include desktop {
+      width: 50%;
+    }
+  
   }
 }
 
