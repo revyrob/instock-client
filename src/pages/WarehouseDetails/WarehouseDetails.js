@@ -20,6 +20,8 @@ export default function WarehouseDetails() {
   const [inventoriesArr, setInventoriesArr] = useState([]);
   let [selectedInventoryItem, setSelectedInventoryItem] = useState(null);
   let [nameInventoryItem, setNameInventoryItem] = useState(null);
+  //getting correct path from .env
+  const { REACT_APP_API_SERVER_URL } = process.env;
 
   console.log(inventoriesArr);
 
@@ -36,21 +38,20 @@ export default function WarehouseDetails() {
       });
   }, []);
 
-  //function to delete the warehouse which is pressed on
-  const deleteWarehouse = (e, inventoryId) => {
+  //function to delete the inventory item which is pressed on
+  const deleteWarehouse = (e, selectedInventoryItem, nameInventoryItem) => {
     e.preventDefault();
-    console.log(inventoryId);
+    console.log(selectedInventoryItem);
+    console.log(nameInventoryItem);
     axios
-      .delete(`${REACT_APP_API_SERVER_URL}/inventory/${inventoryId}`)
+      .delete(`${REACT_APP_API_SERVER_URL}/inventory/${selectedInventoryItem}`)
       .then((response) => {
-        //why is it no linking back with the refreshed info
-        navigate(`/warehouses/${id}`);
+        navigate(`/warehouse/${id}/withinventory`);
         refreshPage();
         closeModal();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(`Error has occurred. ${err}`));
   };
-
   /*
    *Modal code
    */
@@ -68,22 +69,19 @@ export default function WarehouseDetails() {
     window.location.reload(false);
   }
 
-  //getting correct path from .env
-  const { REACT_APP_API_SERVER_URL } = process.env;
-
   //use to navigate back to warehouse page after delete
   let navigate = useNavigate();
 
   //need this to do the overlay for the modal
   const bg =
-    window.innerWidth > 768
+    window.innerWidth > 786
       ? {
           overlay: {
             background: "rgba(19, 24, 44, .6)",
           },
           content: {
             width: "42rem",
-            height: "16.375rem",
+            height: "20rem",
             margin: "5.3125rem auto 0",
             display: "flex",
             flexDirection: "column",
