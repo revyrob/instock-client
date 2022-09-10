@@ -24,7 +24,9 @@ export default function WarehouseDetails() {
     <section className="inventoryItem">
       <div className="item-pageHeader">
         <div className="item-pageHeader__title">
-          <img src={arrowBack} alt="back icon" />
+          <Link to={`../../inventory`}>
+            <img src={arrowBack} alt="back icon" />
+          </Link>
           <p className="item-pageHeader__itemName">
             {/* {warehouseObj && warehouseObj?.city} */}
             {inventoryItem.itemName}
