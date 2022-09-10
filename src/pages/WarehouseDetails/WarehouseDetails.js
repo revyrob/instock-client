@@ -23,8 +23,6 @@ export default function WarehouseDetails() {
   //getting correct path from .env
   const { REACT_APP_API_SERVER_URL } = process.env;
 
-  console.log(inventoriesArr);
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -201,14 +199,16 @@ export default function WarehouseDetails() {
             <div className="magicBox__box1">
               {" "}
               <label className="magicBox__labelMobile">Warehouse</label>
-              <div className="flexbox">
-                <p className="magicBox__labelItem">{inventory.itemName}</p>
-                <img
-                  className="magicBox__chevron"
-                  src={chevron}
-                  alt="icon chevron"
-                />
-              </div>
+              <Link to={`../../inventory/${inventory.id}`}>
+                <div className="flexbox">
+                  <p className="magicBox__labelItem">{inventory.itemName}</p>
+                  <img
+                    className="magicBox__chevron"
+                    src={chevron}
+                    alt="icon chevron"
+                  />
+                </div>
+              </Link>
             </div>
             <div className="magicBox__box2">
               <label className="magicBox__labelMobile">Category</label>

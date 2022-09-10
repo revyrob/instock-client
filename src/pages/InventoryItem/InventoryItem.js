@@ -8,7 +8,7 @@ import editPen from "../../assets/icons/edit-24px.svg";
 import axios from "axios";
 
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 export default function WarehouseDetails() {
   const [inventoryItem, setInventoryItem] = useState([]);
@@ -30,14 +30,16 @@ export default function WarehouseDetails() {
             {inventoryItem.itemName}
           </p>
         </div>
-        <div className="item-pageHeader__editButton">
-          <img
-            className="item-pageHeader__iconColor"
-            src={editPen}
-            alt="edit icon"
-          />
-          <span className="item-pageHeader__iconBtnTxt">Edit</span>
-        </div>
+        <Link to={`../../inventory/${id}/edit`}>
+          <div className="item-pageHeader__editButton">
+            <img
+              className="item-pageHeader__iconColor"
+              src={editPen}
+              alt="edit icon"
+            />
+            <span className="item-pageHeader__iconBtnTxt">Edit</span>
+          </div>
+        </Link>
       </div>
       <hr class="item-pageHeader__divider"></hr>
       <div class="desktopInventoryItem">
