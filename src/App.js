@@ -6,6 +6,7 @@ import WarehouseDetails from './pages/WarehouseDetails/WarehouseDetails';
 import InventoryDetails from './pages/InventoryDetails/InventoryDetails';
 import InventoryItem from './pages/InventoryItem/InventoryItem';
 import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
+import InventoryFormPage from './pages/InventoryFormPage/InventoryFormPage';
 function App() {
   return (
     <BrowserRouter>
@@ -19,11 +20,10 @@ function App() {
 
         <Route path="/inventory" element={<InventoryDetails />} />
         <Route path="/inventory/:id" element={<InventoryItem />} />
-        {/* <Route path="/inventory/new" element={<Inventory />} /> */}
 
-        {/* <Route path="/inventory" element={<Inventory />} />
-        <Route path="/inventory/:id/edit" element={<Inventory />} /> 
-       */}
+        <Route path="/inventory/new" element={<InventoryFormPage />} />
+        <Route path="/inventory/:id/edit" element={<InventoryFormPage />} />
+
         <Route path="/warehousedetails" element={<WarehouseDetails />} />
         <Route path="/inventorydetails" element={<InventoryDetails />} />
       </Routes>

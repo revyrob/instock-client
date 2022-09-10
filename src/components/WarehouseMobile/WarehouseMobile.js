@@ -21,8 +21,9 @@ function WarehouseMobile({
 }) {
   //two columns
 
-  //modal functions
-  //state for modal
+  /*
+   *Modal code
+   */
   const [deleteModal, setDeleteModal] = useState(false);
 
   function openModal() {
