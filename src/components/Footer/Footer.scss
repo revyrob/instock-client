@@ -1,0 +1,18 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.footer {
+  @include wrapper-mr;
+  display: flex;
+  justify-content: center;
+
+  margin-top: $space-outside-items-sm;
+  margin-bottom: $space-outside-items-sm;
+}
+.footerText {
+  text-align: center;
+  width: 300px;
+  margin: auto;
+  font-size: $labels;
+  color: $secondary-dark;
+}

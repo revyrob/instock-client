@@ -7,6 +7,7 @@ import InventoryDetails from './pages/InventoryDetails/InventoryDetails';
 import InventoryItem from './pages/InventoryItem/InventoryItem';
 import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
 import InventoryFormPage from './pages/InventoryFormPage/InventoryFormPage';
+import Footer from './components/Footer/Footer';
 function App() {
   return (
     <BrowserRouter>
@@ -27,6 +28,7 @@ function App() {
         <Route path="/warehousedetails" element={<WarehouseDetails />} />
         <Route path="/inventorydetails" element={<InventoryDetails />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
