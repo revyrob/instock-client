@@ -18,6 +18,8 @@ import Modal from "react-modal";
 export default function WarehouseDetails() {
   const [warehouseObj, setWarehouseObj] = useState({});
   const [inventoriesArr, setInventoriesArr] = useState([]);
+  let [selectedInventoryItem, setSelectedInventoryItem] = useState(null);
+  let [nameInventoryItem, setNameInventoryItem] = useState(null);
 
   console.log(inventoriesArr);
 
@@ -33,6 +35,21 @@ export default function WarehouseDetails() {
         console.log(warehouse, inventories);
       });
   }, []);
+
+  //function to delete the warehouse which is pressed on
+  const deleteWarehouse = (e, inventoryId) => {
+    e.preventDefault();
+    console.log(inventoryId);
+    axios
+      .delete(`${REACT_APP_API_SERVER_URL}/inventory/${inventoryId}`)
+      .then((response) => {
+        //why is it no linking back with the refreshed info
+        navigate(`/warehouses/${id}`);
+        refreshPage();
+        closeModal();
+      })
+      .catch((err) => console.log(err));
+  };
 
   /*
    *Modal code
@@ -56,20 +73,6 @@ export default function WarehouseDetails() {
 
   //use to navigate back to warehouse page after delete
   let navigate = useNavigate();
-
-  //function to delete the warehouse which is pressed on
-  const deleteWarehouse = (e) => {
-    e.preventDefault();
-    axios
-      .delete(`${REACT_APP_API_SERVER_URL}/inventory/${id}`)
-      .then((response) => {
-        //why is it no linking back with the refreshed info
-        navigate("/warehouses");
-        refreshPage();
-        closeModal();
-      })
-      .catch((err) => console.log(err));
-  };
 
   //need this to do the overlay for the modal
   const bg =
@@ -232,62 +235,65 @@ export default function WarehouseDetails() {
               <label className="magicBox__labelMobile">QTY</label>{" "}
               <span className="magicBox__qtyValue">{inventory.quantity}</span>
             </div>
-            <div className="magicBox__box5" onClick={openModal}>
+            <div
+              className="magicBox__box5"
+              onClick={() => {
+                setSelectedInventoryItem(inventory.id);
+                setNameInventoryItem(inventory.itemName);
+                openModal();
+              }}
+            >
               <img src={delteCan} alt="delete icon" />
             </div>
-
-            {/* start of code */}
-            <Modal
-              isOpen={deleteModal}
-              // className="magicBox__box5__mobile"
-              onRequestClose={closeModal}
-              contentLabel="Delete Warehouse"
-              ariaHideApp={false}
-              style={bg}
-              // style={{window.innerWidth > "768px" ? bg : null}}
-            >
-              <div
-                className="magicBox__box5__modal__close"
-                onClick={closeModal}
-              >
-                <img src={closeIcon} alt="close icon" />
-              </div>
-              <div className="magicBox__box5__modal">
-                <div className="magicBox__box5__modal--textarea">
-                  <h2 className="magicBox__box5__modal--title">
-                    Delete {} warehouse?
-                  </h2>
-                  <p className="magicBox__box5__modal--text">
-                    Please confirm that you'd like to delete the {} from the
-                    list of warehouses. You won't be able to undo this action.
-                  </p>
-                </div>
-                <div className="magicBox__box5__modal--div">
-                  <button
-                    className="magicBox__box5__modal--btn magicBox__box5__modal--btn--cancel"
-                    type="cancel"
-                    onClick={closeModal}
-                  >
-                    {/* end of code */}
-                    <span className="btn-text">Cancel</span>
-                  </button>
-
-                  <button
-                    className="magicBox__box5__modal--btn magicBox__box5__modal--btn--delete"
-                    type="delete"
-                    onClick={deleteWarehouse}
-                  >
-                    <span className="btn-text">Delete</span>
-                  </button>
-                </div>
-              </div>
-            </Modal>
 
             <div className="magicBox__box6">
               <img src={editPen} alt="edit icon" />
             </div>
           </div>
         ))}
+
+      {/* start of code */}
+      <Modal
+        isOpen={deleteModal}
+        onRequestClose={closeModal}
+        contentLabel="Delete Warehouse"
+        ariaHideApp={false}
+        style={bg}
+      >
+        <div className="magicBox__box5__modal__close" onClick={closeModal}>
+          <img src={closeIcon} alt="close icon" />
+        </div>
+        <div className="magicBox__box5__modal">
+          <div className="magicBox__box5__modal--textarea">
+            <h2 className="magicBox__box5__modal--title">
+              Delete {nameInventoryItem} inventory item?
+            </h2>
+            <p className="magicBox__box5__modal--text">
+              Please confirm that you'd like to delete {nameInventoryItem} from
+              the inventory list. You won't be able to undo this action.
+            </p>
+          </div>
+          <div className="magicBox__box5__modal--div">
+            <button
+              className="magicBox__box5__modal--btn magicBox__box5__modal--btn--cancel"
+              type="cancel"
+              onClick={closeModal}
+            >
+              {/* end of code */}
+              <span className="btn-text">Cancel</span>
+            </button>
+            <button
+              className="magicBox__box5__modal--btn magicBox__box5__modal--btn--delete"
+              type="delete"
+              onClick={(e) =>
+                deleteWarehouse(e, selectedInventoryItem, nameInventoryItem)
+              }
+            >
+              <span className="btn-text">Delete</span>
+            </button>
+          </div>
+        </div>
+      </Modal>
     </section>
   );
 }
