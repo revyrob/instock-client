@@ -21,6 +21,8 @@ export default function WarehouseDetails() {
   let [selectedInventoryItem, setSelectedInventoryItem] = useState(null);
   let [nameInventoryItem, setNameInventoryItem] = useState(null);
 
+  console.log(inventoriesArr);
+
   const { id } = useParams();
 
   useEffect(() => {
