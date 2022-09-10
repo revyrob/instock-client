@@ -7,6 +7,10 @@ import { useLocation } from 'react-router-dom';
 export default function Header() {
   const { pathname } = useLocation();
 
+  // const regexInventory = /^/inventory[a-zA-Z-/-:---_]*/;
+  // const path = paragraph.match(pathname);
+  // console.log(path);
+
   return (
     <div>
       <header className="nav__header">
