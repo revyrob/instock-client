@@ -26,11 +26,9 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
     }
 
     function handleEditChange(e){
-        console.log("handleEditChange")
         if(e.target.value === "In Stock"){
             setEditStatus(true)
            }else{
-            console.log(false)
             setEditStatus(false)
         }
     }

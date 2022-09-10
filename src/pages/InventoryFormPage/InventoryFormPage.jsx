@@ -56,7 +56,7 @@ export default function InventoryFormPage(){
         }
         console.log("resbody",resBody)
         const {data} = await axios.put(`http://localhost:8080/inventory/`,resBody)
-        // navigate("/warehouses");
+        navigate("/inventory");
     }
 
     async function postData(formObj){
@@ -78,19 +78,16 @@ export default function InventoryFormPage(){
 
 
     function handleEditSumbit(e){
-        console.log("in edit")
         e.preventDefault()
         const formObj = e.target;
         console.log(formObj)
         let errObjLocal = formValidationInventory(formObj)
-        console.log(errObjLocal)
-        putEditedData(formObj)
-        // if(errObjLocal){
-        //     setErrobj(errObjLocal)
-        // }else{
-        //     setErrobj(errObj)
-        //     putEditedData(formObj)
-        // }
+        if(errObjLocal){
+            setErrobj(errObjLocal)
+        }else{
+            setErrobj(errObj)
+            putEditedData(formObj)
+        }
     }
 
     function handleNewSumbit(e){
