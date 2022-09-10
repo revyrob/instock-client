@@ -152,7 +152,7 @@ export default function InventoryFormPage(){
     return(
         <>  
             <div className="edit-wrhse">
-                <PageHeader title={inventoryId? "Edit inventory":"Add New inventory"} backLink={'warehouses'}></PageHeader>
+                <PageHeader title={inventoryId? "Edit inventory":"Add New inventory"} backLink={`../../inventory`}></PageHeader>
                 <InventoryForm inventory={inventory} inventoryId={inventoryId} handleNewSumbit={handleNewSumbit} handleEditSumbit={handleEditSumbit} errObj={errObj} warehouseNames={warehouseNames}></InventoryForm >
             </div>  
         </>  
