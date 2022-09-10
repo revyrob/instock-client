@@ -10,7 +10,7 @@ import {FormBody} from './FormBody'
 import {CancelButton} from './CancelButton'
 import {SumbitButton} from './SumbitButton'
 import { Label } from './Label';
-
+import { ErrorSpan } from './ErrorSpan';
 export default function InventoryForm({inventory,inventoryId,handleNewSumbit,handleEditSumbit,errObj,warehouseNames}){
     if(!inventory){
         return(
@@ -24,6 +24,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                     </Label>
                     <Label labelTxt={"Description"}>
                         <textarea name="invrDesc" id="" cols="30" rows="10" class="frmgrid__inpttxt" placeholder='' defaultValue={""}></textarea>
+                        <ErrorSpan errObj={errObj} name={'invrDesc'}></ErrorSpan>
                     </Label>
                     <Label labelTxt={"Category"}> 
                         <select name="invrCats" className="frmgrid__select">
@@ -34,6 +35,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                             <option value="Accessories">Accessories</option>
                             <option value="Health">Health</option>
                         </select>
+                        <ErrorSpan errObj={errObj} name={'invrCats'}></ErrorSpan>
                     </Label>
                 </FormGridLeft>
                 <FormGridSeprator></FormGridSeprator>
@@ -59,7 +61,9 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                                     return <option key={idx} value={`${ele}`}>{ele}</option>
                                 })}
                             </select>}
+                            <ErrorSpan errObj={errObj} name={'wrhsCats'}></ErrorSpan>
                    </Label>
+                   
                 </FormGridRight>
                 </FormBody>
                 <FormFooter>
@@ -92,6 +96,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                     </Label>
                     <Label labelTxt={"Description"}>
                         <textarea name="invrTxt" id="" cols="30" rows="10" class="frmgrid__inpttxt" placeholder='' defaultValue={inventory.description}></textarea>
+                        <ErrorSpan errObj={errObj}></ErrorSpan>
                     </Label>
                     <Label labelTxt={"Category"}> 
                         <select name="invrCats" className="frmgrid__select" value={inventory.category}>
@@ -116,7 +121,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                         <label for="contactChoice2" >Out of Stock</label> 
                     </Label>
                    <Label labelTxt={"Wearhouses"}>
-                        {warehouseNames && <select name="wrhsCats" className="frmgrid__select" defaultValue={""}>
+                        {warehouseNames && <select name="wrhsCats" className="frmgrid__select" defaultValue={inventory.warehouseName}>
                                 <option value="">Please Select</option>
                                 {warehouseNames.map((ele,idx)=>{
                                     return <option key={idx} value={ele}>{ele}</option>
@@ -126,7 +131,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                 </FormGridRight>
                 </FormBody>
                 <FormFooter>
-                    <CancelButton cancelLink={'/warehouses'}></CancelButton>
+                    <CancelButton cancelLink={'/inventory'}></CancelButton>
                     <SumbitButton activeId={inventoryId} buttonText={'Inventory'}></SumbitButton>
                 </FormFooter>
             </FormGrid>

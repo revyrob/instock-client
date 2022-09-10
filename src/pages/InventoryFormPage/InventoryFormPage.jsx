@@ -81,80 +81,48 @@ export default function InventoryFormPage(){
     }
 
     function formValidation(formObj){
-        const {invrName,invrDesc,invrCats,invrStat,invrQuan} = formObj
-        console.log(invrQuan.value)
+        const {invrName,invrDesc,invrCats,invrStat,invrQuan,wrhsCats} = formObj
+        console.log(wrhsCats)
         //local err obj to collect err inputs 
         const localErrObj = {
             valid:false,
         }
 
+       
+        if(!invrName.value.replace(/\s/g, '').length){
+            localErrObj[invrName.name] = "this field is required"
+            localErrObj.valid = true;
+        }
+
          //check if field is not empty
-        // if(!wrhsName.value.replace(/\s/g, '').length){
-        //     localErrObj[wrhsName.name] = "this field is required"
-        //     localErrObj.valid = true;
-        // }
+        if(!invrDesc.value.replace(/\s/g, '').length){
+            localErrObj[invrDesc.name] = "this field is required"
+            localErrObj.valid = true;
+        }
 
-        //  //check if field is not empty
-        // if(!wrhsAdd.value.replace(/\s/g, '').length){
-        //     localErrObj[wrhsAdd.name] = "this field is required"
-        //     localErrObj.valid = true;
-        // }
-
-        //  //check if field is not empty
-        // if(!wrhsCity.value.replace(/\s/g, '').length){
-        //     localErrObj[wrhsCity.name] = "this field is required"
-        //     localErrObj.valid = true;
-        // }
-
-        //  //check if field is not empty
-        // if(!wrhsCountry.value.replace(/\s/g, '').length){
-        //     localErrObj[wrhsCountry.name] = "this field is required"
-        //     localErrObj.valid = true;
-        // }
-
-        //  //check if field is not empty
-        // if(!cntcName.value.replace(/\s/g, '').length){
-        //     localErrObj[cntcName.name] = "this field is required"
-        //     localErrObj.valid = true;
-        // }
-
-        // //check if field is not empty
-        // if(!cntcPos.value.replace(/\s/g, '').length){
-        //     localErrObj[cntcPos.name] = "this field is required"
-        //     localErrObj.valid = true;
-        // }
-
-        // //check if phone is empty or has number as input
-        // if(!cntcPhn.value.replace(/\s/g, '').length){
-        //     localErrObj[cntcPhn.name] = "this field is required"
-        //     localErrObj.valid = true;
-            
-        // }else if(!Number(cntcPhn.value)){
-        //     localErrObj[cntcPhn.name] = "please enter a number"
-        //     localErrObj.valid = true;
-        // }else{
-
-        // }
-        
-        // //check if email is not empty and has includes @
-        // if(!cntcEmail.value.replace(/\s/g, '').length){
-        //     localErrObj[cntcEmail.name] = "this field is required"
-        //     localErrObj.valid = true;
-        // }else if(!cntcEmail.value.includes('@')){
-        //     localErrObj[cntcEmail.name] = "not valid email"
-        //     localErrObj.valid = true;
-        // }else{
-
-        // }
-
-        // //set errObj state to local state depending on localErrObj valid property
-        // if(localErrObj.valid){
-        //     setErrobj(localErrObj)
-        // }else{
-        //     setErrobj(errObj)
-        //     return true;
-        // }
-        // return false;    
+         //check if field is not empty
+        if(!invrCats.value.replace(/\s/g, '').length){
+            localErrObj[invrCats.name] = "this field is required"
+            localErrObj.valid = true;
+        }
+        if(!wrhsCats.value.replace(/\s/g, '').length){
+            localErrObj[wrhsCats.name] = "this field is required"
+            localErrObj.valid = true;
+        }
+        if(!invrQuan.value.replace(/\s/g, '').length){
+            localErrObj[invrQuan.name] = "this field is required"
+            localErrObj.valid = true;
+        }else if(!Number(invrQuan.value)){
+            localErrObj[invrQuan.name] = "this field is required"
+        }
+    
+        if(localErrObj.valid){
+            setErrobj(localErrObj)
+        }else{
+            setErrobj(errObj)
+            return true;
+        }
+        return false;    
     }
 
     function handleEditSumbit(e){
@@ -163,6 +131,7 @@ export default function InventoryFormPage(){
         const formObj = e.target;
         console.log(typeof formObj)
         // const formObj = e.target;
+        formValidation(formObj)
         // if(formValidation(formObj)){
         //     putEditedData(formObj)
         // }  
