@@ -81,100 +81,102 @@ export default function InventoryFormPage(){
     }
 
     function formValidation(formObj){
-        const {wrhsName,wrhsAdd,wrhsCity,wrhsCountry,cntcName,cntcPos,cntcPhn,cntcEmail} = formObj
+        const {invrName,invrDesc,invrCats,invrStat,invrQuan} = formObj
+        console.log(invrQuan.value)
         //local err obj to collect err inputs 
         const localErrObj = {
             valid:false,
         }
 
          //check if field is not empty
-        if(!wrhsName.value.replace(/\s/g, '').length){
-            localErrObj[wrhsName.name] = "this field is required"
-            localErrObj.valid = true;
-        }
+        // if(!wrhsName.value.replace(/\s/g, '').length){
+        //     localErrObj[wrhsName.name] = "this field is required"
+        //     localErrObj.valid = true;
+        // }
 
-         //check if field is not empty
-        if(!wrhsAdd.value.replace(/\s/g, '').length){
-            localErrObj[wrhsAdd.name] = "this field is required"
-            localErrObj.valid = true;
-        }
+        //  //check if field is not empty
+        // if(!wrhsAdd.value.replace(/\s/g, '').length){
+        //     localErrObj[wrhsAdd.name] = "this field is required"
+        //     localErrObj.valid = true;
+        // }
 
-         //check if field is not empty
-        if(!wrhsCity.value.replace(/\s/g, '').length){
-            localErrObj[wrhsCity.name] = "this field is required"
-            localErrObj.valid = true;
-        }
+        //  //check if field is not empty
+        // if(!wrhsCity.value.replace(/\s/g, '').length){
+        //     localErrObj[wrhsCity.name] = "this field is required"
+        //     localErrObj.valid = true;
+        // }
 
-         //check if field is not empty
-        if(!wrhsCountry.value.replace(/\s/g, '').length){
-            localErrObj[wrhsCountry.name] = "this field is required"
-            localErrObj.valid = true;
-        }
+        //  //check if field is not empty
+        // if(!wrhsCountry.value.replace(/\s/g, '').length){
+        //     localErrObj[wrhsCountry.name] = "this field is required"
+        //     localErrObj.valid = true;
+        // }
 
-         //check if field is not empty
-        if(!cntcName.value.replace(/\s/g, '').length){
-            localErrObj[cntcName.name] = "this field is required"
-            localErrObj.valid = true;
-        }
+        //  //check if field is not empty
+        // if(!cntcName.value.replace(/\s/g, '').length){
+        //     localErrObj[cntcName.name] = "this field is required"
+        //     localErrObj.valid = true;
+        // }
 
-        //check if field is not empty
-        if(!cntcPos.value.replace(/\s/g, '').length){
-            localErrObj[cntcPos.name] = "this field is required"
-            localErrObj.valid = true;
-        }
+        // //check if field is not empty
+        // if(!cntcPos.value.replace(/\s/g, '').length){
+        //     localErrObj[cntcPos.name] = "this field is required"
+        //     localErrObj.valid = true;
+        // }
 
-        //check if phone is empty or has number as input
-        if(!cntcPhn.value.replace(/\s/g, '').length){
-            localErrObj[cntcPhn.name] = "this field is required"
-            localErrObj.valid = true;
+        // //check if phone is empty or has number as input
+        // if(!cntcPhn.value.replace(/\s/g, '').length){
+        //     localErrObj[cntcPhn.name] = "this field is required"
+        //     localErrObj.valid = true;
             
-        }else if(!Number(cntcPhn.value)){
-            localErrObj[cntcPhn.name] = "please enter a number"
-            localErrObj.valid = true;
-        }else{
+        // }else if(!Number(cntcPhn.value)){
+        //     localErrObj[cntcPhn.name] = "please enter a number"
+        //     localErrObj.valid = true;
+        // }else{
 
-        }
+        // }
         
-        //check if email is not empty and has includes @
-        if(!cntcEmail.value.replace(/\s/g, '').length){
-            localErrObj[cntcEmail.name] = "this field is required"
-            localErrObj.valid = true;
-        }else if(!cntcEmail.value.includes('@')){
-            localErrObj[cntcEmail.name] = "not valid email"
-            localErrObj.valid = true;
-        }else{
+        // //check if email is not empty and has includes @
+        // if(!cntcEmail.value.replace(/\s/g, '').length){
+        //     localErrObj[cntcEmail.name] = "this field is required"
+        //     localErrObj.valid = true;
+        // }else if(!cntcEmail.value.includes('@')){
+        //     localErrObj[cntcEmail.name] = "not valid email"
+        //     localErrObj.valid = true;
+        // }else{
 
-        }
+        // }
 
-        //set errObj state to local state depending on localErrObj valid property
-        if(localErrObj.valid){
-            setErrobj(localErrObj)
-        }else{
-            setErrobj(errObj)
-            return true;
-        }
-        return false;    
+        // //set errObj state to local state depending on localErrObj valid property
+        // if(localErrObj.valid){
+        //     setErrobj(localErrObj)
+        // }else{
+        //     setErrobj(errObj)
+        //     return true;
+        // }
+        // return false;    
     }
 
     function handleEditSumbit(e){
-        console.log("in invetory page")
+        console.log("in edit")
         e.preventDefault()
         const formObj = e.target;
-        if(formValidation(formObj)){
-            putEditedData(formObj)
-        }  
+        console.log(typeof formObj)
+        // const formObj = e.target;
+        // if(formValidation(formObj)){
+        //     putEditedData(formObj)
+        // }  
     }
 
     function handleNewSumbit(e){
-        console.log("in invetory page")
-        const formObj = e.target;
-        console.log(formObj.invrCats.value)
-        console.log(formObj.wrhsCats.value)
+        console.log("in sumbit")
         e.preventDefault()
-        if(formValidation(formObj)){
-            postData(formObj)
-            e.target.reset();
-        }
+        const formObj = e.target;
+        formValidation(formObj)
+        // if(formValidation(formObj)){
+        //     postData(formObj)
+        //     e.target.reset();
+        // }
     }
 
 

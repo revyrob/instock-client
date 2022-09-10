@@ -10,11 +10,12 @@ import {FormBody} from './FormBody'
 import {CancelButton} from './CancelButton'
 import {SumbitButton} from './SumbitButton'
 import { Label } from './Label';
+
 export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,handleEditSumbit,errObj,cancelLink}){
-    
+    console.log(errObj)
     return(
         <>
-        <FormGrid warehouseId={warehouseId} handleEditSumbit={handleEditSumbit} handleNewSumbit={handleNewSumbit}>
+        <FormGrid activeId={warehouseId} handleEditSumbit={handleEditSumbit} handleNewSumbit={handleNewSumbit}>
             <FormBody>
             <FormGridLeft>
                 <Title title={"Warehouse Details"}></Title>
@@ -52,7 +53,7 @@ export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,han
             </FormBody>
             <FormFooter>
                 <CancelButton cancelLink={cancelLink}></CancelButton>
-                <SumbitButton buttonText={'Warehouse'} warehouseId={warehouseId}></SumbitButton>
+                <SumbitButton buttonText={'Warehouse'} activeId={warehouseId}></SumbitButton>
             </FormFooter>
         </FormGrid>
            

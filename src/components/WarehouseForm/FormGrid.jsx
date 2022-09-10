@@ -1,6 +1,6 @@
-export function FormGrid({warehouseId,handleEditSumbit,handleNewSumbit,children}){
+export function FormGrid({activeId,handleEditSumbit,handleNewSumbit,children}){
     return(
-        <form className="frmgrid" onSubmit={warehouseId ? handleEditSumbit : handleNewSumbit}>
+        <form className="frmgrid" onSubmit={activeId ? handleEditSumbit : handleNewSumbit}>
             {children}
         </form>
     )

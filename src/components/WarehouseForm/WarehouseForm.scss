@@ -156,4 +156,16 @@
         background-position:  98% center;
 
     }
+
+    &__quant{
+        width:20%;
+        display: block;
+        border-radius: 20px;
+        border:1px solid $secondary-light;
+        height:36px;
+        padding:8px 16px;
+        &--err{
+            border:1px solid $sup-red;
+        }
+    }
 }
