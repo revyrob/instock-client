@@ -64,14 +64,14 @@ export default function WarehouseDetails() {
 
   //need this to do the overlay for the modal
   const bg =
-    window.innerWidth > 768
+    window.innerWidth > 786
       ? {
           overlay: {
             background: "rgba(19, 24, 44, .6)",
           },
           content: {
             width: "42rem",
-            height: "16.375rem",
+            height: "20rem",
             margin: "5.3125rem auto 0",
             display: "flex",
             flexDirection: "column",
@@ -226,8 +226,7 @@ export default function WarehouseDetails() {
             </h2>
             <p className="magicBox__box5__modal--text">
               Please confirm that you'd like to delete {nameInventoryItem} from
-              the inventory list. You won't be able to undo this action. The
-              item id is {selectedInventoryItem}.
+              the inventory list. You won't be able to undo this action.
             </p>
           </div>
           <div className="magicBox__box5__modal--div">

@@ -44,7 +44,7 @@ export default function WarehouseDetails() {
     axios
       .delete(`${REACT_APP_API_SERVER_URL}/inventory/${selectedInventoryItem}`)
       .then((response) => {
-        navigate(`/warehouse/${id}`);
+        navigate(`/warehouse/${id}/withinventory`);
         refreshPage();
         closeModal();
       })
@@ -72,14 +72,14 @@ export default function WarehouseDetails() {
 
   //need this to do the overlay for the modal
   const bg =
-    window.innerWidth > 768
+    window.innerWidth > 786
       ? {
           overlay: {
             background: "rgba(19, 24, 44, .6)",
           },
           content: {
             width: "42rem",
-            height: "16.375rem",
+            height: "20rem",
             margin: "5.3125rem auto 0",
             display: "flex",
             flexDirection: "column",
