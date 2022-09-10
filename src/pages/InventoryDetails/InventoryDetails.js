@@ -10,6 +10,7 @@ import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function WarehouseDetails() {
   const [inventoriesArr, setInventoriesArr] = useState([]);
@@ -25,7 +26,7 @@ export default function WarehouseDetails() {
           <p className="in-pageHeader__warehouse-name">Inventory</p>
         </div>
         <div className="in-pageHeader__flexbox">
-          <SearchBar />
+          <SearchBar className="in-pageHeader__searchBar" />
           <div className="in-pageHeader__addItemBtn">
             <span className="in-pageHeader__addItemBtnText">
               {' '}
@@ -90,7 +91,12 @@ export default function WarehouseDetails() {
               {' '}
               <label className="in-magicBox__labelMobile">INVENTORY ITEM</label>
               <div className="flexbox">
-                <p className="in-magicBox__labelItem">{inventory.itemName}</p>
+                <Link
+                  to={`/inventory/${inventory.id}`}
+                  className="in-magicBox__link"
+                >
+                  <p className="in-magicBox__labelItem">{inventory.itemName}</p>
+                </Link>
                 <img
                   className="in-magicBox__chevron"
                   src={chevron}
