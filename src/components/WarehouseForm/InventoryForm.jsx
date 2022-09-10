@@ -11,7 +11,39 @@ import {CancelButton} from './CancelButton'
 import {SumbitButton} from './SumbitButton'
 import { Label } from './Label';
 import { ErrorSpan } from './ErrorSpan';
+import {useEffect, useState} from 'react'
 export default function InventoryForm({inventory,inventoryId,handleNewSumbit,handleEditSumbit,errObj,warehouseNames}){
+    console.log(inventory)
+    const [newStatus,setNewStatus] = useState(false)
+    const [editStatus,setEditStatus] = useState(false)
+
+    function handleChange(e){
+       if(e.target.value === "In Stock"){
+        setNewStatus(true)
+       }else{
+        setNewStatus(false)
+       }
+    }
+
+    function handleEditChange(e){
+        if(e.target.value === "In Stock"){
+            setEditStatus(true)
+           }else{
+            setEditStatus(false)
+        }
+    }
+    
+    useEffect(
+        function(){
+            if(inventory && inventory.status==="In Stock"){
+                setEditStatus(true)
+            }else{
+                setEditStatus(false)
+            }
+        }
+    ,[inventory])
+
+
     if(!inventory){
         return(
             <>
@@ -43,21 +75,20 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                     <Title title={"Item Availability"}></Title>
                     <Label labelTxt={"Status"}>
                         <input type="radio" id="contactChoice1"
-                        name="invrStat" value="In Stock" />
+                        name="invrStat" value="In Stock" onChange={handleChange}/>
                         <label for="contactChoice1">In Stock</label>
-                    
                         <input type="radio" id="contactChoice2"
-                        name="invrStat" defaultChecked={false} value="Out of Stock"/>
-                        <label for="contactChoice2" >Out of Stock</label> 
+                        name="invrStat" defaultChecked={true} value="Out of Stock" onChange={handleChange}/>
+                        <label for="contactChoice2">Out of Stock</label> 
                     </Label>
-                    <Label labelTxt={"Quantity"}>
+                   {newStatus && <Label labelTxt={"Quantity"}>
                         <Input  name={"invrQuan"} errObj={errObj} defaultValue={""}></Input>
-                    </Label>
+                    </Label>}
                    <Label labelTxt={"Wearhouses"}>
                         {warehouseNames && <select name="wrhsCats" className="frmgrid__select" defaultValue={""}>
                                 <option value="">Please Select</option>
                                 {warehouseNames.map((ele,idx)=>{
-                                    console.log(ele)
+                                 
                                     return <option key={idx} value={`${ele}`}>{ele}</option>
                                 })}
                             </select>}
@@ -74,17 +105,6 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
             </>
         )
     }else{
-        let statusOFStatus = convertInStockFormatFromStringToBoolean();
-            function convertInStockFormatFromStringToBoolean(){
-                
-                    if(inventory.status==="In Stock"){
-                        console.log("true")
-                        return true;
-                    }else{
-                        console.log("false")
-                        return false;
-                    }   
-            }
         return (
             <>
             <FormGrid activeId={inventoryId} handleEditSumbit={handleEditSumbit} handleNewSumbit={handleNewSumbit}>
@@ -95,7 +115,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                         <Input  name={"invrName"} errObj={errObj} defaultValue={inventory.itemName}></Input>
                     </Label>
                     <Label labelTxt={"Description"}>
-                        <textarea name="invrTxt" id="" cols="30" rows="10" class="frmgrid__inpttxt" placeholder='' defaultValue={inventory.description}></textarea>
+                        <textarea name="invrDesc" id="" cols="30" rows="10" class="frmgrid__inpttxt" placeholder='' defaultValue={inventory.description}></textarea>
                         <ErrorSpan errObj={errObj}></ErrorSpan>
                     </Label>
                     <Label labelTxt={"Category"}> 
@@ -114,12 +134,15 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                     <Title title={"Item Availability"}></Title>
                     <Label labelTxt={"Status"}>
                         <input type="radio" id="contactChoice1"
-                        name="contact" defaultChecked={statusOFStatus}/>
+                        name="invrStat" defaultChecked={editStatus} onClick={handleEditChange}/>
                         <label for="contactChoice1">In Stock</label>
                         <input type="radio" id="contactChoice2"
-                        name="contact" defaultChecked={!statusOFStatus}/>
+                        name="invrStat" defaultChecked={!editStatus} onClick={handleEditChange}/>
                         <label for="contactChoice2" >Out of Stock</label> 
                     </Label>
+                   {editStatus &&  <Label labelTxt={"Quantity"}>
+                        <Input  name={"invrQuan"} errObj={errObj} defaultValue={inventory.quantity}></Input>
+                    </Label>}
                    <Label labelTxt={"Wearhouses"}>
                         {warehouseNames && <select name="wrhsCats" className="frmgrid__select" defaultValue={inventory.warehouseName}>
                                 <option value="">Please Select</option>
