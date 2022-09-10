@@ -5,7 +5,7 @@ import { useParams , useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
-
+import {formValidationInventory} from '../../util/util'
 export default function InventoryFormPage(){
     const [inventory, setwarehouse] = useState(null);
     const [warehouseNames, setWarehouseNames] = useState(null);
@@ -36,7 +36,6 @@ export default function InventoryFormPage(){
     async function getInventoryId(){
         try{
             const {data} = await axios.get(`http://localhost:8080/inventory/${inventoryId}`)
-            console.log("data from api",data)
             setwarehouse(data)
         }catch(err){
             alert("invalid id")
@@ -44,108 +43,69 @@ export default function InventoryFormPage(){
     }
     
     async function putEditedData(formObj){
-        const {wrhsName,wrhsAdd,wrhsCity,wrhsCountry,cntcName,cntcPos,cntcPhn,cntcEmail} = formObj
+        const {invrName,invrDesc,invrCats,invrStat,invrQuan,wrhsCats} = formObj
         const resBody ={
-            id: inventoryId,
-            name: wrhsName.value,
-            address: wrhsAdd.value,
-            city: wrhsCity.value,
-            country: wrhsCountry.value,
-            contact: {
-              name: cntcName.value,
-              position: cntcPos.value,
-              phone:cntcPhn.value,
-              email:cntcEmail.value
-            }
+            id:inventoryId,
+            warehouseID:inventory.warehouseID,
+            warehouseName:wrhsCats.value,
+            itemName: invrName.value,
+            description: invrDesc.value,
+            category: invrCats.value,
+            status: invrStat.value,
+            quantity:invrQuan ? invrQuan.value : "0",
         }
-        const {data} = await axios.put(`http://localhost:8080/inventory/${inventoryId}`,resBody)
-        navigate("/warehouses");
+        console.log("resbody",resBody)
+        const {data} = await axios.put(`http://localhost:8080/inventory/`,resBody)
+        // navigate("/warehouses");
     }
 
     async function postData(formObj){
-        const {wrhsName,wrhsAdd,wrhsCity,wrhsCountry,cntcName,cntcPos,cntcPhn,cntcEmail} = formObj
+        console.log("in post")
+        const {invrName,invrDesc,invrCats,invrStat,invrQuan,wrhsCats} = formObj;
+        console.log(invrQuan)
         const resBody ={
-            name: wrhsName.value,
-            address: wrhsAdd.value,
-            city: wrhsCity.value,
-            country: wrhsCountry.value,
-            contact: {
-              name: cntcName.value,
-              position: cntcPos.value,
-              phone:cntcPhn.value,
-              email:cntcEmail.value
-            }
+            warehouseName:wrhsCats.value,
+            itemName: invrName.value,
+            description: invrDesc.value,
+            category: invrCats.value,
+            status: invrStat.value,
+            quantity:invrQuan ? invrQuan.value : "0",
         }
+        console.log("resbody",resBody)
         const {data} = await axios.post('http://localhost:8080/inventory/',resBody)
-        navigate("/warehouses");
+        navigate("/inventory");
     }
 
-    function formValidation(formObj){
-        const {invrName,invrDesc,invrCats,invrStat,invrQuan,wrhsCats} = formObj
-        console.log(wrhsCats)
-        //local err obj to collect err inputs 
-        const localErrObj = {
-            valid:false,
-        }
-
-       
-        if(!invrName.value.replace(/\s/g, '').length){
-            localErrObj[invrName.name] = "this field is required"
-            localErrObj.valid = true;
-        }
-
-         //check if field is not empty
-        if(!invrDesc.value.replace(/\s/g, '').length){
-            localErrObj[invrDesc.name] = "this field is required"
-            localErrObj.valid = true;
-        }
-
-         //check if field is not empty
-        if(!invrCats.value.replace(/\s/g, '').length){
-            localErrObj[invrCats.name] = "this field is required"
-            localErrObj.valid = true;
-        }
-        if(!wrhsCats.value.replace(/\s/g, '').length){
-            localErrObj[wrhsCats.name] = "this field is required"
-            localErrObj.valid = true;
-        }
-        if(!invrQuan.value.replace(/\s/g, '').length){
-            localErrObj[invrQuan.name] = "this field is required"
-            localErrObj.valid = true;
-        }else if(!Number(invrQuan.value)){
-            localErrObj[invrQuan.name] = "this field is required"
-        }
-    
-        if(localErrObj.valid){
-            setErrobj(localErrObj)
-        }else{
-            setErrobj(errObj)
-            return true;
-        }
-        return false;    
-    }
 
     function handleEditSumbit(e){
         console.log("in edit")
         e.preventDefault()
         const formObj = e.target;
-        console.log(typeof formObj)
-        // const formObj = e.target;
-        formValidation(formObj)
-        // if(formValidation(formObj)){
+        console.log(formObj)
+        let errObjLocal = formValidationInventory(formObj)
+        console.log(errObjLocal)
+        putEditedData(formObj)
+        // if(errObjLocal){
+        //     setErrobj(errObjLocal)
+        // }else{
+        //     setErrobj(errObj)
         //     putEditedData(formObj)
-        // }  
+        // }
     }
 
     function handleNewSumbit(e){
         console.log("in sumbit")
         e.preventDefault()
         const formObj = e.target;
-        formValidation(formObj)
-        // if(formValidation(formObj)){
-        //     postData(formObj)
-        //     e.target.reset();
-        // }
+        console.log(formObj)
+        let errObjLocal = formValidationInventory(formObj)
+        console.log(errObjLocal)
+        if(errObjLocal){
+            setErrobj(errObjLocal)
+        }else{
+            setErrobj(errObj)
+            postData(formObj)
+        }
     }
 
 
