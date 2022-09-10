@@ -1,23 +1,88 @@
-import './InventoryDetails.scss';
+import "./InventoryDetails.scss";
 
-import arrowSort from '../../assets/icons/sort-24px.svg';
-import chevron from '../../assets/icons/chevron_right-24px.svg';
-import delteCan from '../../assets/icons/delete_outline-24px.svg';
-import editPen from '../../assets/icons/edit-24px.svg';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import arrowSort from "../../assets/icons/sort-24px.svg";
+import chevron from "../../assets/icons/chevron_right-24px.svg";
+import delteCan from "../../assets/icons/delete_outline-24px.svg";
+import editPen from "../../assets/icons/edit-24px.svg";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import closeIcon from "../../assets/icons/close-24px.svg";
 
-import axios from 'axios';
-import { v4 as uuid } from 'uuid';
+import axios from "axios";
+import { v4 as uuid } from "uuid";
+import Modal from "react-modal";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function WarehouseDetails() {
   const [inventoriesArr, setInventoriesArr] = useState([]);
+  let [selectedInventoryItem, setSelectedInventoryItem] = useState(null);
+  let [nameInventoryItem, setNameInventoryItem] = useState(null);
+
   useEffect(() => {
-    axios.get('http://localhost:8080/inventory').then((payload) => {
+    axios.get("http://localhost:8080/inventory").then((payload) => {
       setInventoriesArr(payload.data);
     });
   }, []);
+
+  //function to delete the inventory item which is pressed on
+  const deleteWarehouse = (e, selectedInventoryItem, nameInventoryItem) => {
+    e.preventDefault();
+    console.log(selectedInventoryItem);
+    console.log(nameInventoryItem);
+    axios
+      .delete(`http://localhost:8080/inventory/${selectedInventoryItem}`)
+      .then((response) => {
+        navigate(`/inventory`);
+        refreshPage();
+        closeModal();
+      })
+      .catch((err) => console.log(`Error has occurred. ${err}`));
+  };
+
+  /*
+   *Modal code
+   */
+  const [deleteModal, setDeleteModal] = useState(false);
+
+  function openModal() {
+    setDeleteModal(true);
+  }
+
+  function closeModal() {
+    setDeleteModal(false);
+  }
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
+  //getting correct path from .env
+  const { REACT_APP_API_SERVER_URL } = process.env;
+
+  //use to navigate back to warehouse page after delete
+  let navigate = useNavigate();
+
+  //need this to do the overlay for the modal
+  const bg =
+    window.innerWidth > 768
+      ? {
+          overlay: {
+            background: "rgba(19, 24, 44, .6)",
+          },
+          content: {
+            width: "42rem",
+            height: "16.375rem",
+            margin: "5.3125rem auto 0",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            boxShadow: "0px 2px 5px rgba(19, 24, 44, 0.1)",
+            borderRadius: "3px",
+          },
+        }
+      : { className: "magicBox__box5__modal" };
+
   return (
     <section className="inventoryDetails">
       <div className="in-pageHeader">
@@ -28,7 +93,7 @@ export default function WarehouseDetails() {
           <SearchBar />
           <div className="in-pageHeader__addItemBtn">
             <span className="in-pageHeader__addItemBtnText">
-              {' '}
+              {" "}
               + Add New Item
             </span>
           </div>
@@ -45,7 +110,7 @@ export default function WarehouseDetails() {
           />
         </div>
         <div className="in-stillBox__box2">
-          {' '}
+          {" "}
           <p className="in-stillBox__labelTable">CATEGORY</p>
           <img
             className="in-stillBox__arrowSort"
@@ -54,7 +119,7 @@ export default function WarehouseDetails() {
           />
         </div>
         <div className="in-stillBox__box3">
-          {' '}
+          {" "}
           <p className="in-stillBox__labelTable">STATUS</p>
           <img
             className="in-stillBox__arrowSort"
@@ -63,7 +128,7 @@ export default function WarehouseDetails() {
           />
         </div>
         <div className="in-stillBox__box4">
-          {' '}
+          {" "}
           <p className="in-stillBox__labelTable">QTY</p>
           <img
             className="in-stillBox__arrowSort"
@@ -87,7 +152,7 @@ export default function WarehouseDetails() {
         inventoriesArr.map((inventory) => (
           <div className="in-magicBox" key={uuid()}>
             <div className="in-magicBox__box1">
-              {' '}
+              {" "}
               <label className="in-magicBox__labelMobile">INVENTORY ITEM</label>
               <div className="flexbox">
                 <p className="in-magicBox__labelItem">{inventory.itemName}</p>
@@ -109,32 +174,84 @@ export default function WarehouseDetails() {
 
               <span
                 className={`${
-                  inventory.status === 'In Stock'
-                    ? 'in-magicBox__inStock'
-                    : 'in-magicBox__outOfStock'
+                  inventory.status === "In Stock"
+                    ? "in-magicBox__inStock"
+                    : "in-magicBox__outOfStock"
                 }`}
               >
                 {inventory.status}
               </span>
             </div>
             <div className="in-magicBox__box4">
-              <label className="in-magicBox__labelMobile">QTY</label>{' '}
+              <label className="in-magicBox__labelMobile">QTY</label>{" "}
               <span className="in-magicBox__qtyValue">
                 {inventory.quantity}
               </span>
             </div>
             <div className="in-magicBox__box5">
-              <label className="in-magicBox__labelMobile">WAREHOUSE</label>{' '}
+              <label className="in-magicBox__labelMobile">WAREHOUSE</label>{" "}
               <span class="in-magicBox__warehouseNameValue">
                 {inventory.warehouseName}
               </span>
             </div>
             <div className="in-magicBox__box6">
-              <img src={delteCan} alt="delete icon" />
+              <img
+                src={delteCan}
+                alt="delete icon"
+                onClick={() => {
+                  setSelectedInventoryItem(inventory.id);
+                  setNameInventoryItem(inventory.itemName);
+                  openModal();
+                }}
+              />
               <img src={editPen} alt="edit icon" />
             </div>
           </div>
         ))}
+
+      {/* start of code */}
+      <Modal
+        isOpen={deleteModal}
+        onRequestClose={closeModal}
+        contentLabel="Delete Warehouse"
+        ariaHideApp={false}
+        style={bg}
+      >
+        <div className="magicBox__box5__modal__close" onClick={closeModal}>
+          <img src={closeIcon} alt="close icon" />
+        </div>
+        <div className="magicBox__box5__modal">
+          <div className="magicBox__box5__modal--textarea">
+            <h2 className="magicBox__box5__modal--title">
+              Delete {nameInventoryItem} inventory item?
+            </h2>
+            <p className="magicBox__box5__modal--text">
+              Please confirm that you'd like to delete {nameInventoryItem} from
+              the inventory list. You won't be able to undo this action. The
+              item id is {selectedInventoryItem}.
+            </p>
+          </div>
+          <div className="magicBox__box5__modal--div">
+            <button
+              className="magicBox__box5__modal--btn magicBox__box5__modal--btn--cancel"
+              type="cancel"
+              onClick={closeModal}
+            >
+              {/* end of code */}
+              <span className="btn-text">Cancel</span>
+            </button>
+            <button
+              className="magicBox__box5__modal--btn magicBox__box5__modal--btn--delete"
+              type="delete"
+              onClick={(e) =>
+                deleteWarehouse(e, selectedInventoryItem, nameInventoryItem)
+              }
+            >
+              <span className="btn-text">Delete</span>
+            </button>
+          </div>
+        </div>
+      </Modal>
     </section>
   );
 }
