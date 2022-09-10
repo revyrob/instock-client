@@ -1,7 +1,6 @@
 import logo from '../../assets/logo/InStock-Logo_1x.png';
 import './Header.scss';
 
-// import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
@@ -15,10 +14,7 @@ export default function Header() {
           <Link to="/warehouses" className="nav__logo-link">
             <img src={logo} alt="logo" className="nav__logo-img" />
           </Link>
-          {/* <Link
-            to="/warehouses"
-            className="nav__link-warehouse nav__link-item--active"
-          > */}
+
           <Link
             to="/warehouses"
             className={`${
@@ -29,7 +25,7 @@ export default function Header() {
           >
             Warehouses
           </Link>
-          {/* <Link to="/inventory" className="nav__link-inventory"> */}
+
           <Link
             to="/inventory"
             className={`${
