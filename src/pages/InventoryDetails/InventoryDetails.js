@@ -18,6 +18,8 @@ export default function WarehouseDetails() {
   const [inventoriesArr, setInventoriesArr] = useState([]);
   let [selectedInventoryItem, setSelectedInventoryItem] = useState(null);
   let [nameInventoryItem, setNameInventoryItem] = useState(null);
+  //getting correct path from .env
+  const { REACT_APP_API_SERVER_URL } = process.env;
 
   useEffect(() => {
     axios.get("http://localhost:8080/inventory").then((payload) => {
@@ -31,7 +33,7 @@ export default function WarehouseDetails() {
     console.log(selectedInventoryItem);
     console.log(nameInventoryItem);
     axios
-      .delete(`http://localhost:8080/inventory/${selectedInventoryItem}`)
+      .delete(`${REACT_APP_API_SERVER_URL}/inventory/${selectedInventoryItem}`)
       .then((response) => {
         navigate(`/inventory`);
         refreshPage();
@@ -56,9 +58,6 @@ export default function WarehouseDetails() {
   function refreshPage() {
     window.location.reload(false);
   }
-
-  //getting correct path from .env
-  const { REACT_APP_API_SERVER_URL } = process.env;
 
   //use to navigate back to warehouse page after delete
   let navigate = useNavigate();
