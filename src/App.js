@@ -20,10 +20,9 @@ function App() {
 
         <Route path="/inventory" element={<InventoryDetails />} />
         <Route path="/inventory/:id" element={<InventoryItem />} />
-        {/* <Route path="/inventory" element={<Inventory />} /> */}
         <Route path="/inventory/new" element={<InventoryFormPage />} />
-        <Route path="/inventory/:id/edit" element={<InventoryFormPage />} /> 
-      
+        <Route path="/inventory/:id/edit" element={<InventoryFormPage />} />
+
         <Route path="/warehousedetails" element={<WarehouseDetails />} />
         <Route path="/inventorydetails" element={<InventoryDetails />} />
       </Routes>
