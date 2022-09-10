@@ -7,20 +7,32 @@ import { useEffect } from 'react';
 import axios from 'axios';
 
 export default function InventoryFormPage(){
-    console.log("inventory")
-    const [inventory, setwarehouse] = useState(null)
+    const [inventory, setwarehouse] = useState(null);
+    const [warehouseNames, setWarehouseNames] = useState(null);
     const {id:inventoryId} =  useParams();
+
     let navigate = useNavigate();
     const [errObj, setErrobj]=useState({
         valid:true,
     })
-    console.log("inventoryid",inventoryId)
+
     useEffect(function(){
+        getWarehouseNames()
         if(inventoryId){
             getInventoryId()
         }
     },[inventoryId])
-    console.log(inventoryId)
+
+    async function getWarehouseNames(){
+        try{
+            const {data} = await axios.get(`http://localhost:8080/warehouse/names`)
+            console.log("warehouse names list",data)
+            setWarehouseNames(data)
+        }catch(err){
+            console.log(err)
+        } 
+    }
+        
     async function getInventoryId(){
         try{
             const {data} = await axios.get(`http://localhost:8080/inventory/${inventoryId}`)
@@ -69,72 +81,41 @@ export default function InventoryFormPage(){
     }
 
     function formValidation(formObj){
-        const {wrhsName,wrhsAdd,wrhsCity,wrhsCountry,cntcName,cntcPos,cntcPhn,cntcEmail} = formObj
+        const {invrName,invrDesc,invrCats,invrStat,invrQuan,wrhsCats} = formObj
+        console.log(wrhsCats)
         //local err obj to collect err inputs 
         const localErrObj = {
             valid:false,
         }
 
-         //check if field is not empty
-        if(!wrhsName.value.replace(/\s/g, '').length){
-            localErrObj[wrhsName.name] = "this field is required"
+       
+        if(!invrName.value.replace(/\s/g, '').length){
+            localErrObj[invrName.name] = "this field is required"
             localErrObj.valid = true;
         }
 
          //check if field is not empty
-        if(!wrhsAdd.value.replace(/\s/g, '').length){
-            localErrObj[wrhsAdd.name] = "this field is required"
+        if(!invrDesc.value.replace(/\s/g, '').length){
+            localErrObj[invrDesc.name] = "this field is required"
             localErrObj.valid = true;
         }
 
          //check if field is not empty
-        if(!wrhsCity.value.replace(/\s/g, '').length){
-            localErrObj[wrhsCity.name] = "this field is required"
+        if(!invrCats.value.replace(/\s/g, '').length){
+            localErrObj[invrCats.name] = "this field is required"
             localErrObj.valid = true;
         }
-
-         //check if field is not empty
-        if(!wrhsCountry.value.replace(/\s/g, '').length){
-            localErrObj[wrhsCountry.name] = "this field is required"
+        if(!wrhsCats.value.replace(/\s/g, '').length){
+            localErrObj[wrhsCats.name] = "this field is required"
             localErrObj.valid = true;
         }
-
-         //check if field is not empty
-        if(!cntcName.value.replace(/\s/g, '').length){
-            localErrObj[cntcName.name] = "this field is required"
+        if(!invrQuan.value.replace(/\s/g, '').length){
+            localErrObj[invrQuan.name] = "this field is required"
             localErrObj.valid = true;
+        }else if(!Number(invrQuan.value)){
+            localErrObj[invrQuan.name] = "this field is required"
         }
-
-        //check if field is not empty
-        if(!cntcPos.value.replace(/\s/g, '').length){
-            localErrObj[cntcPos.name] = "this field is required"
-            localErrObj.valid = true;
-        }
-
-        //check if phone is empty or has number as input
-        if(!cntcPhn.value.replace(/\s/g, '').length){
-            localErrObj[cntcPhn.name] = "this field is required"
-            localErrObj.valid = true;
-            
-        }else if(!Number(cntcPhn.value)){
-            localErrObj[cntcPhn.name] = "please enter a number"
-            localErrObj.valid = true;
-        }else{
-
-        }
-        
-        //check if email is not empty and has includes @
-        if(!cntcEmail.value.replace(/\s/g, '').length){
-            localErrObj[cntcEmail.name] = "this field is required"
-            localErrObj.valid = true;
-        }else if(!cntcEmail.value.includes('@')){
-            localErrObj[cntcEmail.name] = "not valid email"
-            localErrObj.valid = true;
-        }else{
-
-        }
-
-        //set errObj state to local state depending on localErrObj valid property
+    
         if(localErrObj.valid){
             setErrobj(localErrObj)
         }else{
@@ -145,22 +126,26 @@ export default function InventoryFormPage(){
     }
 
     function handleEditSumbit(e){
-        console.log("in invetory page")
+        console.log("in edit")
         e.preventDefault()
         const formObj = e.target;
-        if(formValidation(formObj)){
-            putEditedData(formObj)
-        }  
+        console.log(typeof formObj)
+        // const formObj = e.target;
+        formValidation(formObj)
+        // if(formValidation(formObj)){
+        //     putEditedData(formObj)
+        // }  
     }
 
     function handleNewSumbit(e){
-        console.log("in invetory page")
-        const formObj = e.target;
+        console.log("in sumbit")
         e.preventDefault()
-        if(formValidation(formObj)){
-            postData(formObj)
-            e.target.reset();
-        }
+        const formObj = e.target;
+        formValidation(formObj)
+        // if(formValidation(formObj)){
+        //     postData(formObj)
+        //     e.target.reset();
+        // }
     }
 
 
@@ -168,7 +153,7 @@ export default function InventoryFormPage(){
         <>  
             <div className="edit-wrhse">
                 <PageHeader title={inventoryId? "Edit inventory":"Add New inventory"} backLink={'warehouses'}></PageHeader>
-                <InventoryForm inventory={inventory} inventoryId={inventoryId} handleNewSumbit={handleNewSumbit} handleEditSumbit={handleEditSumbit} errObj={errObj} ></InventoryForm>
+                <InventoryForm inventory={inventory} inventoryId={inventoryId} handleNewSumbit={handleNewSumbit} handleEditSumbit={handleEditSumbit} errObj={errObj} warehouseNames={warehouseNames}></InventoryForm >
             </div>  
         </>  
     )

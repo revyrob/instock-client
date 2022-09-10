@@ -10,54 +10,133 @@ import {FormBody} from './FormBody'
 import {CancelButton} from './CancelButton'
 import {SumbitButton} from './SumbitButton'
 import { Label } from './Label';
+import { ErrorSpan } from './ErrorSpan';
+export default function InventoryForm({inventory,inventoryId,handleNewSumbit,handleEditSumbit,errObj,warehouseNames}){
+    if(!inventory){
+        return(
+            <>
+            <FormGrid activeId={inventoryId} handleEditSumbit={handleEditSumbit} handleNewSumbit={handleNewSumbit}>
+                <FormBody>
+                <FormGridLeft>
+                    <Title title={"Item Details"}></Title>
+                    <Label labelTxt={"Item Name"}>
+                        <Input  name={"invrName"} errObj={errObj} defaultValue={""}></Input>
+                    </Label>
+                    <Label labelTxt={"Description"}>
+                        <textarea name="invrDesc" id="" cols="30" rows="10" class="frmgrid__inpttxt" placeholder='' defaultValue={""}></textarea>
+                        <ErrorSpan errObj={errObj} name={'invrDesc'}></ErrorSpan>
+                    </Label>
+                    <Label labelTxt={"Category"}> 
+                        <select name="invrCats" className="frmgrid__select">
+                            <option value="" selected>Please Select</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Gear">Gear</option>
+                            <option value="Apparel">Apparel</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Health">Health</option>
+                        </select>
+                        <ErrorSpan errObj={errObj} name={'invrCats'}></ErrorSpan>
+                    </Label>
+                </FormGridLeft>
+                <FormGridSeprator></FormGridSeprator>
+                <FormGridRight>
+                    <Title title={"Item Availability"}></Title>
+                    <Label labelTxt={"Status"}>
+                        <input type="radio" id="contactChoice1"
+                        name="invrStat" value="In Stock" />
+                        <label for="contactChoice1">In Stock</label>
+                    
+                        <input type="radio" id="contactChoice2"
+                        name="invrStat" defaultChecked={false} value="Out of Stock"/>
+                        <label for="contactChoice2" >Out of Stock</label> 
+                    </Label>
+                    <Label labelTxt={"Quantity"}>
+                        <Input  name={"invrQuan"} errObj={errObj} defaultValue={""}></Input>
+                    </Label>
+                   <Label labelTxt={"Wearhouses"}>
+                        {warehouseNames && <select name="wrhsCats" className="frmgrid__select" defaultValue={""}>
+                                <option value="">Please Select</option>
+                                {warehouseNames.map((ele,idx)=>{
+                                    console.log(ele)
+                                    return <option key={idx} value={`${ele}`}>{ele}</option>
+                                })}
+                            </select>}
+                            <ErrorSpan errObj={errObj} name={'wrhsCats'}></ErrorSpan>
+                   </Label>
+                   
+                </FormGridRight>
+                </FormBody>
+                <FormFooter>
+                    <CancelButton cancelLink={'/warehouses'}></CancelButton>
+                    <SumbitButton activeId={inventoryId} buttonText={'Inventory'}></SumbitButton>
+                </FormFooter>
+            </FormGrid>
+            </>
+        )
+    }else{
+        let statusOFStatus = convertInStockFormatFromStringToBoolean();
+            function convertInStockFormatFromStringToBoolean(){
+                
+                    if(inventory.status==="In Stock"){
+                        console.log("true")
+                        return true;
+                    }else{
+                        console.log("false")
+                        return false;
+                    }   
+            }
+        return (
+            <>
+            <FormGrid activeId={inventoryId} handleEditSumbit={handleEditSumbit} handleNewSumbit={handleNewSumbit}>
+                <FormBody>
+                <FormGridLeft>
+                    <Title title={"Item Details"}></Title>
+                    <Label labelTxt={"Item Name"}>
+                        <Input  name={"invrName"} errObj={errObj} defaultValue={inventory.itemName}></Input>
+                    </Label>
+                    <Label labelTxt={"Description"}>
+                        <textarea name="invrTxt" id="" cols="30" rows="10" class="frmgrid__inpttxt" placeholder='' defaultValue={inventory.description}></textarea>
+                        <ErrorSpan errObj={errObj}></ErrorSpan>
+                    </Label>
+                    <Label labelTxt={"Category"}> 
+                        <select name="invrCats" className="frmgrid__select" value={inventory.category}>
+                            <option value="" selected>Please Select</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Gear">Gear</option>
+                            <option value="Apparel">Apparel</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Health">Health</option>
+                        </select>
+                    </Label>
+                </FormGridLeft>
+                <FormGridSeprator></FormGridSeprator>
+                <FormGridRight>
+                    <Title title={"Item Availability"}></Title>
+                    <Label labelTxt={"Status"}>
+                        <input type="radio" id="contactChoice1"
+                        name="contact" defaultChecked={statusOFStatus}/>
+                        <label for="contactChoice1">In Stock</label>
+                        <input type="radio" id="contactChoice2"
+                        name="contact" defaultChecked={!statusOFStatus}/>
+                        <label for="contactChoice2" >Out of Stock</label> 
+                    </Label>
+                   <Label labelTxt={"Wearhouses"}>
+                        {warehouseNames && <select name="wrhsCats" className="frmgrid__select" defaultValue={inventory.warehouseName}>
+                                <option value="">Please Select</option>
+                                {warehouseNames.map((ele,idx)=>{
+                                    return <option key={idx} value={ele}>{ele}</option>
+                                })}
+                            </select>}
+                   </Label>
+                </FormGridRight>
+                </FormBody>
+                <FormFooter>
+                    <CancelButton cancelLink={'/inventory'}></CancelButton>
+                    <SumbitButton activeId={inventoryId} buttonText={'Inventory'}></SumbitButton>
+                </FormFooter>
+            </FormGrid>
+            </>
+        );
 
-export default function InventoryForm({inventory,inventoryId,handleNewSumbit,handleEditSumbit,errObj}){
-    console.log("inventory", inventory)
-    console.log("inventoryId", inventoryId)
-    return(
-        <>
-        <FormGrid warehouseId={inventoryId} handleEditSumbit={handleEditSumbit} handleNewSumbit={handleNewSumbit}>
-            <FormBody>
-            <FormGridLeft>
-                <Title title={"Item Details"}></Title>
-                <Label labelTxt={"Item Name"}>
-                    <Input  name={"wrhsName"} errObj={errObj} defaultValue={inventory ? inventory.itemName : ""}></Input>
-                </Label>
-            </FormGridLeft>
-            <FormGridSeprator></FormGridSeprator>
-            <FormGridRight>
-                <Title title={"Item Availability"}></Title>
-            </FormGridRight>
-            </FormBody>
-            <FormFooter>
-                <CancelButton cancelLink={'/warehouses'}></CancelButton>
-                <SumbitButton warehouseId={inventoryId} buttonText={'Inventory'}></SumbitButton>
-            </FormFooter>
-        </FormGrid>
-           
-        {/* <form className="frmgrid" onSubmit={warehouseId ? handleEditSumbit : handleNewSumbit}>
-            <div className="frmgrid__body">
-                <div className="frmgrid__left">
-                    <Title title={"Warehouse Details"}></Title>
-                    <Input labelTxt={"Warehouse Name"} name={"wrhsName"} errObj={errObj} warehouse={warehouse}></Input>
-                    <Input labelTxt={"Street Address"} name={"wrhsAdd"} errObj={errObj} warehouse={warehouse}></Input>
-                    <Input labelTxt={"City"} name={"wrhsCity"} errObj={errObj} warehouse={warehouse}></Input>
-                    <Input labelTxt={"Country"} name={"wrhsCountry"} errObj={errObj} warehouse={warehouse}></Input>
-                </div>
-                <hr className='frmgrid__seprator' />
-                <div className="frmgrid__right">
-                    <Title title={"Contact Details"}></Title>
-                    <Input labelTxt={"Contact Name"} name={"cntcName"} errObj={errObj} warehouse={warehouse}></Input>
-                    <Input labelTxt={"Position"} name={"cntcPos"} errObj={errObj} warehouse={warehouse}></Input>
-                    <Input labelTxt={"Phone Number"} name={"cntcPhn"} errObj={errObj} warehouse={warehouse}></Input>
-                    <Input labelTxt={"Email"} name={"cntcEmail"} errObj={errObj} warehouse={warehouse}></Input>
-                </div>
-            </div>
-            <div className="frmgrid__footer">
-                <Link to={'/warehouses'} className='frmgrid__cancel'>Cancel</Link>
-                <button type="submit" className='frmgrid__save'>{warehouseId ? `Save` : `+ Add Warehouse`}</button>
-            </div>
-        </form> */}
-        </>
-    )
+    }   
 }
