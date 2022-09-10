@@ -124,4 +124,36 @@
             margin-left: auto;
         }
     }
+
+    &__inpttxt{
+        width:100%;
+        border-radius: 20px;
+        border:1px solid $secondary-light;
+        height:120px;
+        padding:8px 16px;
+        resize: none;
+        &--err{
+            border:1px solid $sup-red;
+        }
+    }
+    &__select{
+        width:100%;
+        border-radius: 20px;
+        border:1px solid $secondary-light;
+        height:36px;
+        background-color: $primary-light;
+        padding:8px 16px;
+        resize: none;
+        -webkit-appearance: none;
+            -moz-appearance: none;
+            text-indent: 1px;
+            text-overflow: '';
+        &--err{
+            border:1px solid $sup-red;
+        }
+        background-image: url("data:image/svg+xml,%3Csvg width='10' height='5' viewBox='0 0 10 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L5 5L10 0H0Z' fill='%235C667E'/%3E%3C/svg%3E%0A");
+        background-repeat: no-repeat;
+        background-position:  98% center;
+
+    }
 }

@@ -7,20 +7,32 @@ import { useEffect } from 'react';
 import axios from 'axios';
 
 export default function InventoryFormPage(){
-    console.log("inventory")
-    const [inventory, setwarehouse] = useState(null)
+    const [inventory, setwarehouse] = useState(null);
+    const [warehouseNames, setWarehouseNames] = useState(null);
     const {id:inventoryId} =  useParams();
+
     let navigate = useNavigate();
     const [errObj, setErrobj]=useState({
         valid:true,
     })
-    console.log("inventoryid",inventoryId)
+
     useEffect(function(){
+        getWarehouseNames()
         if(inventoryId){
             getInventoryId()
         }
     },[inventoryId])
-    console.log(inventoryId)
+
+    async function getWarehouseNames(){
+        try{
+            const {data} = await axios.get(`http://localhost:8080/warehouse/names`)
+            console.log("warehouse names list",data)
+            setWarehouseNames(data)
+        }catch(err){
+            console.log(err)
+        } 
+    }
+        
     async function getInventoryId(){
         try{
             const {data} = await axios.get(`http://localhost:8080/inventory/${inventoryId}`)
@@ -156,6 +168,8 @@ export default function InventoryFormPage(){
     function handleNewSumbit(e){
         console.log("in invetory page")
         const formObj = e.target;
+        console.log(formObj.invrCats.value)
+        console.log(formObj.wrhsCats.value)
         e.preventDefault()
         if(formValidation(formObj)){
             postData(formObj)
@@ -168,7 +182,7 @@ export default function InventoryFormPage(){
         <>  
             <div className="edit-wrhse">
                 <PageHeader title={inventoryId? "Edit inventory":"Add New inventory"} backLink={'warehouses'}></PageHeader>
-                <InventoryForm inventory={inventory} inventoryId={inventoryId} handleNewSumbit={handleNewSumbit} handleEditSumbit={handleEditSumbit} errObj={errObj} ></InventoryForm>
+                <InventoryForm inventory={inventory} inventoryId={inventoryId} handleNewSumbit={handleNewSumbit} handleEditSumbit={handleEditSumbit} errObj={errObj} warehouseNames={warehouseNames}></InventoryForm >
             </div>  
         </>  
     )
