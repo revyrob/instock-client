@@ -46,6 +46,9 @@ body {
     height: 40px;
     width: 100%;
     border-radius: 20px;
+    &:hover {
+      background-color: $bgcolor-dark;
+    }
   }
   &__iconBtnTxt {
     display: none;
@@ -256,6 +259,9 @@ body {
       padding: 8px 12px;
       margin-top: 0px;
     }
+  }
+  &__link {
+    text-decoration: none;
   }
 }
 
