@@ -7,6 +7,10 @@ import { useLocation } from 'react-router-dom';
 export default function Header() {
   const { pathname } = useLocation();
 
+  // const regexInventory = /^/inventory[a-zA-Z-/--]*/;
+  // const path = paragraph.match(pathname);
+  // console.log(path);
+
   return (
     <div>
       <header className="nav__header">
@@ -18,7 +22,10 @@ export default function Header() {
           <Link
             to="/warehouses"
             className={`${
-              pathname === '/warehouses'
+              pathname === '/' ||
+              pathname === '/warehouses' ||
+              pathname === '/warehouses/new' ||
+              pathname === 'warehouses/edit'
                 ? 'nav__link-warehouse nav__link-item--active'
                 : 'nav__link-warehouse'
             }`}
@@ -29,9 +36,11 @@ export default function Header() {
           <Link
             to="/inventory"
             className={`${
-              pathname === '/warehouses'
-                ? 'nav__link-inventory'
-                : 'nav__link-inventory nav__link-item--active'
+              pathname === '/inventory' ||
+              pathname === '/inventory/new' ||
+              pathname === 'inventory/edit'
+                ? 'nav__link-inventory nav__link-item--active'
+                : 'nav__link-inventory '
             }`}
           >
             Inventory
