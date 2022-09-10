@@ -11,15 +11,15 @@ import axios from "axios";
 import { v4 as uuid } from "uuid";
 import Modal from "react-modal";
 
-
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 
 export default function WarehouseDetails() {
   const [inventoriesArr, setInventoriesArr] = useState([]);
   let [selectedInventoryItem, setSelectedInventoryItem] = useState(null);
   let [nameInventoryItem, setNameInventoryItem] = useState(null);
+  //getting correct path from .env
+  const { REACT_APP_API_SERVER_URL } = process.env;
 
   useEffect(() => {
     axios.get("http://localhost:8080/inventory").then((payload) => {
@@ -33,7 +33,7 @@ export default function WarehouseDetails() {
     console.log(selectedInventoryItem);
     console.log(nameInventoryItem);
     axios
-      .delete(`http://localhost:8080/inventory/${selectedInventoryItem}`)
+      .delete(`${REACT_APP_API_SERVER_URL}/inventory/${selectedInventoryItem}`)
       .then((response) => {
         navigate(`/inventory`);
         refreshPage();
@@ -59,22 +59,19 @@ export default function WarehouseDetails() {
     window.location.reload(false);
   }
 
-  //getting correct path from .env
-  const { REACT_APP_API_SERVER_URL } = process.env;
-
   //use to navigate back to warehouse page after delete
   let navigate = useNavigate();
 
   //need this to do the overlay for the modal
   const bg =
-    window.innerWidth > 768
+    window.innerWidth > 786
       ? {
           overlay: {
             background: "rgba(19, 24, 44, .6)",
           },
           content: {
             width: "42rem",
-            height: "16.375rem",
+            height: "20rem",
             margin: "5.3125rem auto 0",
             display: "flex",
             flexDirection: "column",
@@ -93,12 +90,14 @@ export default function WarehouseDetails() {
         </div>
         <div className="in-pageHeader__flexbox">
           <SearchBar className="in-pageHeader__searchBar" />
-          <div className="in-pageHeader__addItemBtn">
-            <span className="in-pageHeader__addItemBtnText">
-              {" "}
-              + Add New Item
-            </span>
-          </div>
+          <Link to={"/inventory/new"}>
+            <div className="in-pageHeader__addItemBtn">
+              <span className="in-pageHeader__addItemBtnText">
+                {" "}
+                + Add New Item
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
 
@@ -234,8 +233,7 @@ export default function WarehouseDetails() {
             </h2>
             <p className="magicBox__box5__modal--text">
               Please confirm that you'd like to delete {nameInventoryItem} from
-              the inventory list. You won't be able to undo this action. The
-              item id is {selectedInventoryItem}.
+              the inventory list. You won't be able to undo this action.
             </p>
           </div>
           <div className="magicBox__box5__modal--div">

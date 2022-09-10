@@ -238,73 +238,73 @@ body {
     @include tablet {
       margin-left: auto;
       padding-top: 0;
-      
-    }
-    &__modal {
-      background-color:$primary-light;
-      border-radius: 3px;
-      height: 83vh;
-      padding: 3.75rem 1rem 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      &__close {
-        position: absolute;
-        top: 10%;
-        right: 5%;
-      }
-      &--title {
-        font-size: $page-header-mobile;
-        line-height: 2.25rem;
-        margin-bottom: 1rem;
-        margin-top: 2.5rem;
-      }
-      &--text{
-        font-size: $body-large-mobile;
-        line-height: 1.625rem;
-      }
-      &--div{
-        padding-bottom: auto;
+      &__modal {
+        background-color:$primary-light;
+        border-radius: 3px;
+        height: 83vh;
+        padding: 3.75rem 1rem 0;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
-        @include tablet {
-          width: 30%;
-          margin-left: auto;
+        &__close {
+          position: absolute;
+          top: 10%;
+          right: 5%;
         }
-      }
-      &--btn {
-        display: flex;  
-        align-items: center;
-        justify-content: center;
-        border-radius: 25px;
-        padding: 0.5rem;
-        border: none;
-        font-weight: 600;
-        height: 2.375rem;
-        margin: 1rem 0;
-        
-        &--cancel {
-          width: 47%;
-          border: 1px solid $secondary-light;
-          background-color: $primary-light;
-          color: $primary-dark;
-          &:hover {
-            color: $primary-accent;
+        &--title {
+          font-size: $page-header-mobile;
+          line-height: 2.25rem;
+          margin-bottom: 1rem;
+          margin-top: 2.5rem;
+        }
+        &--text{
+          font-size: $body-large-mobile;
+          line-height: 1.625rem;
+        }
+        &--div{
+          padding-bottom: auto;
+          display: flex;
+          justify-content: space-between;
+          @include tablet {
+            width: 30%;
+            margin-left: auto;
+          }
+        }
+        &--btn {
+          display: flex;  
+          align-items: center;
+          justify-content: center;
+          border-radius: 25px;
+          padding: 0.5rem;
+          border: none;
+          font-weight: 600;
+          height: 2.375rem;
+          margin: 1rem 0;
+          
+          &--cancel {
+            width: 47%;
+            border: 1px solid $secondary-light;
             background-color: $primary-light;
-            transition: .5s;
+            color: $primary-dark;
+            &:hover {
+              color: $primary-accent;
+              background-color: $primary-light;
+              transition: .5s;
+            }
+          }
+          &--delete {
+            width: 47%;
+            background-color: $sup-red;
+            color: $primary-light;
+            &:hover {
+              background-color: $bgcolor-dark;
+              transition: .5s;
+            }
           }
         }
-        &--delete {
-          width: 47%;
-          background-color: $sup-red;
-          color: $primary-light;
-          &:hover {
-            background-color: $bgcolor-dark;
-            transition: .5s;
-          }
-        }
+        
       }
-      
+    
     }
   }
   &__box6 {
@@ -357,4 +357,73 @@ body {
 
 .flexbox {
   display: flex;
+}
+
+.modal {
+  &__modal {
+    background-color:$primary-light;
+    border-radius: 3px;
+    height: 83vh;
+    padding: 3.75rem 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &__close {
+      position: absolute;
+      top: 10%;
+      right: 5%;
+    }
+    &--title {
+      font-size: $page-header-mobile;
+      line-height: 2.25rem;
+      margin-bottom: 1rem;
+      margin-top: 2.5rem;
+    }
+    &--text{
+      font-size: $body-large-mobile;
+      line-height: 1.625rem;
+    }
+    &--div{
+      padding-bottom: auto;
+      display: flex;
+      justify-content: space-between;
+      @include tablet {
+        width: 30%;
+        margin-left: auto;
+      }
+    }
+    &--btn {
+      display: flex;  
+      align-items: center;
+      justify-content: center;
+      border-radius: 25px;
+      padding: 0.5rem;
+      border: none;
+      font-weight: 600;
+      height: 2.375rem;
+      margin: 1rem 0;
+      
+      &--cancel {
+        width: 47%;
+        border: 1px solid $secondary-light;
+        background-color: $primary-light;
+        color: $primary-dark;
+        &:hover {
+          color: $primary-accent;
+          background-color: $primary-light;
+          transition: .5s;
+        }
+      }
+      &--delete {
+        width: 47%;
+        background-color: $sup-red;
+        color: $primary-light;
+        &:hover {
+          background-color: $bgcolor-dark;
+          transition: .5s;
+        }
+      }
+    }
+    
+  }
 }

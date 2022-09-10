@@ -20,8 +20,8 @@ export default function WarehouseDetails() {
   const [inventoriesArr, setInventoriesArr] = useState([]);
   let [selectedInventoryItem, setSelectedInventoryItem] = useState(null);
   let [nameInventoryItem, setNameInventoryItem] = useState(null);
-
-  console.log(inventoriesArr);
+  //getting correct path from .env
+  const { REACT_APP_API_SERVER_URL } = process.env;
 
   const { id } = useParams();
 
@@ -36,21 +36,20 @@ export default function WarehouseDetails() {
       });
   }, []);
 
-  //function to delete the warehouse which is pressed on
-  const deleteWarehouse = (e, inventoryId) => {
+  //function to delete the inventory item which is pressed on
+  const deleteWarehouse = (e, selectedInventoryItem, nameInventoryItem) => {
     e.preventDefault();
-    console.log(inventoryId);
+    console.log(selectedInventoryItem);
+    console.log(nameInventoryItem);
     axios
-      .delete(`${REACT_APP_API_SERVER_URL}/inventory/${inventoryId}`)
+      .delete(`${REACT_APP_API_SERVER_URL}/inventory/${selectedInventoryItem}`)
       .then((response) => {
-        //why is it no linking back with the refreshed info
-        navigate(`/warehouses/${id}`);
+        navigate(`/warehouse/${id}`);
         refreshPage();
         closeModal();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(`Error has occurred. ${err}`));
   };
-
   /*
    *Modal code
    */
@@ -68,22 +67,19 @@ export default function WarehouseDetails() {
     window.location.reload(false);
   }
 
-  //getting correct path from .env
-  const { REACT_APP_API_SERVER_URL } = process.env;
-
   //use to navigate back to warehouse page after delete
   let navigate = useNavigate();
 
   //need this to do the overlay for the modal
   const bg =
-    window.innerWidth > 768
+    window.innerWidth > 786
       ? {
           overlay: {
             background: "rgba(19, 24, 44, .6)",
           },
           content: {
             width: "42rem",
-            height: "16.375rem",
+            height: "20rem",
             margin: "5.3125rem auto 0",
             display: "flex",
             flexDirection: "column",
@@ -203,14 +199,16 @@ export default function WarehouseDetails() {
             <div className="magicBox__box1">
               {" "}
               <label className="magicBox__labelMobile">Warehouse</label>
-              <div className="flexbox">
-                <p className="magicBox__labelItem">{inventory.itemName}</p>
-                <img
-                  className="magicBox__chevron"
-                  src={chevron}
-                  alt="icon chevron"
-                />
-              </div>
+              <Link to={`../../inventory/${inventory.id}`}>
+                <div className="flexbox">
+                  <p className="magicBox__labelItem">{inventory.itemName}</p>
+                  <img
+                    className="magicBox__chevron"
+                    src={chevron}
+                    alt="icon chevron"
+                  />
+                </div>
+              </Link>
             </div>
             <div className="magicBox__box2">
               <label className="magicBox__labelMobile">Category</label>
