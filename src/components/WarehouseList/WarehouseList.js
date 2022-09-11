@@ -17,7 +17,7 @@ function WarehouseList({ warehouseList }) {
             <Button
               className="warehouseList__btn"
               alt="add"
-              text="+Add New Warehouse"
+              text="+ Add New Warehouse"
               type="submit"
             ></Button>
           </Link>
@@ -45,7 +45,7 @@ function WarehouseList({ warehouseList }) {
         <div className="warehouseList__tablet">
           <div className="warehouseList__wrapper">
             <h2 className="warehouseList__subtitle">
-              WarehouseList
+              Warehouse
               <img
                 className="warehouseList__subtitle--icon"
                 src={arrowSort}
@@ -80,7 +80,7 @@ function WarehouseList({ warehouseList }) {
               />
             </h2>
 
-            <h2 className="warehouseList__subtitle align-right">Action</h2>
+            <h2 className="warehouseList__subtitle align-right">Actions</h2>
           </div>
 
           {warehouseList &&
