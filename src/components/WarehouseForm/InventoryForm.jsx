@@ -17,6 +17,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
     const [editStatus,setEditStatus] = useState(false)
 
     function handleChange(e){
+        console.log(e.target.value)
        if(e.target.value === "In Stock"){
         setNewStatus(true)
        }else{
@@ -25,6 +26,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
     }
 
     function handleEditChange(e){
+        console.log(e.target.value)
         if(e.target.value === "In Stock"){
             setEditStatus(true)
            }else{
@@ -35,6 +37,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
     useEffect(
         function(){
             if(inventory && inventory.status==="In Stock"){
+                console.log("true")
                 setEditStatus(true)
             }else{
                 setEditStatus(false)
@@ -72,14 +75,20 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                 <FormGridSeprator></FormGridSeprator>
                 <FormGridRight>
                     <Title title={"Item Availability"}></Title>
-                    <Label labelTxt={"Status"}> </Label> 
-                        <input type="radio" id="contactChoice1"
-                        name="invrStat" value="In Stock" onChange={handleChange}/>
-                        <label for="contactChoice1">In Stock</label>
-                        <input type="radio" id="contactChoice2"
-                        name="invrStat" defaultChecked={true} value="Out of Stock" onChange={handleChange}/>
-                        <label for="contactChoice2">Out of Stock</label> 
-                    
+                    <Label labelTxt={"Status"}>
+                        <div>   
+                            <label for="contactChoice1" class="frmgrid__radio">
+                                <input type="radio" id="contactChoice1"
+                                name="invrStat" value="In Stock" onChange={handleChange} />
+                                In Stock
+                            </label>
+                            <label for="contactChoice2" class="frmgrid__radio">
+                                <input type="radio" id="contactChoice2"
+                                name="invrStat" defaultChecked={true} value="Out of Stock" onChange={handleChange}/>
+                                Out of Stock
+                            </label> 
+                        </div> 
+                    </Label>
                    {newStatus && <Label labelTxt={"Quantity"}>
                         <Input  name={"invrQuan"} errObj={errObj} defaultValue={""}></Input>
                     </Label>}
@@ -133,11 +142,11 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                     <Title title={"Item Availability"}></Title>
                     <Label labelTxt={"Status"}>
                         <input type="radio" id="contactChoice1"
-                        name="invrStat" defaultChecked={editStatus} onClick={handleEditChange}/>
+                        name="invrStat" defaultChecked={editStatus} value="In Stock" onClick={handleEditChange}/>
                         <label for="contactChoice1">In Stock</label>
                         <input type="radio" id="contactChoice2"
-                        name="invrStat" defaultChecked={!editStatus} onClick={handleEditChange}/>
-                        <label for="contactChoice2" >Out of Stock</label> 
+                        name="invrStat" defaultChecked={editStatus} value="Out of Stock" onClick={handleEditChange}/>
+                        <label for="contactChoice2">Out of Stock</label> 
                     </Label>
                    {editStatus &&  <Label labelTxt={"Quantity"}>
                         <Input  name={"invrQuan"} errObj={errObj} defaultValue={inventory.quantity}></Input>
