@@ -55,30 +55,6 @@ export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,han
                 <SumbitButton buttonText={'Warehouse'} activeId={warehouseId}></SumbitButton>
             </FormFooter>
         </FormGrid>
-           
-        {/* <form className="frmgrid" onSubmit={warehouseId ? handleEditSumbit : handleNewSumbit}>
-            <div className="frmgrid__body">
-                <div className="frmgrid__left">
-                    <Title title={"Warehouse Details"}></Title>
-                    <Input labelTxt={"Warehouse Name"} name={"wrhsName"} errObj={errObj} warehouse={warehouse}></Input>
-                    <Input labelTxt={"Street Address"} name={"wrhsAdd"} errObj={errObj} warehouse={warehouse}></Input>
-                    <Input labelTxt={"City"} name={"wrhsCity"} errObj={errObj} warehouse={warehouse}></Input>
-                    <Input labelTxt={"Country"} name={"wrhsCountry"} errObj={errObj} warehouse={warehouse}></Input>
-                </div>
-                <hr className='frmgrid__seprator' />
-                <div className="frmgrid__right">
-                    <Title title={"Contact Details"}></Title>
-                    <Input labelTxt={"Contact Name"} name={"cntcName"} errObj={errObj} warehouse={warehouse}></Input>
-                    <Input labelTxt={"Position"} name={"cntcPos"} errObj={errObj} warehouse={warehouse}></Input>
-                    <Input labelTxt={"Phone Number"} name={"cntcPhn"} errObj={errObj} warehouse={warehouse}></Input>
-                    <Input labelTxt={"Email"} name={"cntcEmail"} errObj={errObj} warehouse={warehouse}></Input>
-                </div>
-            </div>
-            <div className="frmgrid__footer">
-                <Link to={'/warehouses'} className='frmgrid__cancel'>Cancel</Link>
-                <button type="submit" className='frmgrid__save'>{warehouseId ? `Save` : `+ Add Warehouse`}</button>
-            </div>
-        </form> */}
         </>
     )
 }

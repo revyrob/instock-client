@@ -13,7 +13,6 @@ import { Label } from './Label';
 import { ErrorSpan } from './ErrorSpan';
 import {useEffect, useState} from 'react'
 export default function InventoryForm({inventory,inventoryId,handleNewSumbit,handleEditSumbit,errObj,warehouseNames}){
-    console.log(inventory)
     const [newStatus,setNewStatus] = useState(false)
     const [editStatus,setEditStatus] = useState(false)
     const [wrhsCatName,setwrhsCatName] = useState("")
@@ -34,7 +33,6 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
         }
     }
     function changeWrhsName(e){
-        console.log(e.target.value)
         setwrhsCatName(e.target.value)
     }
     function changeInventoryCat(e){
@@ -48,9 +46,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                 setEditStatus(false)
             }
             if(inventory){
-                console.log(inventory.warehouseName)
                 setwrhsCatName(inventory.warehouseName)
-                console.log(wrhsCatName)
             }
             if(inventory){
                 setInventoryCat(inventory.category)
@@ -75,7 +71,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                     </Label>
                     <Label labelTxt={"Category"}> 
                         <select name="invrCats" className={errObj["invrCats"] ? `frmgrid__select frmgrid__select--err`:`frmgrid__select` }>
-                            <option value="" selected>Please Select</option>
+                            <option value="">Please Select</option>
                             <option value="Electronics">Electronics</option>
                             <option value="Gear">Gear</option>
                             <option value="Apparel">Apparel</option>
@@ -92,14 +88,14 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                         <div>
                             <input type="radio" id="contactChoice1"
                             name="invrStat" value="In Stock" onChange={handleChange}/>
-                            <label for="contactChoice1" className="frmgrid__radio">In Stock</label>
+                            <label htmlFor="contactChoice1" className="frmgrid__radio">In Stock</label>
                             <input type="radio" id="contactChoice2"
                             name="invrStat" defaultChecked={true} value="Out of Stock" onChange={handleChange}/>
-                            <label for="contactChoice2">Out of Stock</label>  
+                            <label htmlFor="contactChoice2">Out of Stock</label>  
                         </div>
                     </Label>
                    {newStatus && <Label labelTxt={"Quantity"}>
-                        <Input  name={"invrQuan"} errObj={errObj} defaultValue={""}></Input>
+                        <Input name={"invrQuan"} errObj={errObj} defaultValue={""}></Input>
                     </Label>}
                    <Label labelTxt={"Wearhouses"}>
                         {warehouseNames && <select name="wrhsCats" className={errObj["wrhsCats"] ? `frmgrid__select frmgrid__select--err`:`frmgrid__select` } defaultValue={""}>
@@ -137,7 +133,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                     </Label>
                     <Label labelTxt={"Category"}> 
                         <select name="invrCats" className={errObj["invrCats"] ? `frmgrid__select frmgrid__select--err`:`frmgrid__select` } value={inventoryCat} onChange={changeInventoryCat}>
-                            <option value="" selected>Please Select</option>
+                            <option value="">Please Select</option>
                             <option value="Electronics">Electronics</option>
                             <option value="Gear">Gear</option>
                             <option value="Apparel">Apparel</option>
@@ -154,10 +150,10 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                         <div>
                         <input type="radio" id="contactChoice1"
                         name="invrStat" defaultChecked={editStatus} onClick={handleEditChange}/>
-                        <label for="contactChoice1" className="frmgrid__radio">In Stock</label>
+                        <label htmlFor="contactChoice1" className="frmgrid__radio">In Stock</label>
                         <input type="radio" id="contactChoice2"
                         name="invrStat" defaultChecked={!editStatus} onClick={handleEditChange}/>
-                        <label for="contactChoice2" >Out of Stock</label> 
+                        <label htmlFor="contactChoice2" >Out of Stock</label> 
                         </div>
                         
                     </Label>
