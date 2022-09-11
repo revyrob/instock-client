@@ -1,12 +1,12 @@
-import "./InventoryItem.scss";
+import './InventoryItem.scss';
 
-import arrowBack from "../../assets/icons/arrow_back-24px.svg";
-import editPen from "../../assets/icons/edit-24px.svg";
+import arrowBack from '../../assets/icons/arrow_back-24px.svg';
+import editPen from '../../assets/icons/edit-24px.svg';
 
-import axios from "axios";
+import axios from 'axios';
 
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 
 export default function WarehouseDetails() {
   const [inventoryItem, setInventoryItem] = useState([]);
@@ -41,40 +41,42 @@ export default function WarehouseDetails() {
           </div>
         </Link>
       </div>
-      <hr class="item-pageHeader__divider"></hr>
-      <div class="desktopInventoryItem">
-        <div class="desktopItem">
-          <div class="desktopItem__boxLeft">
-            <label className="desktopItem__label">ITEM DESCRIPTION:</label>{" "}
-            <span class="desktopItem__valueDesc">
+      <hr className="item-pageHeader__divider"></hr>
+      <div className="desktopInventoryItem">
+        <div className="desktopItem">
+          <div className="desktopItem__boxLeft">
+            <label className="desktopItem__label">ITEM DESCRIPTION:</label>{' '}
+            <span className="desktopItem__valueDesc">
               {inventoryItem.description}
             </span>
-            <label className="desktopItem__label">CATEGORY:</label>{" "}
-            <span class="desktopItem__value">{inventoryItem.category}</span>
+            <label className="desktopItem__label">CATEGORY:</label>{' '}
+            <span className="desktopItem__value">{inventoryItem.category}</span>
           </div>
-          <div class="desktopItem__boxRight">
-            <div class="desktopItem__boxRight-row1">
-              <div class="flex-column">
-                <label className="desktopItem__labelStatus">STATUS:</label>{" "}
+          <div className="desktopItem__boxRight">
+            <div className="desktopItem__boxRight-row1">
+              <div className="flex-column">
+                <label className="desktopItem__labelStatus">STATUS:</label>{' '}
                 <span
-                  class={`${
-                    inventoryItem.status === "In Stock"
-                      ? "desktopItem__inStock"
-                      : "desktopItem__outOfStock"
+                  className={`${
+                    inventoryItem.status === 'In Stock'
+                      ? 'desktopItem__inStock'
+                      : 'desktopItem__outOfStock'
                   }`}
                 >
                   {inventoryItem.status}
                 </span>
               </div>
-              <div class="flex-column">
-                <label className="desktopItem__label">QUANTITY</label>{" "}
-                <span class="desktopItem__value">{inventoryItem.quantity}</span>
+              <div className="flex-column">
+                <label className="desktopItem__label">QUANTITY</label>{' '}
+                <span className="desktopItem__value">
+                  {inventoryItem.quantity}
+                </span>
               </div>
             </div>
-            <div class="desktopItem__boxRight-row2">
-              <div class="flex-column">
-                <label className="desktopItem__label">WAREHOUSE</label>{" "}
-                <span class="desktopItem__value">
+            <div className="desktopItem__boxRight-row2">
+              <div className="flex-column">
+                <label className="desktopItem__label">WAREHOUSE</label>{' '}
+                <span className="desktopItem__value">
                   {inventoryItem.warehouseName}
                 </span>
               </div>
