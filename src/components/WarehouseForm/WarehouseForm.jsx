@@ -12,7 +12,6 @@ import {SumbitButton} from './SumbitButton'
 import { Label } from './Label';
 
 export default function WarehouseForm({warehouse,warehouseId,handleNewSumbit,handleEditSumbit,errObj,cancelLink}){
-    console.log(errObj)
     return(
         <>
         <FormGrid activeId={warehouseId} handleEditSumbit={handleEditSumbit} handleNewSumbit={handleNewSumbit}>
