@@ -231,7 +231,10 @@ body {
   }
 
   &__labelItem {
-    width: 110px;
+    // width: 130px;
+    display: flex;
+    align-items: center;
+    color: $primary-accent;
     &:hover {
       text-decoration: underline;
     }

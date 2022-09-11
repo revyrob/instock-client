@@ -156,17 +156,16 @@ export default function WarehouseDetails() {
               {" "}
               <label className="in-magicBox__labelMobile">INVENTORY ITEM</label>
               <div className="flexbox">
-                <Link
-                  to={`/inventory/${inventory.id}`}
-                  className="in-magicBox__link"
-                >
-                  <p className="in-magicBox__labelItem">{inventory.itemName}</p>
+                <Link to={`/inventory/${inventory.id}`}>
+                  <p className="in-magicBox__labelItem">
+                    {inventory.itemName}{" "}
+                    <img
+                      // className="in-magicBox__chevron"
+                      src={chevron}
+                      alt="icon chevron"
+                    />
+                  </p>
                 </Link>
-                <img
-                  className="in-magicBox__chevron"
-                  src={chevron}
-                  alt="icon chevron"
-                />
               </div>
             </div>
             <div className="in-magicBox__box2">
