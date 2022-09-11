@@ -25,22 +25,23 @@
             align-items: center;
             justify-content: space-between;
         }
-        @include desktop {
-            padding-left:2.5rem;
-        padding-right:2.5rem;
-        }
+        // @include desktop {
+        //     padding-left:2.5rem;
+        // padding-right:2.5rem;
+        // }
     }
     &__btn {
        
         @include tablet {
             width: 80%;
+           
         }
     }
     &__btns {
         @include tablet {
             display: flex;
             justify-content: space-between;
-            width: 50%;
+            min-width: 50%;
         }
     }
     &__title{
@@ -63,17 +64,17 @@
         text-transform: uppercase;
         color:$secondary-dark;
         font-weight: bold;
-        width: 10rem;
-        align-items: left;
+        // width: 9rem;
         display: flex;
         align-items: center;
         justify-content: left;
         @include tablet{
-            font-size: 0.75rem;
+            font-size: 0.875rem;
+            // width: 8rem;
         }
         &--icon {
             @include tablet {
-                height: 0.75rem;
+                height: 1rem;
                 padding-left: .2rem;
             }
         }
@@ -111,4 +112,8 @@ a:link {
 }
 .align-right {
     justify-content: right;
+}
+
+.indent {
+    margin-right: 2rem;
 }

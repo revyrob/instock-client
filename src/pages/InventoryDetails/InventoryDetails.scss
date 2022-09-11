@@ -14,9 +14,9 @@ body {
 .inventoryDetails {
   background-color: $primary-light;
   @include wrapper-mr;
-  @include desktop {
-    margin-top: -165px;
-  }
+  // @include desktop {
+  //   margin-top: -165px;
+  // }
 }
 .in-pageHeader {
   display: flex;
@@ -28,7 +28,13 @@ body {
   @include tablet {
     display: flex;
     flex-direction: row;
+    padding: 24px 0 0; //i changed this to match mock-up -KR
   }
+  @include desktop {
+    padding: 24px 24px 0;
+    // justify-content: space-between;
+  }
+
 
   &__title {
     display: flex;
@@ -42,7 +48,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: $bold;
+    // font-weight: $bold;
     height: 40px;
     width: 100%;
     border-radius: 20px;
@@ -64,11 +70,15 @@ body {
 
   &__warehouse-name {
     font-size: $page-header-mobile;
+    font-weight: $bold;
+    padding-left: 6px;
     @include tablet {
       font-size: $page-header;
     }
-    font-weight: $bold;
-    padding-left: 6px;
+    @include desktop {
+      padding-left: 0;
+    }
+    
   }
   &__flexbox {
     display: flex;
@@ -81,6 +91,8 @@ body {
     }
     @include desktop {
       width: 50%;
+      justify-content: space-between; //KR put this in
+      gap: 0;
     }
   
   }
@@ -132,7 +144,7 @@ body {
 
 .in-magicBox {
   @include wrapper-mr;
-  border-top: 1px solid $secondary-light;
+  // border-top: 1px solid $secondary-light;  -took this out to match mock-up
   padding: $space-between-items-sm;
   padding-top: $space-between-items-sm + 2px;
   padding-bottom: $space-between-items-sm + 2px;
@@ -220,6 +232,9 @@ body {
 
   &__labelItem {
     width: 110px;
+    &:hover {
+      text-decoration: underline;
+    }
   }
   &__warehouseNameValue {
     text-align: left;
@@ -340,4 +355,20 @@ body {
     }
     
   }
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
 }
