@@ -80,7 +80,7 @@ function WarehouseList({ warehouseList }) {
               />
             </h2>
 
-            <h2 className="warehouseList__subtitle align-right">Action</h2>
+            <h2 className="warehouseList__subtitle align-right">Actions</h2>
           </div>
 
           {warehouseList &&

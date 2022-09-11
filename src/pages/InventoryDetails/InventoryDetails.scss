@@ -239,6 +239,9 @@ body {
       text-decoration: underline;
     }
   }
+  &__labelItem img {
+    margin-left: .5rem;
+  }
   &__warehouseNameValue {
     text-align: left;
     margin-right: auto;
