@@ -15,7 +15,8 @@ import {useEffect, useState} from 'react'
 export default function InventoryForm({inventory,inventoryId,handleNewSumbit,handleEditSumbit,errObj,warehouseNames}){
     const [newStatus,setNewStatus] = useState(false)
     const [editStatus,setEditStatus] = useState(false)
-
+    const [wrhsCatName,setwrhsCatName] = useState("")
+    const [inventoryCat,setInventoryCat] = useState("")
     function handleChange(e){
        if(e.target.value === "In Stock"){
         setNewStatus(true)
@@ -31,13 +32,24 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
             setEditStatus(false)
         }
     }
-    
+    function changeWrhsName(e){
+        setwrhsCatName(e.target.value)
+    }
+    function changeInventoryCat(e){
+        setInventoryCat(e.target.value)
+    }
     useEffect(
         function(){
             if(inventory && inventory.status==="In Stock"){
                 setEditStatus(true)
             }else{
                 setEditStatus(false)
+            }
+            if(inventory){
+                setwrhsCatName(inventory.warehouseName)
+            }
+            if(inventory){
+                setInventoryCat(inventory.category)
             }
         }
     ,[inventory])
@@ -58,8 +70,8 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                         <ErrorSpan errObj={errObj} name={'invrDesc'}></ErrorSpan>
                     </Label>
                     <Label labelTxt={"Category"}> 
-                        <select name="invrCats" className="frmgrid__select">
-                            <option value="" selected>Please Select</option>
+                        <select name="invrCats" className={errObj["invrCats"] ? `frmgrid__select frmgrid__select--err`:`frmgrid__select` }>
+                            <option value="">Please Select</option>
                             <option value="Electronics">Electronics</option>
                             <option value="Gear">Gear</option>
                             <option value="Apparel">Apparel</option>
@@ -73,18 +85,20 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                 <FormGridRight>
                     <Title title={"Item Availability"}></Title>
                     <Label labelTxt={"Status"}>
-                        <input type="radio" id="contactChoice1"
-                        name="invrStat" value="In Stock" onChange={handleChange}/>
-                        <label for="contactChoice1">In Stock</label>
-                        <input type="radio" id="contactChoice2"
-                        name="invrStat" defaultChecked={true} value="Out of Stock" onChange={handleChange}/>
-                        <label for="contactChoice2">Out of Stock</label> 
+                        <div>
+                            <input type="radio" id="contactChoice1"
+                            name="invrStat" value="In Stock" onChange={handleChange}/>
+                            <label htmlFor="contactChoice1" className="frmgrid__radio">In Stock</label>
+                            <input type="radio" id="contactChoice2"
+                            name="invrStat" defaultChecked={true} value="Out of Stock" onChange={handleChange}/>
+                            <label htmlFor="contactChoice2">Out of Stock</label>  
+                        </div>
                     </Label>
                    {newStatus && <Label labelTxt={"Quantity"}>
-                        <Input  name={"invrQuan"} errObj={errObj} defaultValue={""}></Input>
+                        <Input name={"invrQuan"} errObj={errObj} defaultValue={""}></Input>
                     </Label>}
                    <Label labelTxt={"Wearhouses"}>
-                        {warehouseNames && <select name="wrhsCats" className="frmgrid__select" defaultValue={""}>
+                        {warehouseNames && <select name="wrhsCats" className={errObj["wrhsCats"] ? `frmgrid__select frmgrid__select--err`:`frmgrid__select` } defaultValue={""}>
                                 <option value="">Please Select</option>
                                 {warehouseNames.map((ele,idx)=>{
                                  
@@ -118,37 +132,42 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                         <ErrorSpan errObj={errObj}></ErrorSpan>
                     </Label>
                     <Label labelTxt={"Category"}> 
-                        <select name="invrCats" className="frmgrid__select" value={inventory.category}>
-                            <option value="" selected>Please Select</option>
+                        <select name="invrCats" className={errObj["invrCats"] ? `frmgrid__select frmgrid__select--err`:`frmgrid__select` } value={inventoryCat} onChange={changeInventoryCat}>
+                            <option value="">Please Select</option>
                             <option value="Electronics">Electronics</option>
                             <option value="Gear">Gear</option>
                             <option value="Apparel">Apparel</option>
                             <option value="Accessories">Accessories</option>
                             <option value="Health">Health</option>
                         </select>
+                        <ErrorSpan errObj={errObj} name={'invrCats'}></ErrorSpan>
                     </Label>
                 </FormGridLeft>
                 <FormGridSeprator></FormGridSeprator>
                 <FormGridRight>
                     <Title title={"Item Availability"}></Title>
                     <Label labelTxt={"Status"}>
+                        <div>
                         <input type="radio" id="contactChoice1"
                         name="invrStat" defaultChecked={editStatus} onClick={handleEditChange}/>
-                        <label for="contactChoice1">In Stock</label>
+                        <label htmlFor="contactChoice1" className="frmgrid__radio">In Stock</label>
                         <input type="radio" id="contactChoice2"
                         name="invrStat" defaultChecked={!editStatus} onClick={handleEditChange}/>
-                        <label for="contactChoice2" >Out of Stock</label> 
+                        <label htmlFor="contactChoice2" >Out of Stock</label> 
+                        </div>
+                        
                     </Label>
                    {editStatus &&  <Label labelTxt={"Quantity"}>
                         <Input  name={"invrQuan"} errObj={errObj} defaultValue={inventory.quantity}></Input>
                     </Label>}
                    <Label labelTxt={"Wearhouses"}>
-                        {warehouseNames && <select name="wrhsCats" className="frmgrid__select" defaultValue={inventory.warehouseName}>
+                        {warehouseNames && <select name="wrhsCats" className={errObj["wrhsCats"] ? `frmgrid__select frmgrid__select--err`:`frmgrid__select` } value={wrhsCatName} onChange={changeWrhsName}>
                                 <option value="">Please Select</option>
                                 {warehouseNames.map((ele,idx)=>{
                                     return <option key={idx} value={ele}>{ele}</option>
                                 })}
                             </select>}
+                            <ErrorSpan errObj={errObj} name={'wrhsCats'}></ErrorSpan>
                    </Label>
                 </FormGridRight>
                 </FormBody>

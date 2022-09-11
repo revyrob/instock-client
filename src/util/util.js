@@ -29,6 +29,9 @@ export function formValidationInventory(formObj){
         if(invrStat.value==="In Stock" && Number(invrQuan.value)<=0){
             localErrObj[invrQuan.name] = `${Number(invrQuan.value)} qauntity for in stock?` 
             localErrObj.valid = true;
+        }else if(isNaN(invrQuan.value)){
+            localErrObj[invrQuan.name]='Number required';
+            localErrObj.valid = true;
         }
     }
     if(localErrObj.valid){
