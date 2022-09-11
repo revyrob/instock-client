@@ -248,9 +248,11 @@ export default function WarehouseDetails() {
               <img src={delteCan} alt="delete icon" />
             </div>
 
-            <div className="magicBox__box6">
-              <img src={editPen} alt="edit icon" />
-            </div>
+            <Link to={`/inventory/${inventory.id}/edit`}>
+              <div className="magicBox__box6">
+                <img src={editPen} alt="edit icon" />
+              </div>
+            </Link>
           </div>
         ))}
 
