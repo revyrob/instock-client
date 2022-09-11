@@ -53,6 +53,8 @@
         margin-bottom:$space-between-items-sm;
         @include tablet{
             margin-bottom: $space-between-items-lg;
+            margin-top: 1rem;
+            
         }
         &--btm{
             margin-bottom:8px;
@@ -178,4 +180,10 @@
             border:1px solid $sup-red;
         }
     }
+}
+.radioBtns__div {
+    display: flex;
+    max-width: 250px;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
