@@ -58,6 +58,7 @@
             margin-bottom:8px;
         }
     }
+    
     &__inpt{
         width:100%;
         border-radius: 20px;
@@ -67,6 +68,9 @@
         &--err{
             border:1px solid $sup-red;
         }
+    }
+    &__inpt:focus-visible{
+        border:1px solid $primary-accent;
     }
     &__errspn{
         font-weight: 400;
@@ -134,6 +138,10 @@
         resize: none;
         &--err{
             border:1px solid $sup-red;
+        }
+        &:focus-visible{
+            outline: 0;
+            border:1px solid $primary-accent;
         }
     }
     &__select{
