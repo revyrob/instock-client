@@ -53,8 +53,6 @@
         margin-bottom:$space-between-items-sm;
         @include tablet{
             margin-bottom: $space-between-items-lg;
-            margin-top: 1rem;
-            
         }
         &--btm{
             margin-bottom:8px;
@@ -122,11 +120,6 @@
         background-color: $primary-light;
         color:$primary-dark;
         border:1px solid $secondary-light;
-        
-        &:hover {
-            color:$primary-accent;
-            border: 1px solid $primary-accent;
-        }
         @include tablet{
             margin-left: auto;
         }
@@ -161,12 +154,7 @@
         background-image: url("data:image/svg+xml,%3Csvg width='10' height='5' viewBox='0 0 10 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L5 5L10 0H0Z' fill='%235C667E'/%3E%3C/svg%3E%0A");
         background-repeat: no-repeat;
         background-position:  98% center;
-    }
-    &__save {
-        border: none;
-        &:hover {
-            background-color: $primary-dark;
-        }
+
     }
 
     &__quant{
@@ -180,10 +168,4 @@
             border:1px solid $sup-red;
         }
     }
-}
-.radioBtns__div {
-    display: flex;
-    max-width: 250px;
-    justify-content: space-between;
-    margin-bottom: 1rem;
 }

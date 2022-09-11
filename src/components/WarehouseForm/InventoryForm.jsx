@@ -74,19 +74,13 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                 <FormGridRight>
                     <Title title={"Item Availability"}></Title>
                     <Label labelTxt={"Status"}> </Label> 
-                    <div className='radioBtns__div'>
-                    <div className='radioBtns'>
                         <input type="radio" id="contactChoice1"
                         name="invrStat" value="In Stock" onChange={handleChange}/>
                         <label for="contactChoice1">In Stock</label>
-                        </div>
-                        <div className='radioBtns'>
                         <input type="radio" id="contactChoice2"
                         name="invrStat" defaultChecked={true} value="Out of Stock" onChange={handleChange}/>
                         <label for="contactChoice2">Out of Stock</label> 
-                        </div>
-                        </div>
-                        
+                    
                    {newStatus && <Label labelTxt={"Quantity"}>
                         <Input  name={"invrQuan"} errObj={errObj} defaultValue={""}></Input>
                     </Label>}
