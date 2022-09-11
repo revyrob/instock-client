@@ -3,13 +3,20 @@ import './Header.scss';
 
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
+  const [path, setPath] = useState('warehouses');
+
   const { pathname } = useLocation();
 
-  // const regexInventory = /^/inventory[a-zA-Z-/--]*/;
-  // const path = paragraph.match(pathname);
-  // console.log(path);
+  // Read the path. Extract the first letter after the backslash. If i (inventory/...) or if w (warehouses/...). Apply css button classes in JSX from 'path' variable.
+  useEffect(() => {
+    const str = pathname.slice(1, 2);
+
+    if (str === 'i') setPath('inventory');
+    if (str === 'w' || str === undefined) setPath('warehouses');
+  }, [pathname, path]);
 
   return (
     <div>
@@ -22,10 +29,7 @@ export default function Header() {
           <Link
             to="/warehouses"
             className={`${
-              pathname === '/' ||
-              pathname === '/warehouses' ||
-              pathname === '/warehouses/new' ||
-              pathname === 'warehouses/edit'
+              path === '' || path === 'warehouses'
                 ? 'nav__link-warehouse nav__link-item--active'
                 : 'nav__link-warehouse'
             }`}
@@ -36,9 +40,7 @@ export default function Header() {
           <Link
             to="/inventory"
             className={`${
-              pathname === '/inventory' ||
-              pathname === '/inventory/new' ||
-              pathname === 'inventory/edit'
+              path === 'inventory'
                 ? 'nav__link-inventory nav__link-item--active'
                 : 'nav__link-inventory '
             }`}
