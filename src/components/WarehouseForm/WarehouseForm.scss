@@ -68,6 +68,11 @@
         &--err{
             border:1px solid $sup-red;
         }
+        &-quant{
+            @include desktop{
+                width: 122px;
+            }
+        }
     }
     &__inpt:focus-visible{
         border:1px solid $primary-accent;
@@ -118,6 +123,12 @@
             padding:8px 16px;
         }
     }
+    &__save{
+        &:hover{
+            background-color: $bgcolor-dark;
+            border:1px solid $bgcolor-dark;
+        }
+    }
     &__cancel{
         text-decoration: none;
         margin-right:17px;
@@ -126,6 +137,10 @@
         border:1px solid $secondary-light;
         @include tablet{
             margin-left: auto;
+        }
+        &:hover{
+            color: $primary-accent;
+            border:1px solid $primary-accent;
         }
     }
 
@@ -161,8 +176,7 @@
         }
         background-image: url("data:image/svg+xml,%3Csvg width='10' height='5' viewBox='0 0 10 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L5 5L10 0H0Z' fill='%235C667E'/%3E%3C/svg%3E%0A");
         background-repeat: no-repeat;
-        background-position:  98% center;
-
+        background-position:  96% center;
     }
 
     &__quant{
@@ -177,6 +191,9 @@
         }
     }
     &__radio{
-        margin-right:80px;
+        margin-right:90px;
+        @include tablet{
+            margin-right:40px;
+        }
     }
 }
