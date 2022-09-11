@@ -26,7 +26,6 @@ export default function InventoryFormPage(){
     async function getWarehouseNames(){
         try{
             const {data} = await axios.get(`http://localhost:8080/warehouse/names`)
-            console.log("warehouse names list",data)
             setWarehouseNames(data)
         }catch(err){
             console.log(err)
@@ -54,15 +53,12 @@ export default function InventoryFormPage(){
             status: invrStat.value,
             quantity:invrQuan ? invrQuan.value : "0",
         }
-        console.log("resbody",resBody)
         const {data} = await axios.put(`http://localhost:8080/inventory/`,resBody)
         navigate("/inventory");
     }
 
     async function postData(formObj){
-        console.log("in post")
         const {invrName,invrDesc,invrCats,invrStat,invrQuan,wrhsCats} = formObj;
-        console.log(invrQuan)
         const resBody ={
             warehouseName:wrhsCats.value,
             itemName: invrName.value,
@@ -71,7 +67,6 @@ export default function InventoryFormPage(){
             status: invrStat.value,
             quantity:invrQuan ? invrQuan.value : "0",
         }
-        console.log("resbody",resBody)
         const {data} = await axios.post('http://localhost:8080/inventory/',resBody)
         navigate("/inventory");
     }
@@ -80,7 +75,6 @@ export default function InventoryFormPage(){
     function handleEditSumbit(e){
         e.preventDefault()
         const formObj = e.target;
-        console.log(formObj)
         let errObjLocal = formValidationInventory(formObj)
         if(errObjLocal){
             setErrobj(errObjLocal)
@@ -91,12 +85,9 @@ export default function InventoryFormPage(){
     }
 
     function handleNewSumbit(e){
-        console.log("in sumbit")
         e.preventDefault()
         const formObj = e.target;
-        console.log(formObj)
         let errObjLocal = formValidationInventory(formObj)
-        console.log(errObjLocal)
         if(errObjLocal){
             setErrobj(errObjLocal)
         }else{
