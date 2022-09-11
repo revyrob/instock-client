@@ -48,3 +48,26 @@ export function formValidationInventory(formObj){
     }
     
 }
+
+export function formatPhoneNumber(number){  
+    let phoneNumberArray = number.split('')
+    console.log(phoneNumberArray)
+    let trimmedPhoneNumber = phoneNumberArray.filter((function(e){     
+                return Number(e)
+            })).join('') 
+    if(trimmedPhoneNumber.length===11){
+        let areaCode = trimmedPhoneNumber.slice(1,4);
+        let phoneNumberLastFourDigits = trimmedPhoneNumber.slice(-4);
+        let phoneNumberMiddleFourDigits = trimmedPhoneNumber.slice(4,7);
+        console.log(phoneNumberMiddleFourDigits)
+        let formatedPhoneNumber = `+1 (${areaCode}) ${phoneNumberMiddleFourDigits}-${phoneNumberLastFourDigits}`;
+        return formatedPhoneNumber;
+    }else{
+        let areaCode = trimmedPhoneNumber.slice(0,3);
+        let phoneNumberLastFourDigits = trimmedPhoneNumber.slice(-4);
+        let phoneNumberMiddleFourDigits = trimmedPhoneNumber.slice(3,6);
+        console.log(phoneNumberMiddleFourDigits)
+        let formatedPhoneNumber = `+1 ${areaCode} ${phoneNumberMiddleFourDigits}-${phoneNumberLastFourDigits}`;
+        return formatedPhoneNumber;
+    }  
+}

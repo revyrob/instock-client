@@ -5,7 +5,7 @@ import { useParams , useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
-
+import {formatPhoneNumber} from '../../util/util';
 export default function EditWarehouse(){
     const [warehouse, setwarehouse] = useState(null)
     const {id:warehouseId} =  useParams();
@@ -32,6 +32,7 @@ export default function EditWarehouse(){
     
     async function putEditedData(formObj){
         const {wrhsName,wrhsAdd,wrhsCity,wrhsCountry,cntcName,cntcPos,cntcPhn,cntcEmail} = formObj
+        console.log(cntcPhn.value)
         const resBody ={
             id: warehouseId,
             name: wrhsName.value,
@@ -41,16 +42,19 @@ export default function EditWarehouse(){
             contact: {
               name: cntcName.value,
               position: cntcPos.value,
-              phone:cntcPhn.value,
+              phone:formatPhoneNumber(cntcPhn.value),
               email:cntcEmail.value
             }
         }
+        console.log(resBody,"respbody")
         const {data} = await axios.put(`http://localhost:8080/warehouse/${warehouseId}`,resBody)
         navigate("/warehouses");
     }
 
     async function postData(formObj){
+
         const {wrhsName,wrhsAdd,wrhsCity,wrhsCountry,cntcName,cntcPos,cntcPhn,cntcEmail} = formObj
+        
         const resBody ={
             name: wrhsName.value,
             address: wrhsAdd.value,
@@ -59,7 +63,7 @@ export default function EditWarehouse(){
             contact: {
               name: cntcName.value,
               position: cntcPos.value,
-              phone:cntcPhn.value,
+              phone:formatPhoneNumber(cntcPhn.value),
               email:cntcEmail.value
             }
         }
@@ -114,15 +118,24 @@ export default function EditWarehouse(){
         if(!cntcPhn.value.replace(/\s/g, '').length){
             localErrObj[cntcPhn.name] = "this field is required"
             localErrObj.valid = true;
-            
-        }else if(!Number(cntcPhn.value)){
-            localErrObj[cntcPhn.name] = "please enter a number"
-            localErrObj.valid = true;
         }else{
-
+            let phoneNumber = cntcPhn.value.trim()
+            let phoneNumberArray = phoneNumber.split('')
+            if(phoneNumberArray[0]==="+"){
+                phoneNumberArray.shift()
+                phoneNumberArray.shift()
+            }
+            let trimmedPhoneNumber = phoneNumberArray.filter((function(e){   
+                return !isNaN(e) && (e!=" ");
+            })).join('')
+           if(trimmedPhoneNumber.length!=10 ){
+                localErrObj[cntcPhn.name] = "there should be 10 digits"
+                localErrObj.valid = true;
+           }
+           console.log(localErrObj)
+            
         }
-        
-        //check if email is not empty and has includes @
+
         if(!cntcEmail.value.replace(/\s/g, '').length){
             localErrObj[cntcEmail.name] = "this field is required"
             localErrObj.valid = true;
@@ -144,10 +157,8 @@ export default function EditWarehouse(){
     }
 
     function handleEditSumbit(e){
-        console.log(e.target)
         e.preventDefault()
         const formObj = e.target;
-        console.log(formValidation(formObj))
         if(formValidation(formObj)){
             putEditedData(formObj)
         }  
