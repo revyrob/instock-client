@@ -193,7 +193,7 @@ export default function WarehouseDetails() {
             </div>
             <div className="in-magicBox__box5">
               <label className="in-magicBox__labelMobile">WAREHOUSE</label>{' '}
-              <span class="in-magicBox__warehouseNameValue">
+              <span className="in-magicBox__warehouseNameValue">
                 {inventory.warehouseName}
               </span>
             </div>
