@@ -1,19 +1,19 @@
-import "./WarehouseDetails.scss";
+import './WarehouseDetails.scss';
 
-import arrowSort from "../../assets/icons/sort-24px.svg";
-import chevron from "../../assets/icons/chevron_right-24px.svg";
-import delteCan from "../../assets/icons/delete_outline-24px.svg";
-import editPen from "../../assets/icons/edit-24px.svg";
-import arrowBack from "../../assets/icons/arrow_back-24px.svg";
-import closeIcon from "../../assets/icons/close-24px.svg";
+import arrowSort from '../../assets/icons/sort-24px.svg';
+import chevron from '../../assets/icons/chevron_right-24px.svg';
+import delteCan from '../../assets/icons/delete_outline-24px.svg';
+import editPen from '../../assets/icons/edit-24px.svg';
+import arrowBack from '../../assets/icons/arrow_back-24px.svg';
+import closeIcon from '../../assets/icons/close-24px.svg';
 
-import axios from "axios";
-import { v4 as uuid } from "uuid";
+import axios from 'axios';
+import { v4 as uuid } from 'uuid';
 
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Link, useNavigate } from "react-router-dom";
-import Modal from "react-modal";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Modal from 'react-modal';
 
 export default function WarehouseDetails() {
   const [warehouseObj, setWarehouseObj] = useState({});
@@ -32,15 +32,13 @@ export default function WarehouseDetails() {
         const { warehouse, inventories } = payload.data;
         setWarehouseObj(warehouse);
         setInventoriesArr(inventories);
-        console.log(warehouse, inventories);
       });
   }, []);
 
   //function to delete the inventory item which is pressed on
   const deleteWarehouse = (e, selectedInventoryItem, nameInventoryItem) => {
     e.preventDefault();
-    console.log(selectedInventoryItem);
-    console.log(nameInventoryItem);
+
     axios
       .delete(`${REACT_APP_API_SERVER_URL}/inventory/${selectedInventoryItem}`)
       .then((response) => {
@@ -75,20 +73,20 @@ export default function WarehouseDetails() {
     window.innerWidth > 786
       ? {
           overlay: {
-            background: "rgba(19, 24, 44, .6)",
+            background: 'rgba(19, 24, 44, .6)',
           },
           content: {
-            width: "42rem",
-            height: "20rem",
-            margin: "5.3125rem auto 0",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            boxShadow: "0px 2px 5px rgba(19, 24, 44, 0.1)",
-            borderRadius: "3px",
+            width: '42rem',
+            height: '20rem',
+            margin: '5.3125rem auto 0',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            boxShadow: '0px 2px 5px rgba(19, 24, 44, 0.1)',
+            borderRadius: '3px',
           },
         }
-      : { className: "magicBox__box5__modal" };
+      : { className: 'magicBox__box5__modal' };
 
   return (
     <section className="warehouseDetails">
@@ -120,8 +118,8 @@ export default function WarehouseDetails() {
             WAREHOUSE ADDRESS:
           </label>
           <p className="warehouseAddress__street">
-            {warehouseObj && warehouseObj?.address},{" "}
-            {warehouseObj && warehouseObj?.city},{" "}
+            {warehouseObj && warehouseObj?.address},{' '}
+            {warehouseObj && warehouseObj?.city},{' '}
             {warehouseObj && warehouseObj?.country}
           </p>
           {/* <p className="warehouseAddress__city">
@@ -136,7 +134,7 @@ export default function WarehouseDetails() {
               {warehouseObj && warehouseObj?.contact?.name}
             </p>
             <p className="warehouseAddress__title">
-              {" "}
+              {' '}
               {warehouseObj?.contact?.position}
             </p>
           </div>
@@ -148,7 +146,7 @@ export default function WarehouseDetails() {
               {warehouseObj && warehouseObj?.contact?.phone}
             </p>
             <p className="warehouseAddress__email">
-              {" "}
+              {' '}
               {warehouseObj && warehouseObj?.contact?.email}
             </p>
           </div>
@@ -165,7 +163,7 @@ export default function WarehouseDetails() {
           />
         </div>
         <div className="stillBox__box2">
-          {" "}
+          {' '}
           <p className="stillBox__labelTable">CATEGORY</p>
           <img
             className="stillBox__arrowSort"
@@ -174,7 +172,7 @@ export default function WarehouseDetails() {
           />
         </div>
         <div className="stillBox__box3">
-          {" "}
+          {' '}
           <p className="stillBox__labelTable">STATUS</p>
           <img
             className="stillBox__arrowSort"
@@ -183,7 +181,7 @@ export default function WarehouseDetails() {
           />
         </div>
         <div className="stillBox__box4">
-          {" "}
+          {' '}
           <p className="stillBox__labelTable">QUANTITY</p>
           <img
             className="stillBox__arrowSort"
@@ -199,12 +197,12 @@ export default function WarehouseDetails() {
         inventoriesArr.map((inventory, i) => (
           <div className="magicBox" key={uuid()}>
             <div className="magicBox__box1">
-              {" "}
+              {' '}
               <label className="magicBox__labelMobile">Warehouse</label>
               <Link to={`../../inventory/${inventory.id}`}>
                 <div className="flexbox">
                   <p className="magicBox__labelItem">
-                    {inventory.itemName}{" "}
+                    {inventory.itemName}{' '}
                     <img
                       // className="magicBox__chevron"
                       src={chevron}
@@ -225,16 +223,16 @@ export default function WarehouseDetails() {
 
               <span
                 className={`${
-                  inventory.status === "In Stock"
-                    ? "magicBox__inStock"
-                    : "magicBox__outOfStock"
+                  inventory.status === 'In Stock'
+                    ? 'magicBox__inStock'
+                    : 'magicBox__outOfStock'
                 }`}
               >
                 {inventory.status}
               </span>
             </div>
             <div className="magicBox__box4">
-              <label className="magicBox__labelMobile">QTY</label>{" "}
+              <label className="magicBox__labelMobile">QTY</label>{' '}
               <span className="magicBox__qtyValue">{inventory.quantity}</span>
             </div>
             <div
