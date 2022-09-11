@@ -2,6 +2,13 @@
 @use '../../styles/partials/mixins' as *;
 
 .edit-wrhse{
+   margin-top: 15px;
    @include wrapper-mr;
    background-color: $primary-light;
+   @include tablet{
+      margin-top: 8px;
+   }
+   @include desktop{
+      margin-top: 27px;
+   }
 }
