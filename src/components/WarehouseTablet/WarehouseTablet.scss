@@ -2,7 +2,7 @@
 @use '../../styles/partials/mixins' as *;
 
 .warehouseTablet {
-    font-size: 0.6875rem;
+    font-size: $body-medium;
     &__wrapper{
         display: flex;
         justify-content: space-between;
@@ -15,6 +15,7 @@
         }
         @include tablet {
             padding: 0 2rem;
+            padding-top: 1rem;
         }
         
     }
@@ -40,7 +41,7 @@
     }
     &__info{
         margin-bottom: 1rem;
-        width: 7.5rem;
+        width: 8rem;
         text-align: left;
     }
     &__icon--tablet {

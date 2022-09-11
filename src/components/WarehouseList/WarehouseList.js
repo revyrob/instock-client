@@ -53,7 +53,7 @@ function WarehouseList({ warehouseList }) {
               />
             </h2>
 
-            <h2 className="warehouseList__subtitle">
+            <h2 className="warehouseList__subtitle indent">
               Address
               <img
                 className="warehouseList__subtitle--icon"
@@ -62,7 +62,7 @@ function WarehouseList({ warehouseList }) {
               />
             </h2>
 
-            <h2 className="warehouseList__subtitle">
+            <h2 className="warehouseList__subtitle indent">
               Contact Name
               <img
                 className="warehouseList__subtitle--icon"
@@ -71,7 +71,7 @@ function WarehouseList({ warehouseList }) {
               />
             </h2>
 
-            <h2 className="warehouseList__subtitle">
+            <h2 className="warehouseList__subtitle indent">
               Contact Information
               <img
                 className="warehouseList__subtitle--icon"
