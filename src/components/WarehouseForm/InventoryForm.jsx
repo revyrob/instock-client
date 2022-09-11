@@ -13,7 +13,6 @@ import { Label } from './Label';
 import { ErrorSpan } from './ErrorSpan';
 import {useEffect, useState} from 'react'
 export default function InventoryForm({inventory,inventoryId,handleNewSumbit,handleEditSumbit,errObj,warehouseNames}){
-    // console.log(inventory)
     const [newStatus,setNewStatus] = useState(false)
     const [editStatus,setEditStatus] = useState(false)
 
@@ -73,14 +72,14 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                 <FormGridSeprator></FormGridSeprator>
                 <FormGridRight>
                     <Title title={"Item Availability"}></Title>
-                    <Label labelTxt={"Status"}> </Label> 
+                    <Label labelTxt={"Status"}>
                         <input type="radio" id="contactChoice1"
                         name="invrStat" value="In Stock" onChange={handleChange}/>
                         <label for="contactChoice1">In Stock</label>
                         <input type="radio" id="contactChoice2"
                         name="invrStat" defaultChecked={true} value="Out of Stock" onChange={handleChange}/>
                         <label for="contactChoice2">Out of Stock</label> 
-                    
+                    </Label>
                    {newStatus && <Label labelTxt={"Quantity"}>
                         <Input  name={"invrQuan"} errObj={errObj} defaultValue={""}></Input>
                     </Label>}
