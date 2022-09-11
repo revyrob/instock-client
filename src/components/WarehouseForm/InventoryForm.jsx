@@ -13,7 +13,6 @@ import { Label } from './Label';
 import { ErrorSpan } from './ErrorSpan';
 import {useEffect, useState} from 'react'
 export default function InventoryForm({inventory,inventoryId,handleNewSumbit,handleEditSumbit,errObj,warehouseNames}){
-    console.log(inventory)
     const [newStatus,setNewStatus] = useState(false)
     const [editStatus,setEditStatus] = useState(false)
 
