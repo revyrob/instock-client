@@ -126,7 +126,7 @@ body {
   align-items: center;
   padding-top: $space-between-items-sm;
   padding-bottom: $space-between-items-sm;
-  font-size: $labels;
+  font-size: 14px; //changed this
   font-weight: $bold;
   background-color: $bgcolor-light;
   color: $secondary-dark;
@@ -153,8 +153,6 @@ body {
   &__box4 {
     display: flex;
     gap: 0.25rem;
-  }
-  &__box5 {
   }
   &__box6 {
     margin-left: auto;

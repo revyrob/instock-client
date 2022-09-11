@@ -14,7 +14,8 @@
         padding-left: 1rem;
         background-color: $primary-light;
         @include tablet {
-            width: 49%;
+            width: 50%;
+            // margin-right: 1rem;
         }
         @include desktop {
             width: 58%;
@@ -27,6 +28,9 @@
         outline: none; 
         width:100%;
         background-color: $primary-light;
+        @include tablet {
+            font-size: $body-medium;
+        }
     }
 
 }
