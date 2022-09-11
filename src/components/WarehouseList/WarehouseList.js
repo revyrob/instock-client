@@ -5,20 +5,8 @@ import WarehouseMobile from "../WarehouseMobile/WarehouseMobile";
 import WarehouseTablet from "../WarehouseTablet/WarehouseTablet";
 import arrowSort from "../../assets/icons/sort-24px.svg";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 function WarehouseList({ warehouseList }) {
-  const [warehousesArr, setwarehousesArr] = useState(null);
-  //getting correct path from .env
-  const { REACT_APP_API_SERVER_URL } = process.env;
-
-  useEffect(() => {
-    axios.get("http://localhost:8080/warehouse").then((payload) => {
-      setwarehousesArr(payload.data);
-    });
-  }, []);
-
   return (
     <section className="warehouseList">
       <div className="warehouseList__header">
@@ -29,7 +17,7 @@ function WarehouseList({ warehouseList }) {
             <Button
               className="warehouseList__btn"
               alt="add"
-              text="+Add New Warehouse"
+              text="+ Add New Warehouse"
               type="submit"
             ></Button>
           </Link>
