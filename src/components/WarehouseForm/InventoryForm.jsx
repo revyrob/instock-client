@@ -66,7 +66,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                         <Input  name={"invrName"} errObj={errObj} defaultValue={""}></Input>
                     </Label>
                     <Label labelTxt={"Description"}>
-                        <textarea name="invrDesc" id="" cols="30" rows="10" class="frmgrid__inpttxt" placeholder='' defaultValue={""}></textarea>
+                        <textarea name="invrDesc" id="" cols="30" rows="10" className={errObj["invrDesc"] ? `frmgrid__inpttxt frmgrid__inpttxt--err`:`frmgrid__inpttxt` } placeholder='' defaultValue={""}></textarea>
                         <ErrorSpan errObj={errObj} name={'invrDesc'}></ErrorSpan>
                     </Label>
                     <Label labelTxt={"Category"}> 
@@ -94,9 +94,13 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                             <label htmlFor="contactChoice2">Out of Stock</label>  
                         </div>
                     </Label>
-                   {newStatus && <Label labelTxt={"Quantity"}>
-                        <Input name={"invrQuan"} errObj={errObj} defaultValue={""}></Input>
-                    </Label>}
+                   {newStatus && 
+                        <div className='frmgrid__inpt-quant'>
+                            <Label labelTxt={"Quantity"}>
+                            <Input name={"invrQuan"} errObj={errObj} defaultValue={""}></Input>
+                            </Label>
+                        </div>
+                    }
                    <Label labelTxt={"Wearhouses"}>
                         {warehouseNames && <select name="wrhsCats" className={errObj["wrhsCats"] ? `frmgrid__select frmgrid__select--err`:`frmgrid__select` } defaultValue={""}>
                                 <option value="">Please Select</option>
@@ -111,7 +115,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                 </FormGridRight>
                 </FormBody>
                 <FormFooter>
-                    <CancelButton cancelLink={'/warehouses'}></CancelButton>
+                    <CancelButton cancelLink={'/inventory'}></CancelButton>
                     <SumbitButton activeId={inventoryId} buttonText={'Inventory'}></SumbitButton>
                 </FormFooter>
             </FormGrid>
@@ -128,7 +132,7 @@ export default function InventoryForm({inventory,inventoryId,handleNewSumbit,han
                         <Input  name={"invrName"} errObj={errObj} defaultValue={inventory.itemName}></Input>
                     </Label>
                     <Label labelTxt={"Description"}>
-                        <textarea name="invrDesc" id="" cols="30" rows="10" class="frmgrid__inpttxt" placeholder='' defaultValue={inventory.description}></textarea>
+                        <textarea name="invrDesc" id="" cols="30" rows="10" className="frmgrid__inpttxt" placeholder='' defaultValue={inventory.description}></textarea>
                         <ErrorSpan errObj={errObj}></ErrorSpan>
                     </Label>
                     <Label labelTxt={"Category"}> 
