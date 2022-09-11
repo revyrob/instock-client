@@ -147,7 +147,9 @@ function WarehouseTablet({
               </div>
             </Modal>
 
-            <img src={editPen} alt="pen" />
+            <Link to={`/warehouses/${id}/edit`}>
+              <img src={editPen} alt="pen" />
+            </Link>
           </div>
         </div>
       </div>

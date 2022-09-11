@@ -130,7 +130,9 @@ function WarehouseMobile({
           </h2>
 
           <div className="warehouse__icon">
-            <img src={editPen} alt="pen" />
+            <Link to={`/warehouses/${id}/edit`}>
+              <img src={editPen} alt="pen" />
+            </Link>
           </div>
         </div>
       </div>

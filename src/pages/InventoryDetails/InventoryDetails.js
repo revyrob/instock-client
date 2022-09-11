@@ -158,7 +158,7 @@ export default function WarehouseDetails() {
               <div className="flexbox">
                 <Link to={`/inventory/${inventory.id}`}>
                   <p className="in-magicBox__labelItem">
-                    {inventory.itemName}{" "}
+                    {inventory.itemName}
                     <img
                       // className="in-magicBox__chevron"
                       src={chevron}
@@ -209,7 +209,9 @@ export default function WarehouseDetails() {
                   openModal();
                 }}
               />
-              <img src={editPen} alt="edit icon" />
+              <Link to={`/inventory/${inventory.id}/edit`}>
+                <img src={editPen} alt="edit icon" />
+              </Link>
             </div>
           </div>
         ))}
