@@ -107,7 +107,7 @@ body {
   padding-bottom: $space-between-items-sm;
   font-size: $labels;
   font-weight: $bold;
-  background-color: $bgcolor-light;
+  // background-color: $bgcolor-light;
   color: $secondary-dark;
 
   @include tablet {

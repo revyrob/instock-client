@@ -1,8 +1,6 @@
 import "./InventoryItem.scss";
 
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
-// import chevron from '../../assets/icons/chevron_right-24px.svg';
-// import delteCan from '../../assets/icons/delete_outline-24px.svg';
 import editPen from "../../assets/icons/edit-24px.svg";
 
 import axios from "axios";
