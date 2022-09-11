@@ -21,14 +21,15 @@ body {
 .in-pageHeader {
   display: flex;
   flex-direction: column;
-  @include wrapper-mr;
+  // @include wrapper-mr;
+  padding: 0 24px;
   justify-content: space-between;
   padding: $space-between-items-lg;
   padding-top: $space-outside-items-md + 10px;
   @include tablet {
     display: flex;
     flex-direction: row;
-    padding: 24px 0 0; //i changed this to match mock-up -KR
+    padding: 24px 24px 0; //i changed this to match mock-up -KR
   }
   @include desktop {
     padding: 24px 24px 0;
@@ -74,6 +75,7 @@ body {
     padding-left: 6px;
     @include tablet {
       font-size: $page-header;
+      padding-left: 0;
     }
     @include desktop {
       padding-left: 0;
@@ -81,13 +83,16 @@ body {
     
   }
   &__flexbox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
 
     @include tablet {
+      display: flex;
+      align-items: center;
       gap: 20px;
       flex-direction: row;
+      justify-content: space-between; //KR put this in
     }
     @include desktop {
       width: 50%;
@@ -99,7 +104,7 @@ body {
 }
 
 .in-stillBox {
-  @include wrapper-mr;
+  // @include wrapper-mr;
   display: none;
   grid-template-columns: [box1] 1.2fr [box2] 1.2fr;
   align-items: center;
@@ -111,6 +116,7 @@ body {
   color: $secondary-dark;
 
   @include tablet {
+    // padding: 0 32px;
     padding-left: $space-between-items-lg;
     padding-right: $space-between-items-lg;
     display: grid;
@@ -143,11 +149,12 @@ body {
 }
 
 .in-magicBox {
-  @include wrapper-mr;
+  // @include wrapper-mr;
   // border-top: 1px solid $secondary-light;  -took this out to match mock-up
-  padding: $space-between-items-sm;
+  padding: 0 24px;
   padding-top: $space-between-items-sm + 2px;
   padding-bottom: $space-between-items-sm + 2px;
+  
 
   display: grid;
   grid-template-columns: [box1] 1.2fr [box2] 1.2fr;
@@ -224,7 +231,7 @@ body {
   }
   &__box6 {
     margin-top: auto;
-    margin-left: auto;
+    margin-right: auto;
     display: flex;
     gap: 5px;
     padding-right: $space-between-items-sm;

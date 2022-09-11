@@ -99,7 +99,7 @@ export default function WarehouseDetails() {
           </Link>
 
           <p className="pageHeader__warehouse-name">
-            {warehouseObj && warehouseObj?.city}
+            {warehouseObj && warehouseObj?.name}
           </p>
         </div>
         <Link to={`/warehouses/${id}/edit`} className="pageHeader__linkEdit">
@@ -120,12 +120,14 @@ export default function WarehouseDetails() {
             WAREHOUSE ADDRESS:
           </label>
           <p className="warehouseAddress__street">
-            {warehouseObj && warehouseObj?.address}
-          </p>
-          <p className="warehouseAddress__city">
-            {warehouseObj && warehouseObj?.city}{" "}
+            {warehouseObj && warehouseObj?.address},{" "}
+            {warehouseObj && warehouseObj?.city},{" "}
             {warehouseObj && warehouseObj?.country}
           </p>
+          {/* <p className="warehouseAddress__city">
+            {warehouseObj && warehouseObj?.city}{" "}
+            {warehouseObj && warehouseObj?.country}
+          </p> */}
         </div>
         <div className="warehouseAddress__wrapper">
           <div className="warehouseAddress__contactnameBox">
@@ -201,12 +203,14 @@ export default function WarehouseDetails() {
               <label className="magicBox__labelMobile">Warehouse</label>
               <Link to={`../../inventory/${inventory.id}`}>
                 <div className="flexbox">
-                  <p className="magicBox__labelItem">{inventory.itemName}</p>
-                  <img
-                    className="magicBox__chevron"
-                    src={chevron}
-                    alt="icon chevron"
-                  />
+                  <p className="magicBox__labelItem">
+                    {inventory.itemName}{" "}
+                    <img
+                      // className="magicBox__chevron"
+                      src={chevron}
+                      alt="icon chevron"
+                    />
+                  </p>
                 </div>
               </Link>
             </div>
@@ -244,9 +248,11 @@ export default function WarehouseDetails() {
               <img src={delteCan} alt="delete icon" />
             </div>
 
-            <div className="magicBox__box6">
-              <img src={editPen} alt="edit icon" />
-            </div>
+            <Link to={`/inventory/${inventory.id}/edit`}>
+              <div className="magicBox__box6">
+                <img src={editPen} alt="edit icon" />
+              </div>
+            </Link>
           </div>
         ))}
 

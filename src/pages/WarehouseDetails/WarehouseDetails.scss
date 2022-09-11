@@ -74,23 +74,26 @@ body {
 .warehouseAddress {
   display: flex;
   flex-direction: column;
+  background-color: $primary-light;
+  border-top: 1px solid $secondary-light;
   @include tablet {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
   }
   
-  background-color: $primary-light;
-  border-top: 1px solid $secondary-light;
-  @include wrapper-mr;
-  
   &__addressBox {
     display: flex;
     flex-direction: column;
     flex-basis: 35%;
     padding: $space-between-items-sm;
+    // @include wrapper-mr;
     @include tablet {
-      padding: $space-between-items-lg;
+      padding: 0 $space-between-items-lg;
+      margin-top: 2rem;
+    }
+    @include desktop {
+      padding: 0 32px;
     }
   }
   
@@ -99,15 +102,22 @@ body {
     flex-direction: row;
     flex-basis: 65%;
     padding: $space-between-items-sm;
-    
+    border-bottom: 1px solid $secondary-light;
+    // @include wrapper-mr;
     @include tablet {
+      border-bottom: none;
       border-left: 1px solid $secondary-light;
-      padding: $space-between-items-lg;
+      padding: 0 $space-between-items-lg;
       padding-left: $space-outside-items-lg;
+      margin-top: 2rem;
+    }
+    @include desktop {
+      margin-bottom: 24px;
     }
   }
   
   &__contactnameBox {
+    // @include wrapper-mr;
     flex-basis: 50%;
   }
   &__labelAddress,
@@ -117,6 +127,7 @@ body {
     font-weight: $bold;
     color: $secondary-dark;
   }
+  
 }
 
 .stillBox {
@@ -128,14 +139,18 @@ body {
   padding-bottom: $space-between-items-sm;
   font-size: 14px; //changed this
   font-weight: $bold;
-  background-color: $bgcolor-light;
+  // background-color: $bgcolor-light;
   color: $secondary-dark;
   
   @include tablet {
-    padding-left: $space-between-items-lg;
-    padding-right: $space-between-items-lg;
+    // padding-left: $space-between-items-lg;
+    // padding-right: $space-between-items-lg;
     display: grid;
     grid-template-columns: [box1] 1.2fr [box3] 1fr [box2] 1.2fr [box4] 1fr[box5] 0.3fr [box6]0.4fr;
+  }
+  @include desktop {
+    width: 1024px;
+    padding: 11px 32px;
   }
   &__box1 {
     display: flex;
@@ -160,8 +175,9 @@ body {
 }
 
 .magicBox {
-  @include wrapper-mr;
-  border-top: 1px solid $secondary-light;
+  // @include wrapper-mr;
+  padding: 0 24px;
+  // border-top: 1px solid $secondary-light;
   padding: $space-between-items-sm;
   padding-top: $space-between-items-sm + 2px;
   padding-bottom: $space-between-items-sm + 2px;
@@ -177,7 +193,7 @@ body {
   }
   
   @include tablet {
-    padding-left: $space-between-items-lg;
+    padding-left: 32px;
     padding-right: $space-between-items-lg;
     font-size: $body-large;
     grid-template-columns: [box1] 1.2fr [box3] 1fr [box2] 1.2fr [box4] 1fr[box5] 0.3fr [box6]0.4fr;
@@ -302,7 +318,7 @@ body {
         }
         
       }
-    
+      
     }
   }
   &__box6 {
@@ -311,16 +327,25 @@ body {
     padding-right: $space-between-items-sm;
   }
   &__labelItem {
-    width: 110px;
-  }
-  &__chevron {
-    position: relative;
-    left: -20px;
-    @include tablet {
-      left: 10px;
+    // width: 110px;
+    display: flex;
+    text-decoration: none;
+    color: $primary-accent;
+    align-items: center;
+    &:hover {
+      text-decoration: underline;
     }
   }
-  
+  // &__chevron {
+  //   position: relative;
+  //   left: -20px;
+  //   @include tablet {
+  //     left: 10px;
+  //   }
+  // }
+  &__labelItem img {
+    margin-left: 0.5rem;
+  }
   &__inStock {
     background-color: rgba(20, 133, 99, 0.07);
     border-radius: 20px;

@@ -7,6 +7,7 @@ import editPen from "../../assets/icons/edit-24px.svg";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import closeIcon from "../../assets/icons/close-24px.svg";
 
+import Button from "../../components/Button/Button";
 import axios from "axios";
 import { v4 as uuid } from "uuid";
 import Modal from "react-modal";
@@ -22,7 +23,7 @@ export default function WarehouseDetails() {
   const { REACT_APP_API_SERVER_URL } = process.env;
 
   useEffect(() => {
-    axios.get("http://localhost:8080/inventory").then((payload) => {
+    axios.get(`${REACT_APP_API_SERVER_URL}/inventory`).then((payload) => {
       setInventoriesArr(payload.data);
     });
   }, []);
@@ -30,8 +31,8 @@ export default function WarehouseDetails() {
   //function to delete the inventory item which is pressed on
   const deleteWarehouse = (e, selectedInventoryItem, nameInventoryItem) => {
     e.preventDefault();
-    console.log(selectedInventoryItem);
-    console.log(nameInventoryItem);
+    // console.log(selectedInventoryItem);
+    // console.log(nameInventoryItem);
     axios
       .delete(`${REACT_APP_API_SERVER_URL}/inventory/${selectedInventoryItem}`)
       .then((response) => {
@@ -97,6 +98,12 @@ export default function WarehouseDetails() {
                 + Add New Item
               </span>
             </div>
+            {/* <Button
+              className="warehouseList__btn"
+              alt="add"
+              text="+ Add New Item"
+              type="submit"
+            ></Button> */}
           </Link>
         </div>
       </div>
