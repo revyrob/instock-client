@@ -1,19 +1,18 @@
-import "./InventoryDetails.scss";
+import './InventoryDetails.scss';
 
-import arrowSort from "../../assets/icons/sort-24px.svg";
-import chevron from "../../assets/icons/chevron_right-24px.svg";
-import delteCan from "../../assets/icons/delete_outline-24px.svg";
-import editPen from "../../assets/icons/edit-24px.svg";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import closeIcon from "../../assets/icons/close-24px.svg";
+import arrowSort from '../../assets/icons/sort-24px.svg';
+import chevron from '../../assets/icons/chevron_right-24px.svg';
+import delteCan from '../../assets/icons/delete_outline-24px.svg';
+import editPen from '../../assets/icons/edit-24px.svg';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import closeIcon from '../../assets/icons/close-24px.svg';
 
-import Button from "../../components/Button/Button";
-import axios from "axios";
-import { v4 as uuid } from "uuid";
-import Modal from "react-modal";
+import axios from 'axios';
+import { v4 as uuid } from 'uuid';
+import Modal from 'react-modal';
 
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function WarehouseDetails() {
   const [inventoriesArr, setInventoriesArr] = useState([]);
@@ -31,8 +30,6 @@ export default function WarehouseDetails() {
   //function to delete the inventory item which is pressed on
   const deleteWarehouse = (e, selectedInventoryItem, nameInventoryItem) => {
     e.preventDefault();
-    // console.log(selectedInventoryItem);
-    // console.log(nameInventoryItem);
     axios
       .delete(`${REACT_APP_API_SERVER_URL}/inventory/${selectedInventoryItem}`)
       .then((response) => {
@@ -68,20 +65,20 @@ export default function WarehouseDetails() {
     window.innerWidth > 786
       ? {
           overlay: {
-            background: "rgba(19, 24, 44, .6)",
+            background: 'rgba(19, 24, 44, .6)',
           },
           content: {
-            width: "42rem",
-            height: "20rem",
-            margin: "5.3125rem auto 0",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            boxShadow: "0px 2px 5px rgba(19, 24, 44, 0.1)",
-            borderRadius: "3px",
+            width: '42rem',
+            height: '20rem',
+            margin: '5.3125rem auto 0',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            boxShadow: '0px 2px 5px rgba(19, 24, 44, 0.1)',
+            borderRadius: '3px',
           },
         }
-      : { className: "magicBox__box5__modal" };
+      : { className: 'magicBox__box5__modal' };
 
   return (
     <section className="inventoryDetails">
@@ -91,19 +88,13 @@ export default function WarehouseDetails() {
         </div>
         <div className="in-pageHeader__flexbox">
           <SearchBar className="in-pageHeader__searchBar" />
-          <Link to={"/inventory/new"}>
+          <Link to={'/inventory/new'}>
             <div className="in-pageHeader__addItemBtn">
               <span className="in-pageHeader__addItemBtnText">
-                {" "}
+                {' '}
                 + Add New Item
               </span>
             </div>
-            {/* <Button
-              className="warehouseList__btn"
-              alt="add"
-              text="+ Add New Item"
-              type="submit"
-            ></Button> */}
           </Link>
         </div>
       </div>
@@ -118,7 +109,7 @@ export default function WarehouseDetails() {
           />
         </div>
         <div className="in-stillBox__box2">
-          {" "}
+          {' '}
           <p className="in-stillBox__labelTable">CATEGORY</p>
           <img
             className="in-stillBox__arrowSort"
@@ -127,7 +118,7 @@ export default function WarehouseDetails() {
           />
         </div>
         <div className="in-stillBox__box3">
-          {" "}
+          {' '}
           <p className="in-stillBox__labelTable">STATUS</p>
           <img
             className="in-stillBox__arrowSort"
@@ -136,7 +127,7 @@ export default function WarehouseDetails() {
           />
         </div>
         <div className="in-stillBox__box4">
-          {" "}
+          {' '}
           <p className="in-stillBox__labelTable">QTY</p>
           <img
             className="in-stillBox__arrowSort"
@@ -160,7 +151,7 @@ export default function WarehouseDetails() {
         inventoriesArr.map((inventory) => (
           <div className="in-magicBox" key={uuid()}>
             <div className="in-magicBox__box1">
-              {" "}
+              {' '}
               <label className="in-magicBox__labelMobile">INVENTORY ITEM</label>
               <div className="flexbox">
                 <Link to={`/inventory/${inventory.id}`}>
@@ -186,22 +177,22 @@ export default function WarehouseDetails() {
 
               <span
                 className={`${
-                  inventory.status === "In Stock"
-                    ? "in-magicBox__inStock"
-                    : "in-magicBox__outOfStock"
+                  inventory.status === 'In Stock'
+                    ? 'in-magicBox__inStock'
+                    : 'in-magicBox__outOfStock'
                 }`}
               >
                 {inventory.status}
               </span>
             </div>
             <div className="in-magicBox__box4">
-              <label className="in-magicBox__labelMobile">QTY</label>{" "}
+              <label className="in-magicBox__labelMobile">QTY</label>{' '}
               <span className="in-magicBox__qtyValue">
                 {inventory.quantity}
               </span>
             </div>
             <div className="in-magicBox__box5">
-              <label className="in-magicBox__labelMobile">WAREHOUSE</label>{" "}
+              <label className="in-magicBox__labelMobile">WAREHOUSE</label>{' '}
               <span class="in-magicBox__warehouseNameValue">
                 {inventory.warehouseName}
               </span>
