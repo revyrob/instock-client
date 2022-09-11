@@ -23,7 +23,6 @@ export default function EditWarehouse(){
     async function getWareHouseById(){
         try{
             const {data} = await axios.get(`http://localhost:8080/warehouse/${warehouseId}`)
-            console.log("data from api",data)
             setwarehouse(data)
         }catch(err){
             alert("invalid")
@@ -32,7 +31,6 @@ export default function EditWarehouse(){
     
     async function putEditedData(formObj){
         const {wrhsName,wrhsAdd,wrhsCity,wrhsCountry,cntcName,cntcPos,cntcPhn,cntcEmail} = formObj
-        console.log(cntcPhn.value)
         const resBody ={
             id: warehouseId,
             name: wrhsName.value,
@@ -46,7 +44,6 @@ export default function EditWarehouse(){
               email:cntcEmail.value
             }
         }
-        console.log(resBody,"respbody")
         const {data} = await axios.put(`http://localhost:8080/warehouse/${warehouseId}`,resBody)
         navigate("/warehouses");
     }
@@ -131,9 +128,7 @@ export default function EditWarehouse(){
            if(trimmedPhoneNumber.length!=10 ){
                 localErrObj[cntcPhn.name] = "there should be 10 digits"
                 localErrObj.valid = true;
-           }
-           console.log(localErrObj)
-            
+           }            
         }
 
         if(!cntcEmail.value.replace(/\s/g, '').length){
