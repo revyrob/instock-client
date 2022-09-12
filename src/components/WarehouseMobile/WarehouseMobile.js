@@ -50,7 +50,6 @@ function WarehouseMobile({
     axios
       .delete(`${REACT_APP_API_SERVER_URL}/warehouse/${id}`)
       .then((response) => {
-        //why is it no linking back with the refreshed info
         navigate("/warehouses");
         refreshPage();
         closeModal();

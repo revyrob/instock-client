@@ -25,10 +25,7 @@
             align-items: center;
             justify-content: space-between;
         }
-        // @include desktop {
-        //     padding-left:2.5rem;
-        // padding-right:2.5rem;
-        // }
+ 
     }
     &__btn {
        
@@ -46,7 +43,10 @@
     }
     &__title{
         font-weight: $bold;
-        font-size: 2rem;  
+        font-size: 28px; 
+        @include tablet {
+            font-size: 32px;
+        } 
     }
     &__tablet {
         display: none;
@@ -64,13 +64,12 @@
         text-transform: uppercase;
         color:$secondary-dark;
         font-weight: bold;
-        // width: 9rem;
+        // width: 10rem;
         display: flex;
         align-items: center;
         justify-content: left;
         @include tablet{
-            font-size: 0.875rem;
-            // width: 8rem;
+            font-size: 0.75rem;
         }
         &--icon {
             @include tablet {
