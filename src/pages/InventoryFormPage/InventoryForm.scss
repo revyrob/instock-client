@@ -3,6 +3,7 @@
 
 .edit-wrhse{
    margin-top: 15px;
+   font-weight: $bold;
    @include wrapper-mr;
    background-color: $primary-light;
    @include tablet{
