@@ -27,12 +27,8 @@ body {
     border: none;
     display: flex;
     flex-direction: row;
-    padding: 24px 32px 8px; //i changed this to match mock-up -KR
+    padding: 24px 32px 8px; 
   }
-  // @include desktop {
-  //   padding: 24px 24px 0;
-  // }
-
 
   &__title {
     display: flex;
@@ -72,7 +68,6 @@ body {
   &__warehouse-name {
     font-size: $page-header-mobile;
     font-weight: $bold;
-    // padding-left: 6px;
     @include tablet {
       font-size: $page-header;
       padding-left: 0;
@@ -88,11 +83,11 @@ body {
       align-items: center;
       gap: 20px;
       flex-direction: row;
-      justify-content: space-between; //KR put this in
+      justify-content: space-between; 
     }
     @include desktop {
       width: 50%;
-      justify-content: space-between; //KR put this in
+      justify-content: space-between; 
       gap: 0;
     }
   
