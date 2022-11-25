@@ -13,6 +13,7 @@ function Warehouses() {
       .get(`${REACT_APP_API_SERVER_URL}/warehouse`)
       .then((response) => {
         setWarehouseList(response.data);
+        console.log(response.data);
       })
       .catch((err) => console.log(err));
   };

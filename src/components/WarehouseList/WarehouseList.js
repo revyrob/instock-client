@@ -31,7 +31,7 @@ function WarehouseList({ warehouseList }) {
               <WarehouseMobile
                 id={warehouse.id}
                 key={warehouse.id}
-                warehouse={warehouse.name}
+                warehouse={warehouse.warehouse_name}
                 address={warehouse.address}
                 city={warehouse.city}
                 country={warehouse.country}
@@ -88,7 +88,7 @@ function WarehouseList({ warehouseList }) {
               <WarehouseTablet
                 id={warehouse.id}
                 key={warehouse.id}
-                warehouse={warehouse.name}
+                warehouse={warehouse.warehouse_name}
                 address={warehouse.address}
                 city={warehouse.city}
                 country={warehouse.country}

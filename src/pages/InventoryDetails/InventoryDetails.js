@@ -14,16 +14,25 @@ import Modal from "react-modal";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function WarehouseDetails() {
+export default function InventoryDetails() {
   const [inventoriesArr, setInventoriesArr] = useState([]);
   let [selectedInventoryItem, setSelectedInventoryItem] = useState(null);
   let [nameInventoryItem, setNameInventoryItem] = useState(null);
+  const [warehouseArr, setWarehouseArr] = useState(null);
+
   //getting correct path from .env
   const { REACT_APP_API_SERVER_URL } = process.env;
 
   useEffect(() => {
     axios.get(`${REACT_APP_API_SERVER_URL}/inventory`).then((payload) => {
       setInventoriesArr(payload.data);
+      // console.log(payload.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios.get(`${REACT_APP_API_SERVER_URL}/warehouse`).then((payload) => {
+      setWarehouseArr(payload.data);
       console.log(payload.data);
     });
   }, []);
@@ -157,7 +166,7 @@ export default function WarehouseDetails() {
               <div className="flexbox">
                 <Link to={`/inventory/${inventory.id}`}>
                   <p className="in-magicBox__labelItem">
-                    {inventory.itemName}
+                    {inventory.item_name}
                     <img
                       // className="in-magicBox__chevron"
                       src={chevron}
@@ -195,7 +204,15 @@ export default function WarehouseDetails() {
             <div className="in-magicBox__box5">
               <label className="in-magicBox__labelMobile">WAREHOUSE</label>{" "}
               <span className="in-magicBox__warehouseNameValue">
-                {inventory.warehouseName}
+                {/* the warehouse id is given by the foreign key, use the id for the warehouse to find the warehouse
+                in the warehouses by using the key */}
+
+                {warehouseArr &&
+                  warehouseArr.map((warehouse) =>
+                    warehouse.id === inventory.warehouse_id
+                      ? warehouse.warehouse_name
+                      : ""
+                  )}
               </span>
             </div>
             <div className="in-magicBox__box6">

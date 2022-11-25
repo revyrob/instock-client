@@ -15,6 +15,7 @@ export default function WarehouseDetails() {
 
   useEffect(() => {
     axios.get(`http://localhost:8080/inventory/${id}`).then((payload) => {
+      console.log(payload.data);
       setInventoryItem(payload.data);
     });
   }, []);
