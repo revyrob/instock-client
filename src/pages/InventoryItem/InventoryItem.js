@@ -1,12 +1,12 @@
-import './InventoryItem.scss';
+import "./InventoryItem.scss";
 
-import arrowBack from '../../assets/icons/arrow_back-24px.svg';
-import editPen from '../../assets/icons/edit-24px.svg';
+import arrowBack from "../../assets/icons/arrow_back-24px.svg";
+import editPen from "../../assets/icons/edit-24px.svg";
 
-import axios from 'axios';
+import axios from "axios";
 
-import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 
 export default function WarehouseDetails() {
   const [inventoryItem, setInventoryItem] = useState([]);
@@ -45,29 +45,29 @@ export default function WarehouseDetails() {
       <div className="desktopInventoryItem">
         <div className="desktopItem">
           <div className="desktopItem__boxLeft">
-            <label className="desktopItem__label">ITEM DESCRIPTION:</label>{' '}
+            <label className="desktopItem__label">ITEM DESCRIPTION:</label>{" "}
             <span className="desktopItem__valueDesc">
               {inventoryItem.description}
             </span>
-            <label className="desktopItem__label">CATEGORY:</label>{' '}
+            <label className="desktopItem__label">CATEGORY:</label>{" "}
             <span className="desktopItem__value">{inventoryItem.category}</span>
           </div>
           <div className="desktopItem__boxRight">
             <div className="desktopItem__boxRight-row1">
               <div className="flex-column">
-                <label className="desktopItem__labelStatus">STATUS:</label>{' '}
+                <label className="desktopItem__labelStatus">STATUS:</label>{" "}
                 <span
                   className={`${
-                    inventoryItem.status === 'In Stock'
-                      ? 'desktopItem__inStock'
-                      : 'desktopItem__outOfStock'
+                    inventoryItem.status === "In Stock"
+                      ? "desktopItem__inStock"
+                      : "desktopItem__outOfStock"
                   }`}
                 >
                   {inventoryItem.status}
                 </span>
               </div>
               <div className="flex-column">
-                <label className="desktopItem__label">QUANTITY</label>{' '}
+                <label className="desktopItem__label">QUANTITY</label>{" "}
                 <span className="desktopItem__value">
                   {inventoryItem.quantity}
                 </span>
@@ -75,7 +75,7 @@ export default function WarehouseDetails() {
             </div>
             <div className="desktopItem__boxRight-row2">
               <div className="flex-column">
-                <label className="desktopItem__label">WAREHOUSE</label>{' '}
+                <label className="desktopItem__label">WAREHOUSE</label>{" "}
                 <span className="desktopItem__value">
                   {inventoryItem.warehouseName}
                 </span>

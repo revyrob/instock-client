@@ -6,6 +6,8 @@ import { useState } from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
 import {formatPhoneNumber} from '../../util/util';
+
+
 export default function EditWarehouse(){
     const [warehouse, setwarehouse] = useState(null)
     const {id:warehouseId} =  useParams();

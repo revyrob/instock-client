@@ -35,9 +35,9 @@ function WarehouseList({ warehouseList }) {
                 address={warehouse.address}
                 city={warehouse.city}
                 country={warehouse.country}
-                contact={warehouse.contact.name}
-                contactEmail={warehouse.contact.email}
-                contactPhone={warehouse.contact.phone}
+                contact={warehouse.contact_name}
+                contactEmail={warehouse.contact_email}
+                contactPhone={warehouse.contact_phone}
               />
             ))}
         </div>
@@ -92,9 +92,9 @@ function WarehouseList({ warehouseList }) {
                 address={warehouse.address}
                 city={warehouse.city}
                 country={warehouse.country}
-                contact={warehouse.contact.name}
-                contactEmail={warehouse.contact.email}
-                contactPhone={warehouse.contact.phone}
+                contact={warehouse.contact_name}
+                contactEmail={warehouse.contact_email}
+                contactPhone={warehouse.contact_phone}
               />
             ))}
         </div>
