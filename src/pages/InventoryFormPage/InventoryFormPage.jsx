@@ -6,6 +6,8 @@ import { useState } from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
 import {formValidationInventory} from '../../util/util'
+
+
 export default function InventoryFormPage(){
     const [inventory, setwarehouse] = useState(null);
     const [warehouseNames, setWarehouseNames] = useState(null);
